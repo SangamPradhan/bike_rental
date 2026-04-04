@@ -5,30 +5,64 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ route('gallery') }}" />
     <style>
-        .masonry-grid {
-            columns: 1;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
         }
         @media (min-width: 768px) {
-            .masonry-grid { columns: 2; }
+            .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (min-width: 1024px) {
-            .masonry-grid { columns: 3; }
+            .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         }
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 1.5rem;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: #131319;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .liquid-glass {
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(155, 233, 247, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 15px rgba(155, 233, 247, 0.1);
+        }
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .fancybox-bg {
+            background: rgba(14, 14, 19, 0.95) !important;
         }
     </style>
 @endpush
 
 @section('content')
     <!-- Hero Section -->
-    <section class="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
+    <section class="relative w-full h-[500px] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img class="w-full h-full object-cover brightness-50"
                 alt="Cinematic wide shot of a rugged black adventure motorcycle parked on a high mountain pass"
@@ -37,47 +71,40 @@
         </div>
         <div class="relative z-10 text-center px-4">
             <h1
-                class="font-headline text-6xl md:text-8xl font-black tracking-tighter text-white leading-tight uppercase text-shadow-xl">
-                THE <br /><span class="text-primary italic">LENS</span>
+                class="font-headline text-5xl md:text-7xl font-black tracking-tighter text-white leading-tight uppercase">
+                THE <span class="text-primary italic">GALLERY</span>
             </h1>
-            <p class="mt-6 text-xl font-label tracking-widest text-secondary max-w-2xl mx-auto uppercase font-bold">
-                Adventure Through the Lens
-            </p>
-            
-            <!-- Breadcrumb Inside Hero -->
-            <nav class="mt-8 flex items-center justify-center gap-3 text-sm font-label text-white/60 uppercase tracking-widest">
+            <!-- Breadcrumb -->
+            <nav class="mt-8 flex items-center justify-center gap-3 text-xs font-label text-white/40 uppercase tracking-widest">
                 <a class="hover:text-primary transition-colors" href="{{ route('welcome') }}">Home</a>
-                <span class="material-symbols-outlined text-xs">chevron_right</span>
+                <span class="material-symbols-outlined text-[10px]">chevron_right</span>
                 <span class="text-secondary font-bold">The Lens</span>
             </nav>
         </div>
     </section>
 
-    <main class="pb-24 px-6 md:px-12 max-w-screen-2xl mx-auto text-white">
-        <!-- Filter Tabs (Static for design) -->
-        <header class="mb-16">
-            <div class="flex flex-wrap items-center gap-3 liquid-glass p-2 rounded-full w-fit mx-auto md:mx-0 border border-white/10 shadow-2xl">
-                <button class="px-8 py-3 rounded-full font-label text-[10px] font-black tracking-widest uppercase bg-secondary text-on-secondary shadow-[0_0_20px_rgba(254,178,52,0.4)] transition-all amber-glow transform hover:scale-105">ALL</button>
-                <button class="px-8 py-3 rounded-full font-label text-[10px] font-black tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/10 transition-all">HIMALAYAN RIDES</button>
-                <button class="px-8 py-3 rounded-full font-label text-[10px] font-black tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/10 transition-all">CITY EXPLORER</button>
-                <button class="px-8 py-3 rounded-full font-label text-[10px] font-black tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/10 transition-all">GEAR</button>
-            </div>
-        </header>
-
-        <!-- Masonry Grid -->
-        <div class="masonry-grid gap-6">
+    <main class="py-24 px-6 md:px-12 max-w-screen-2xl mx-auto">
+        <div class="gallery-grid">
             @foreach($galleries as $gallery)
-                <div class="masonry-item relative group overflow-hidden rounded-2xl bg-surface-container-high transition-all duration-700 hover:scale-[1.02] shadow-2xl border border-white/5">
-                    <img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110" 
-                        src="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png') }}" 
-                         alt="Gallery Image" />
+                <a href="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png') }}" 
+                   class="gallery-item group fancybox" 
+                   data-fancybox="bikerental-gallery"
+                   data-caption="Photo Series Alpha • Himalayan Peak">
                     
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 liquid-glass m-4 rounded-xl border border-white/10">
-                        <a href="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png') }}" class="material-symbols-outlined text-secondary text-4xl mb-4 self-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 fancybox" data-fancybox="gallery" style="font-variation-settings: 'FILL' 1;">open_in_full</a>
-                        <h3 class="font-headline text-2xl font-bold text-white mb-1 uppercase tracking-tight transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Himalayan Peak</h3>
-                        <p class="font-label text-[10px] tracking-widest text-primary uppercase font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">Series Alpha • 2024</p>
+                    <img class="gallery-image grayscale group-hover:grayscale-0" 
+                         src="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png') }}" 
+                         alt="BikeRental Gallery Image" />
+                    
+                    <div class="gallery-overlay glass-panel m-4 rounded-lg border border-white/5">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h3 class="font-headline text-lg font-bold text-white uppercase tracking-tight">Himalayan Peak</h3>
+                                <p class="font-label text-[10px] tracking-widest text-primary uppercase font-bold">Series Alpha • 2024</p>
+                            </div>
+                            <span class="material-symbols-outlined text-secondary text-2xl amber-glow" style="font-variation-settings: 'FILL' 1;">zoom_in</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
 
@@ -87,6 +114,30 @@
                 {{ $galleries->links() }}
             </div>
         </div>
-        
     </main>
+
+    @push('js')
+    <script>
+        $(document).ready(function() {
+            $('[data-fancybox="bikerental-gallery"]').fancybox({
+                loop: true,
+                buttons: [
+                    "zoom",
+                    "slideShow",
+                    "fullScreen",
+                    "close"
+                ],
+                animationEffect: "zoom-in-out",
+                transitionEffect: "slide",
+                keyboard: true,
+                arrows: true,
+                infobar: true,
+                touch: {
+                    vertical: true, // Allow to drag content vertically
+                    momentum: true // Continue movement after releasing mouse/touch
+                }
+            });
+        });
+    </script>
+    @endpush
 @endsection
