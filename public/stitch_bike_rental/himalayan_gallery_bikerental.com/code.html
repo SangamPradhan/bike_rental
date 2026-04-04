@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Himalayan Gallery | BikeRental.com</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&amp;family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@500;700&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#0e0e13",
+                        "surface-container-low": "#131319",
+                        "primary": "#9be9f7",
+                        "surface-tint": "#9be9f7",
+                        "on-primary-fixed-variant": "#00616c",
+                        "on-surface-variant": "#acaab1",
+                        "on-tertiary-fixed": "#3a2600",
+                        "on-secondary-container": "#fff6ef",
+                        "error-container": "#9f0519",
+                        "on-error-container": "#ffa8a3",
+                        "surface-variant": "#25252d",
+                        "background": "#0e0e13",
+                        "surface-container": "#19191f",
+                        "inverse-surface": "#fcf8ff",
+                        "secondary-fixed": "#ffc87a",
+                        "error-dim": "#d7383b",
+                        "secondary": "#feb234",
+                        "on-tertiary": "#614100",
+                        "on-tertiary-fixed-variant": "#604100",
+                        "on-secondary-fixed-variant": "#6f4900",
+                        "secondary-container": "#815500",
+                        "outline-variant": "#48474d",
+                        "tertiary-fixed-dim": "#eea91f",
+                        "on-secondary": "#543600",
+                        "surface-container-lowest": "#000000",
+                        "surface-bright": "#2c2b33",
+                        "on-error": "#490006",
+                        "on-secondary-fixed": "#492f00",
+                        "on-background": "#f9f5fd",
+                        "on-tertiary-container": "#553900",
+                        "surface-container-high": "#1f1f26",
+                        "surface-dim": "#0e0e13",
+                        "secondary-fixed-dim": "#ffb63e",
+                        "error": "#ff716c",
+                        "on-primary": "#005761",
+                        "tertiary-dim": "#eea91f",
+                        "on-surface": "#f9f5fd",
+                        "primary-dim": "#8ddbe8",
+                        "surface-container-highest": "#25252d",
+                        "primary-container": "#5dacb9",
+                        "secondary-dim": "#eea526",
+                        "tertiary-container": "#feb72f",
+                        "tertiary-fixed": "#feb72f",
+                        "inverse-on-surface": "#55545b",
+                        "outline": "#76747b",
+                        "on-primary-fixed": "#00434b",
+                        "primary-fixed": "#9be9f7",
+                        "on-primary-container": "#00272d",
+                        "tertiary": "#ffc970",
+                        "primary-fixed-dim": "#8ddbe8",
+                        "inverse-primary": "#006975"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Inter"],
+                        "label": ["Plus Jakarta Sans"],
+                        "display": ["Bebas Neue"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .masonry-grid {
+            columns: 1;
+        }
+        @media (min-width: 768px) {
+            .masonry-grid { columns: 2; }
+        }
+        @media (min-width: 1024px) {
+            .masonry-grid { columns: 3; }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary selection:text-on-secondary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl dark:bg-[#0e0e13]/80 flex justify-between items-center px-6 md:px-12 py-6 w-full font-epilogue tracking-tight">
+<div class="text-2xl font-black italic text-[#9be9f7] uppercase">BikeRental.com</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-white/70 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300" href="#">Fleet</a>
+<a class="text-white/70 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300" href="#">Adventures</a>
+<a class="text-[#feb234] border-b-2 border-[#feb234] pb-1 hover:scale-105 transition-all duration-300" href="#">Gallery</a>
+<a class="text-white/70 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300" href="#">Safety</a>
+<a class="text-white/70 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-[#9be9f7] text-[#005761] px-6 py-2.5 rounded-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_20px_rgba(155,233,247,0.3)]">
+                Rent Now
+            </button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-screen-2xl mx-auto">
+<!-- Hero Section Heading -->
+<header class="mb-16">
+<h1 class="font-display text-7xl md:text-9xl lg:text-[12rem] leading-none text-white tracking-tighter uppercase mb-8">
+                Adventure Through <span class="text-secondary drop-shadow-[0_0_15px_rgba(254,178,52,0.4)]">the Lens</span>
+</h1>
+<!-- Filter Tabs -->
+<div class="flex flex-wrap items-center gap-3 liquid-glass p-2 rounded-full w-fit mx-auto md:mx-0">
+<button class="px-6 py-2.5 rounded-full font-label text-sm font-bold tracking-wider uppercase bg-secondary text-on-secondary shadow-[0_0_20px_rgba(254,178,52,0.4)] transition-all">ALL</button>
+<button class="px-6 py-2.5 rounded-full font-label text-sm font-bold tracking-wider uppercase text-white/60 hover:text-white hover:bg-white/10 transition-all">HIMALAYAN RIDES</button>
+<button class="px-6 py-2.5 rounded-full font-label text-sm font-bold tracking-wider uppercase text-white/60 hover:text-white hover:bg-white/10 transition-all">CITY</button>
+<button class="px-6 py-2.5 rounded-full font-label text-sm font-bold tracking-wider uppercase text-white/60 hover:text-white hover:bg-white/10 transition-all">GROUP TOURS</button>
+<button class="px-6 py-2.5 rounded-full font-label text-sm font-bold tracking-wider uppercase text-white/60 hover:text-white hover:bg-white/10 transition-all">BIKES</button>
+</div>
+</header>
+<!-- Masonry Grid -->
+<div class="masonry-grid gap-6">
+<!-- Gallery Item 1 -->
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container-high transition-transform duration-500 hover:scale-[1.02]">
+<img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="rugged motorcycle parked on a high altitude mountain pass with snowy peaks and misty valley in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCerSg5ijfSXD7ef3sCrhhXsMJ21jL4DwUUV-TS3jIlQrie6UK5z1_Kjd5ruhiyQo6AlcEq9yIV6b9qf1g8eq4fOi7AdlCjy0IbWZsBPaKNQWN8SiDNWoNpUdHZk6I65QN-AlAN9NeeaUPbL0dYmEM15VVtplxRA8ZJAXUg23_qTp-u7PKFXK5f7hJUrylHngDCsjp_-33zba97Pgc4_d4qwjMkO6lNNLtuGg-WLiSKxxXpWBEH4iZpPAZrOIp7rJtuyCqtIC5yeaw"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 liquid-glass m-4 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4 self-end" data-icon="open_in_full">open_in_full</span>
+<h3 class="font-headline text-2xl font-bold text-white mb-1">Crossing the Rohtang</h3>
+<p class="font-label text-xs tracking-widest text-primary uppercase">Expedition Alpha • 2023</p>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container-high transition-transform duration-500 hover:scale-[1.02]">
+<img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="close-up of a royal enfield motorcycle headlight reflecting a sunset over a distant mountain range" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtDXHpfNmCHFdX4cAHJYuwZxwdsVIoZB3o41TdDdvhQFfkTf-H_7k93UI13_HI_eS2njZPDw7e-J-ypbPFpebTuMgUO4ENZsKhyI71cg8MWdkO0nE5-RR02WXj5233FjhrJkVC-YnZ4bHXAGSJwmrdNsUovdxovZAHiRNM6wsI-UJd1LMnL3O8i1OKYTFLorSw7EfevIsZ-GUOwLgdQ5LBWmkgwbe6harcWQf8pr8dy0QAOkQPOaMw7lSwQy8l8I6YWhsd3UIy66M"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 liquid-glass m-4 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4 self-end" data-icon="open_in_full">open_in_full</span>
+<h3 class="font-headline text-2xl font-bold text-white mb-1">Sunset at Everest Base Camp</h3>
+<p class="font-label text-xs tracking-widest text-primary uppercase">Golden Hour • Series 04</p>
+</div>
+</div>
+<!-- Gallery Item 3 -->
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container-high transition-transform duration-500 hover:scale-[1.02]">
+<img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="winding asphalt mountain road snaking through a desolate brown valley with sharp blue sky above" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc3XVuC5YZ3pYp2C5jlrJTVV9XVVVkHn-LkeqnSthM2Zz9_7yQHRKRYZNAnz02_bcbBesqZfXSzzDkh3azgKEiMqTl_m_V0O_a5a0P7S3dhAULDIX4T3ylR8mmob1Tgk2h-s3QLCs6QHgUtoHC--o7FezBBNbmkQQOt6dkI7EfRyrk4mrxt4u0DcybM5Vxu7_GH7XD9ehVCRt0IQotnowmAHHoREmgoGxAf68N_QUpHni-ej7HMRx4Z-q5sxjzxsXO9hPyb7CFzq8"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 liquid-glass m-4 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4 self-end" data-icon="open_in_full">open_in_full</span>
+<h3 class="font-headline text-2xl font-bold text-white mb-1">The Gata Loops</h3>
+<p class="font-label text-xs tracking-widest text-primary uppercase">Technical Riding • Ladakh</p>
+</div>
+</div>
+<!-- Gallery Item 4 -->
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container-high transition-transform duration-500 hover:scale-[1.02]">
+<img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="silhouetted biker standing next to a bike on a ridge at twilight with deep orange and purple sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWe0u0bIJoQt4LQqL9avbj6K1dNTZNK0-P1Ww7jBz2TfQsnOi7DeiJgfuaWgLU4STeU0dSL0hHbm9m3VYGNXYRpt32djqey19w8KPkzMtBRIm-ewMeRucZtCkXYj34Xze3_8qce9p0EuqY6h740xGpMfAZk7uTWLUeTgj7oj2jT1zxkVKqUNQ1Id7RvYg6LQ77xnMFpgdq2iX4mGnLVtqEdetW8gIL_Np6Ehdvfu-oFahH8v_T1vhBPkv1dwH6tOdx-jJ2XiZY7NU"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 liquid-glass m-4 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4 self-end" data-icon="open_in_full">open_in_full</span>
+<h3 class="font-headline text-2xl font-bold text-white mb-1">Silent Peak Meditation</h3>
+<p class="font-label text-xs tracking-widest text-primary uppercase">Solo Journey • Spiti</p>
+</div>
+</div>
+<!-- Gallery Item 5 -->
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container-high transition-transform duration-500 hover:scale-[1.02]">
+<img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="group of motorcyclists riding in formation through a lush pine forest with sunbeams filtering through trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbNLWM_YOcyrHd-h7JsmOXxuKxmcSH_e7tsURSHpEJDA3pz7sV2wBLM5MjrVfAz6iXIE_aMWp0mIaLK5Hbwu7OmgzUlrSRDGks64EMdnLR2GU9lnSqzAuHjtZ7j_I9Hd8sF5Mctcb4oSuSDCbAxFhITx0GbgtKQmI_-cUch98y_ENvM7qnnHhQuReymdFNJLegfnq0ecWnvPTlGCG3_FWRpOHQ2nzntdR1PUue8dsGmVkQE4S8N9Zk4zSXSi0EvI6k4uYSNEW9jT4"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 liquid-glass m-4 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4 self-end" data-icon="open_in_full">open_in_full</span>
+<h3 class="font-headline text-2xl font-bold text-white mb-1">The Pine Brotherhood</h3>
+<p class="font-label text-xs tracking-widest text-primary uppercase">Group Tour • Manali</p>
+</div>
+</div>
+<!-- Gallery Item 6 -->
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container-high transition-transform duration-500 hover:scale-[1.02]">
+<img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="dramatic action shot of a motorcycle kicking up dust on a gravel trail with snowy mountains in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUFn2rVkOO88YRdfcDy6VOJ7L9_0LBWh3ZGOWFkyozhNMtbZyBloGI4yxFD1VUVBtSf4TIq2FX_TNXjmitMKPc5N_GHl6IAc10hgWLwlhD44dYIgM-SfZOY2wAXZMRAWyZIYwluuuTunW1O05AC7XnNyF36Fn1Iqkc6nUetFTq7bIjDK5M8M9Q_VvwI1V07JFv1sjcXR-Dz_aJun_0GkzbZmjGhycTUaNK_bRwsEuMbqi7UGJNtaAWGKNKXaryMs95pgEsnlywXKo"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 liquid-glass m-4 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4 self-end" data-icon="open_in_full">open_in_full</span>
+<h3 class="font-headline text-2xl font-bold text-white mb-1">Pangong Tso Trail</h3>
+<p class="font-label text-xs tracking-widest text-primary uppercase">Off-Road • 14000ft</p>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="flex justify-center mt-20">
+<button class="liquid-glass border border-white/10 px-12 py-4 rounded-xl font-label tracking-widest text-white uppercase hover:bg-white/10 transition-all active:scale-95">
+                Load More Stories
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0e0e13] dark:bg-[#0e0e13] w-full py-12 px-12 border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-screen-2xl mx-auto font-inter tracking-wider text-xs uppercase">
+<div class="mb-6 md:mb-0">
+<span class="text-lg font-bold text-[#9be9f7]">BikeRental.com</span>
+</div>
+<div class="flex gap-8 mb-6 md:mb-0">
+<a class="text-white/40 hover:text-[#feb234] transition-colors duration-200" href="#">Terms</a>
+<a class="text-white/40 hover:text-[#feb234] transition-colors duration-200" href="#">Privacy</a>
+<a class="text-white/40 hover:text-[#feb234] transition-colors duration-200" href="#">Rental Policy</a>
+<a class="text-white/40 hover:text-[#feb234] transition-colors duration-200" href="#">FAQ</a>
+</div>
+<div class="text-white/40">
+                © 2024 BIKERENTAL.COM - THE LIQUID SUMMIT
+            </div>
+</div>
+</footer>
+<!-- Fixed CTA for focused journey -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 md:hidden">
+<button class="bg-secondary text-on-secondary px-8 py-3 rounded-full font-bold shadow-[0_10px_40px_rgba(254,178,52,0.4)] flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+            BOOK ADVENTURE
+        </button>
+</div>
+</body></html>

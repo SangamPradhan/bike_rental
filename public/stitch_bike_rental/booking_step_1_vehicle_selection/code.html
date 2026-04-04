@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@100..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#f9f5fd",
+                    "surface-container-high": "#1f1f26",
+                    "surface-container-low": "#131319",
+                    "on-tertiary": "#614100",
+                    "secondary-fixed-dim": "#ffb63e",
+                    "on-surface": "#f9f5fd",
+                    "tertiary-dim": "#eea91f",
+                    "on-secondary-container": "#fff6ef",
+                    "surface-container": "#19191f",
+                    "inverse-surface": "#fcf8ff",
+                    "surface-tint": "#9be9f7",
+                    "primary-dim": "#8ddbe8",
+                    "tertiary-fixed": "#feb72f",
+                    "outline-variant": "#48474d",
+                    "on-tertiary-container": "#553900",
+                    "on-error": "#490006",
+                    "on-secondary-fixed-variant": "#6f4900",
+                    "error-container": "#9f0519",
+                    "on-tertiary-fixed-variant": "#604100",
+                    "on-surface-variant": "#acaab1",
+                    "on-primary-fixed-variant": "#00616c",
+                    "background": "#0e0e13",
+                    "on-primary-fixed": "#00434b",
+                    "surface-container-lowest": "#000000",
+                    "on-primary-container": "#00272d",
+                    "error-dim": "#d7383b",
+                    "surface-variant": "#25252d",
+                    "surface-bright": "#2c2b33",
+                    "surface-container-highest": "#25252d",
+                    "outline": "#76747b",
+                    "surface-dim": "#0e0e13",
+                    "on-error-container": "#ffa8a3",
+                    "tertiary": "#ffc970",
+                    "surface": "#0e0e13",
+                    "primary-container": "#5dacb9",
+                    "tertiary-fixed-dim": "#eea91f",
+                    "primary": "#9be9f7",
+                    "secondary": "#feb234",
+                    "tertiary-container": "#feb72f",
+                    "primary-fixed-dim": "#8ddbe8",
+                    "on-secondary-fixed": "#492f00",
+                    "secondary-dim": "#eea526",
+                    "secondary-fixed": "#ffc87a",
+                    "inverse-on-surface": "#55545b",
+                    "on-secondary": "#543600",
+                    "on-primary": "#005761",
+                    "primary-fixed": "#9be9f7",
+                    "secondary-container": "#815500",
+                    "error": "#ff716c",
+                    "on-tertiary-fixed": "#3a2600",
+                    "inverse-primary": "#006975"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Epilogue"],
+                    "body": ["Inter"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      .glass-gradient-bottom {
+        background: linear-gradient(to bottom, rgba(14, 14, 19, 0.8), rgba(14, 14, 19, 0));
+      }
+      .tonal-step {
+        background: linear-gradient(180deg, #131319 0%, #0e0e13 100%);
+      }
+      .liquid-gradient {
+        background: linear-gradient(135deg, #9be9f7 0%, #5dacb9 100%);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen">
+<!-- Top Navigation Anchor -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="text-cyan-400 font-epilogue font-black italic tracking-tighter text-2xl">SUMMIT</div>
+<!-- Progress Bar / Navigation Links -->
+<div class="hidden md:flex items-center gap-12">
+<div class="flex flex-col items-center group cursor-pointer">
+<span class="text-amber-400 font-bold border-b-2 border-amber-400 pb-1 font-epilogue tracking-tighter text-sm">BIKE SELECTION</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<span class="text-cyan-100/60 font-medium pb-1 font-epilogue tracking-tighter text-sm hover:text-amber-300 transition-colors duration-300">ADD EXTRAS</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<span class="text-cyan-100/60 font-medium pb-1 font-epilogue tracking-tighter text-sm hover:text-amber-300 transition-colors duration-300">REVIEW &amp; BOOK</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">shopping_bag</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">person</span>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-bold text-sm tracking-widest scale-105 active:scale-95 duration-200">LOGIN</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-8 max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-8">
+<!-- Left Sidebar: Glass Filters -->
+<aside class="w-full md:w-80 flex flex-col gap-6">
+<div class="glass-card rounded-xl p-6 border border-outline-variant/15">
+<h3 class="font-headline font-bold text-xl mb-6 text-primary tracking-tight">FILTERS</h3>
+<!-- Type Selection -->
+<div class="mb-8">
+<label class="font-label text-xs tracking-widest uppercase text-on-surface-variant mb-3 block">Vehicle Type</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-secondary text-on-secondary rounded-full py-2 px-4 text-sm font-bold shadow-[0_0_15px_rgba(254,178,52,0.3)]">Bike</button>
+<button class="bg-surface-container-highest/40 text-on-surface-variant rounded-full py-2 px-4 text-sm font-medium hover:bg-surface-container-highest transition-colors">Scooter</button>
+</div>
+</div>
+<!-- Price Range -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-3">
+<label class="font-label text-xs tracking-widest uppercase text-on-surface-variant">Price Range</label>
+<span class="text-secondary font-bold text-sm">$40 - $250</span>
+</div>
+<input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-secondary" type="range"/>
+</div>
+<!-- Brand Filter -->
+<div class="mb-8">
+<label class="font-label text-xs tracking-widest uppercase text-on-surface-variant mb-4 block">Preferred Brands</label>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-outline-variant bg-surface-container-low text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Royal Enfield</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant bg-surface-container-low text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">KTM</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant bg-surface-container-low text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Triumph</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant bg-surface-container-low text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">BMW</span>
+</label>
+</div>
+</div>
+<!-- Availability -->
+<div>
+<label class="font-label text-xs tracking-widest uppercase text-on-surface-variant mb-3 block">Availability</label>
+<div class="bg-surface-container-low rounded-lg p-3 flex items-center gap-3 border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-xl">calendar_today</span>
+<span class="text-sm font-medium">May 24 - May 28</span>
+</div>
+</div>
+</div>
+<!-- Promotion / Secondary Info -->
+<div class="glass-card rounded-xl p-6 border border-primary/10 overflow-hidden relative">
+<div class="relative z-10">
+<p class="font-headline font-black text-2xl tracking-tighter text-on-surface mb-2">ULTIMATE PROTECTION</p>
+<p class="text-sm text-on-surface-variant mb-4">Add comprehensive insurance for just $15/day.</p>
+<button class="text-primary font-bold text-xs tracking-widest uppercase flex items-center gap-2 group">
+                        LEARN MORE <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+</div>
+</aside>
+<!-- Right Content: Vehicle Grid -->
+<section class="flex-1">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="font-headline font-black text-4xl tracking-tighter mb-2">CHOOSE YOUR STEED</h1>
+<p class="text-on-surface-variant text-lg">Available motorcycles in the Himalayan circuit</p>
+</div>
+<div class="flex items-center gap-4 text-sm">
+<span class="text-on-surface-variant">Sort by:</span>
+<select class="bg-transparent border-none text-primary font-bold focus:ring-0 cursor-pointer">
+<option>Most Popular</option>
+<option>Price: Low to High</option>
+<option>Displacement</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Vehicle Card 1: Royal Enfield Himalayan -->
+<div class="glass-card rounded-xl overflow-hidden border border-outline-variant/15 hover:border-secondary/50 group transition-all duration-300 relative">
+<div class="absolute top-4 left-4 z-20 bg-secondary text-on-secondary px-3 py-1 rounded-md text-xs font-black tracking-widest shadow-lg">$85/Day</div>
+<div class="h-48 overflow-hidden relative bg-gradient-to-br from-surface-container-highest/20 to-transparent">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Rugged Royal Enfield Himalayan 450 motorcycle parked on a rocky mountain ledge during overcast morning, high contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-DK1sgLmPFawazKPKgmbzN7I5KfyHkGpXYPpfYCWOHdmsFSRpHNRB7CqdTyABTp2z0sokhrojmw3nnIiTbTbwaHBZer4usalXly2oWLgHdSNzDt9HEjli1zcxGiwg9sO91iQkgbY4-IJXLMLbq9GSPt9JwpZB2sWzvv_wDs5dsKaMXyv4UXVGAzBpNIcZIYq8UI1vfZY7OIoxvK9NG3gbZfRbXTnBaEnfeeObsWCwtyipTu5Kq5IbGswX9zwHEiCvv4YBPgdjLYk"/>
+</div>
+<div class="p-6">
+<p class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant mb-1">ROYAL ENFIELD</p>
+<h3 class="font-headline font-bold text-xl mb-4 tracking-tight">Himalayan 450</h3>
+<div class="grid grid-cols-3 gap-2 mb-6">
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-surface-container-low/50 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-lg mb-1">settings_input_component</span>
+<span class="font-label text-[9px] text-on-surface-variant uppercase">452cc</span>
+</div>
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-surface-container-low/50 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-lg mb-1">speed</span>
+<span class="font-label text-[9px] text-on-surface-variant uppercase">30kmpl</span>
+</div>
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-surface-container-low/50 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-lg mb-1">local_gas_station</span>
+<span class="font-label text-[9px] text-on-surface-variant uppercase">17L</span>
+</div>
+</div>
+<button class="w-full liquid-gradient text-on-primary py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:shadow-[0_0_20px_rgba(155,233,247,0.3)] transition-all">Select This Bike</button>
+</div>
+</div>
+<!-- Vehicle Card 2: KTM 390 Adventure (Selected State) -->
+<div class="glass-card rounded-xl overflow-hidden border-2 border-secondary group transition-all duration-300 relative shadow-[0_0_30px_rgba(254,178,52,0.15)]">
+<div class="absolute top-4 left-4 z-20 bg-secondary text-on-secondary px-3 py-1 rounded-md text-xs font-black tracking-widest shadow-lg">$95/Day</div>
+<div class="absolute top-4 right-4 z-20 bg-secondary text-on-secondary w-8 h-8 rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-xl font-bold">check</span>
+</div>
+<div class="h-48 overflow-hidden relative bg-gradient-to-br from-surface-container-highest/20 to-transparent">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="KTM 390 Adventure motorcycle in bright orange color on a gravel road with cinematic lighting and blurry mountain peaks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6vLWeSoyypagb3h2IK78FuC-KucJ8iwJOAHK-FI5AqQMKqM9DR_1eAUEE4QANL248g3LIOlnUAQ5k03-fXPlWITIJmbgEJAjWSkEh35raJphA64xsDnU8OpzFHlyM4ZyZcRgwxugMNJYBv-vF5mrbSLWjQDjHnFGpyrSul_DYZ0M8ts2hVi_dpHrR71_tEAaKi0HpyNsaYV26HRKfwZ7qjSBM-QPJmnIWtqtHLKSscVdeAnjC6AlWidrGI8ohzytYF3pWiAQS9DQ"/>
+</div>
+<div class="p-6">
+<p class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant mb-1">KTM</p>
+<h3 class="font-headline font-bold text-xl mb-4 tracking-tight">390 Adventure</h3>
+<div class="grid grid-cols-3 gap-2 mb-6">
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-surface-container-low/50 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-lg mb-1">settings_input_component</span>
+<span class="font-label text-[9px] text-on-surface-variant uppercase">373cc</span>
+</div>
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-surface-container-low/50 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-lg mb-1">speed</span>
+<span class="font-label text-[9px] text-on-surface-variant uppercase">28kmpl</span>
+</div>
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-surface-container-low/50 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-lg mb-1">local_gas_station</span>
+<span class="font-label text-[9px] text-on-surface-variant uppercase">14.5L</span>
+</div>
+</div>
+<button class="w-full bg-secondary text-on-secondary py-3 rounded-lg font-bold text-sm tracking-widest uppercase">Selected</button>
+</div>
+</div>
+<!-- Vehicle Card 3: Triumph Tiger -->
+<div class="glass-card rounded-xl overflow-hidden border border-outline-variant/15 hover:border-secondary/50 group transition-all duration-300 relative">
+<div class="absolute top-4 left-4 z-20 bg-secondary text-on-secondary px-3 py-1 rounded-md text-xs font-black tracking-widest shadow-lg">$140/Day</div>
+<div class="h-48 overflow-hidden relative bg-gradient-to-br from-surface-container-highest/20 to-transparent">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Sophisticated Triumph Tiger 900 motorcycle adventure bike on high-altitude asphalt road with mist and sharp peaks behind" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOC5na-BtjBM9SQ0wtrINzxz-MEg0B9kaEMq2sOUS4K0Dv2bK_ZGoyVYU7FSCfkdv6SuorN-Ks1zPHNw8l9Bpydk35ApCOyIxZ9v6vAzbpzLGB-ijjAxCqHrCljfxIGE5mH3ctHz-zF3ycJ8nAGnSfdNM-K09xfb4kqTMxCe9-S8-vBNET6artK3LQcNKKtxg2EnnibB0HPvYM9oMBfW_Yf_jiWblCnVxT-5WjdJaaJj6NmwMLETNbkHVlXjZiCoqSKyLfMoN8tpw"/>
+</div>
+<div class="p-6">
+<p class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant mb-1">TRIUMPH</p>
+<h3 class="font-headline font-bold text-xl mb-4 tracking-tight">Tiger 850 Sport</h3>
+<div class="grid grid-cols-3 gap-2 mb-6">
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-surface-container-low/50 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-lg mb-1">settings_input_component</span>
+<span class="font-label text-[9px] text-on-surface-variant uppercase">888cc</span>
+</div>
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-surface-container-low/50 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-lg mb-1">speed</span>
+<span class="font-label text-[9px] text-on-surface-variant uppercase">18kmpl</span>
+</div>
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-surface-container-low/50 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-lg mb-1">local_gas_station</span>
+<span class="font-label text-[9px] text-on-surface-variant uppercase">20L</span>
+</div>
+</div>
+<button class="w-full liquid-gradient text-on-primary py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:shadow-[0_0_20px_rgba(155,233,247,0.3)] transition-all">Select This Bike</button>
+</div>
+</div>
+</div>
+<!-- Detail Modal Simulation (Visible as Sidebar/Overlay on selection) -->
+<div class="mt-12 glass-card rounded-2xl overflow-hidden border border-primary/20 flex flex-col lg:flex-row relative">
+<div class="flex-1 relative min-h-[400px]">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Side profile cutout of KTM 390 Adventure on a dark premium background with neon accents and dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-cuQR6ztHERg8XiPI9mysiFxSgjCK80y2708Jtp7TfJzWw_Mb6hY1cLli4dGTaMEDRrvtPngMGaG9EOKbRpc3QptgicagNdqJ6R4xqqUrLBBF3LGRZNdTVQMbKuIZGUlgF0xww9p2DgzoqjUDZdajpi6iKGoa1pMRozt8lzC-TLOkFdkAFnL62n_PUQBIrQTkkG1eznYcslNh60G0W_GNkcbD6HfhFXXhmmQNWor2qbXwUMhTyBtcFxSHs_BDaReEfAS8-IwH9CE"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent"></div>
+<div class="relative z-10 p-10 h-full flex flex-col justify-end">
+<p class="text-secondary font-black tracking-widest uppercase text-xs mb-2">Selected Vehicle</p>
+<h2 class="font-headline font-black text-5xl tracking-tighter mb-4">KTM 390<br/>ADVENTURE</h2>
+<div class="flex gap-6 items-center">
+<span class="flex items-center gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary">done_all</span> All-Terrain ABS</span>
+<span class="flex items-center gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary">done_all</span> Traction Control</span>
+</div>
+</div>
+</div>
+<!-- Price Breakdown Panel -->
+<div class="w-full lg:w-[400px] bg-surface-container-high/60 backdrop-blur-3xl p-10 flex flex-col justify-between">
+<div>
+<h3 class="font-headline font-bold text-2xl tracking-tight mb-8">YOUR PRICE</h3>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">4 Days x $95/Day</span>
+<span class="font-label text-on-surface">$380.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Security Deposit (Refundable)</span>
+<span class="font-label text-on-surface">$200.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Service Fee</span>
+<span class="font-label text-on-surface">$12.50</span>
+</div>
+<div class="h-px bg-outline-variant/30 my-4"></div>
+<div class="flex justify-between items-center">
+<span class="font-bold">Total Estimated</span>
+<span class="font-headline font-black text-2xl text-secondary">$592.50</span>
+</div>
+</div>
+</div>
+<button class="w-full liquid-gradient text-on-primary py-4 rounded-xl font-headline font-black text-lg tracking-widest uppercase shadow-[0_20px_50px_rgba(155,233,247,0.2)]">CONTINUE TO EXTRAS</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Anchor -->
+<footer class="w-full border-t border-cyan-900/20 bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 gap-8 max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-4">
+<div class="text-cyan-400 font-epilogue font-black text-2xl">SUMMIT</div>
+<p class="font-inter text-sm tracking-widest uppercase text-slate-500 max-w-xs">© 2024 LIQUID SUMMIT ADVENTURES. FORGED IN THE HIMALAYAS.</p>
+</div>
+<div class="flex gap-12">
+<div class="flex flex-col gap-3">
+<span class="text-amber-400 font-inter text-sm tracking-widest uppercase font-bold">Safety Protocols</span>
+<span class="text-slate-500 font-inter text-sm tracking-widest uppercase hover:text-cyan-300 transition-all cursor-pointer">Route Maps</span>
+<span class="text-slate-500 font-inter text-sm tracking-widest uppercase hover:text-cyan-300 transition-all cursor-pointer">Insurance</span>
+<span class="text-slate-500 font-inter text-sm tracking-widest uppercase hover:text-cyan-300 transition-all cursor-pointer">Contact</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-cyan-900/20 flex items-center justify-center opacity-80 hover:opacity-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-cyan-400">language</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-cyan-900/20 flex items-center justify-center opacity-80 hover:opacity-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-cyan-400">share</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-cyan-900/20 flex items-center justify-center opacity-80 hover:opacity-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-cyan-400">help</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

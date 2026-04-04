@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;family=Plus+Jakarta+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#feb234",
+                        "error-dim": "#d7383b",
+                        "inverse-surface": "#fcf8ff",
+                        "surface-container-high": "#1f1f26",
+                        "on-primary-fixed": "#00434b",
+                        "surface": "#0e0e13",
+                        "primary-fixed-dim": "#8ddbe8",
+                        "outline": "#76747b",
+                        "on-surface-variant": "#acaab1",
+                        "on-background": "#f9f5fd",
+                        "on-secondary": "#543600",
+                        "secondary-fixed-dim": "#ffb63e",
+                        "tertiary-container": "#feb72f",
+                        "outline-variant": "#48474d",
+                        "surface-container-highest": "#25252d",
+                        "on-tertiary-fixed": "#3a2600",
+                        "on-error": "#490006",
+                        "surface-dim": "#0e0e13",
+                        "on-primary-container": "#00272d",
+                        "on-secondary-fixed-variant": "#6f4900",
+                        "secondary-container": "#815500",
+                        "on-tertiary": "#614100",
+                        "on-tertiary-container": "#553900",
+                        "tertiary": "#ffc970",
+                        "inverse-primary": "#006975",
+                        "secondary-dim": "#eea526",
+                        "background": "#0e0e13",
+                        "primary-fixed": "#9be9f7",
+                        "tertiary-dim": "#eea91f",
+                        "surface-variant": "#25252d",
+                        "on-secondary-container": "#fff6ef",
+                        "on-error-container": "#ffa8a3",
+                        "on-surface": "#f9f5fd",
+                        "on-tertiary-fixed-variant": "#604100",
+                        "tertiary-fixed-dim": "#eea91f",
+                        "tertiary-fixed": "#feb72f",
+                        "error": "#ff716c",
+                        "primary-dim": "#8ddbe8",
+                        "inverse-on-surface": "#55545b",
+                        "surface-tint": "#9be9f7",
+                        "surface-bright": "#2c2b33",
+                        "surface-container": "#19191f",
+                        "surface-container-low": "#131319",
+                        "secondary-fixed": "#ffc87a",
+                        "on-primary-fixed-variant": "#00616c",
+                        "on-secondary-fixed": "#492f00",
+                        "error-container": "#9f0519",
+                        "primary": "#9be9f7",
+                        "on-primary": "#005761",
+                        "primary-container": "#5dacb9",
+                        "surface-container-lowest": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Inter"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .liquid-gradient-text {
+            background: linear-gradient(to right, #9be9f7, #feb234);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .shimmer:hover {
+            background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 200%;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary selection:text-on-secondary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/10 dark:bg-black/10 backdrop-blur-lg shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-300">
+<div class="flex justify-between items-center px-10 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="font-headline text-2xl font-black text-[#9be9f7] italic tracking-tight cursor-pointer">
+                LIQUID SUMMIT
+            </div>
+<div class="hidden md:flex items-center gap-10 font-headline tracking-tight">
+<a class="text-[#9be9f7]/80 hover:text-[#9be9f7] hover:scale-105 transition-transform duration-300 cursor-pointer active:scale-95" href="#">Fleet</a>
+<a class="text-[#9be9f7]/80 hover:text-[#9be9f7] hover:scale-105 transition-transform duration-300 cursor-pointer active:scale-95" href="#">Expeditions</a>
+<a class="text-[#feb234] border-b-2 border-[#feb234] pb-1 hover:scale-105 transition-transform duration-300 cursor-pointer active:scale-95" href="#">Our Team</a>
+<a class="text-[#9be9f7]/80 hover:text-[#9be9f7] hover:scale-105 transition-transform duration-300 cursor-pointer active:scale-95" href="#">Staff Portal</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-[#9be9f7] text-[#005761] px-6 py-2 rounded-xl font-headline font-bold hover:scale-105 transition-transform duration-300 active:scale-95">
+                    Book Now
+                </button>
+<span class="material-symbols-outlined text-[#9be9f7] text-2xl cursor-pointer hover:scale-110 transition-transform">person</span>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24">
+<!-- Breadcrumbs -->
+<div class="max-w-screen-2xl mx-auto px-10 mb-12">
+<nav class="flex text-xs font-label uppercase tracking-widest text-on-surface-variant/60 gap-4 items-center">
+<a class="hover:text-secondary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[10px]">arrow_forward_ios</span>
+<span class="text-secondary">Team</span>
+</nav>
+</div>
+<!-- Mission Hero -->
+<section class="max-w-screen-2xl mx-auto px-10 grid lg:grid-cols-2 gap-20 items-center mb-32">
+<div>
+<h2 class="font-label text-secondary text-sm font-bold tracking-[0.3em] uppercase mb-4">The Liquid Summit Mission</h2>
+<h1 class="font-headline text-6xl md:text-8xl font-black leading-tight tracking-tighter mb-8 italic">
+                    FORGED IN <span class="text-primary">ICE</span>,<br/>DRIVEN BY <span class="text-secondary">GOLD</span>.
+                </h1>
+<p class="text-lg text-on-surface-variant leading-relaxed max-w-xl">
+                    We don't just rent motorcycles; we provide the precision instruments required to conquer the thin air of the Himalayas. Our team is a collective of high-altitude specialists, master mechanics, and cultural bridge-builders dedicated to the pursuit of the ultimate ascent.
+                </p>
+<div class="mt-12 flex gap-8">
+<div class="border-l-2 border-primary/30 pl-6">
+<div class="text-3xl font-headline font-bold text-primary">15k+</div>
+<div class="text-xs font-label uppercase tracking-wider text-on-surface-variant">Km Guided</div>
+</div>
+<div class="border-l-2 border-secondary/30 pl-6">
+<div class="text-3xl font-headline font-bold text-secondary">100%</div>
+<div class="text-xs font-label uppercase tracking-wider text-on-surface-variant">Safety Record</div>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-secondary/10 blur-3xl opacity-50"></div>
+<img class="relative rounded-xl grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl object-cover w-full h-[500px]" data-alt="cinematic close-up of a premium adventure motorcycle engine detail with condensation and soft moody blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjB-lyhh1pNnBX1yMT8AgZsrKiN2fINwoCsyTnYet30vzUngyV5_67ofJRwedxs-wIkHYbT92BQN9KLFBwNsnIWgcjWXC-RUwopcUyZJRDqo5Vy5ZnyV4BMX3EXXVcdGInBw39zKC1k_fthyxzIfK_k81YRzA15Nf-ZGUwNxESyQkwra1alncirA0yu5hoskQQhlhGKPlkm5Y9e0w7JyDlMUHIMBqLHXuSZpNtsJBKwFlnhTpyhicP2QZuU0GB0SPx-hsUSpkt24c"/>
+</div>
+</section>
+<!-- Featured Founder -->
+<section class="mb-32">
+<div class="max-w-screen-2xl mx-auto px-10">
+<div class="relative h-[700px] rounded-2xl overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.6)]">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="distinguished man with salt and pepper beard in high-end leather motorcycle gear standing against misty mountain background at twilight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADqY7Z5kC3VOJbxX2zJlW4XrfOmq3vdjOTTEcfzRdSgB1Co9ZCr5gCx4S1qa8YOI5d0Wf1JIkyoKF40CX77zhCzQp5ffUjMIKnyRE2hxgObEHDkL6FpS-AYfQNeaA2sU7osyExn-DxDSzpiJxQjXfARqsAU669d_fvRAQF0mqRO-knYv2k0AmJd8zcPbNCx7Jvxn4GJkR4ptinPV2ISNulJarNneV9vpGVhOMXe0LWLUH_WQpXd2Ndx1H2woP-3VXAnwV6K4ePohU"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/40 to-transparent"></div>
+<div class="relative h-full flex flex-col justify-center px-12 md:px-24 max-w-3xl">
+<div class="glass-panel p-10 rounded-xl border-l-4 border-secondary shadow-2xl">
+<span class="material-symbols-outlined text-secondary text-5xl mb-6" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="font-headline text-3xl md:text-4xl italic font-light leading-snug text-white mb-8">
+                                "The summit isn't just a destination—it's a state of absolute clarity found only in the thin air of the Annapurna range."
+                            </p>
+<div>
+<h3 class="font-headline text-2xl font-bold text-primary">Arjun Varma</h3>
+<p class="font-label text-xs tracking-widest uppercase text-secondary font-bold">Founder &amp; Lead Expeditionist</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Staff Grid -->
+<section class="max-w-screen-2xl mx-auto px-10">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-label text-secondary text-sm font-bold tracking-[0.3em] uppercase mb-4">Technical Registry</h2>
+<h3 class="font-headline text-5xl font-black italic">THE OPERATORS</h3>
+</div>
+<div class="hidden md:block h-px bg-primary/20 flex-grow mx-12 mb-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Staff Card 1 -->
+<div class="glass-panel group p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-all duration-500 shimmer relative overflow-hidden">
+<div class="mb-6 overflow-hidden rounded-lg aspect-[4/5]">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="professional portrait of a male mechanic in charcoal workwear, sharp lighting, moody technical workshop background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXcVMo5F8OWRKHW4NTWexOWtk4N6dBgsLLxVL1WtHLlP2khFhLyhZQFOggTIbY15iczj2ZHOF1Au3hHUz4tO5dse4fMwPA_C8OubNyxAlsZVSfjtC5F6lsoAnBEQjoIuB4jz1KjBCiasswc_0u0b3UD4vWqQrD7xnVmLTRpEbkz1t_6NQMDvYTvGMH00_8LkrfiksR2_aAfSNofI_6GUTe9HL_VFWtXrkHevDkktd1omXxyZkAbdMVDBPIFG2z1_wEzn4ZSTT4jtE"/>
+</div>
+<div class="relative z-10">
+<h4 class="font-headline text-xl font-bold text-white mb-1">Lukas Chen</h4>
+<p class="font-label text-[10px] tracking-widest uppercase text-primary mb-6">Master Mechanic</p>
+<div class="flex gap-4 opacity-40 group-hover:opacity-100 transition-opacity">
+<a class="hover:text-secondary" href="#"><span class="material-symbols-outlined text-lg">share</span></a>
+<a class="hover:text-secondary" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+</div>
+</div>
+<div class="absolute -bottom-10 -right-10 text-primary/5 font-black text-8xl italic select-none">01</div>
+</div>
+<!-- Staff Card 2 -->
+<div class="glass-panel group p-6 rounded-xl border border-white/5 hover:border-secondary/30 transition-all duration-500 shimmer relative overflow-hidden">
+<div class="mb-6 overflow-hidden rounded-lg aspect-[4/5]">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="portrait of a confident woman mountain guide in outdoor gear, sunset light reflecting in eyes, rugged terrain background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg-C2gZWt0QLUShIrwCRYK0ANJfhxuQAFqR8EgxNwdW832eplSX5YR6NbIPE5nwnBKV8pcyBA8eJhF-fk3t17RFM6UiQ0a8DZsIgKZ9Xf_ZAfBb7UlXkrU6AmB3HMQxli9R-_YNqgcvG_7KalwD_TJ6oPa6r_yzzEZBNe_HWjGNjYB6wOciVDLiETcHHX_ZsvBOriXM3C2hyDWF_daCZAYq6LHCVuYe5KFoIkiVwUrAnYzZrzhCxaKC-Qb032gDrVeoIwhai9yf24"/>
+</div>
+<div class="relative z-10">
+<h4 class="font-headline text-xl font-bold text-white mb-1">Maya Sherpa</h4>
+<p class="font-label text-[10px] tracking-widest uppercase text-secondary mb-6">Expedition Guide</p>
+<div class="flex gap-4 opacity-40 group-hover:opacity-100 transition-opacity">
+<a class="hover:text-secondary" href="#"><span class="material-symbols-outlined text-lg">share</span></a>
+<a class="hover:text-secondary" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+</div>
+</div>
+<div class="absolute -bottom-10 -right-10 text-secondary/5 font-black text-8xl italic select-none">02</div>
+</div>
+<!-- Staff Card 3 -->
+<div class="glass-panel group p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-all duration-500 shimmer relative overflow-hidden">
+<div class="mb-6 overflow-hidden rounded-lg aspect-[4/5]">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="portrait of a focused man in tactical gear, cool color tones, technical equipment in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8YQyEpQ-GvooK2rOpcc_tw3axYKMo-j4nnNCjmFydv32H08AOAIBb3SIqgXIf0rmUiBN_jLA5bAHQz4519IoLfuioBn8qph0zH5DtKOFgNHYL5d_QY_MSjGtAvWLKaPiRsjQE0Q2mKhAtJQ7U0oBz-gNPQgc9Q5y4nESyPu2ZIrbzNRdrKUij-NjJ-Y9hMfJ7FHznPsJF8Gw1T6Q6ebKv1Sg8DadVcduiYC7LTx4ZnBlSi0vifKKH6QlIWWTFcDEy4ZMw9sN2uv4"/>
+</div>
+<div class="relative z-10">
+<h4 class="font-headline text-xl font-bold text-white mb-1">David Novak</h4>
+<p class="font-label text-[10px] tracking-widest uppercase text-primary mb-6">Safety Officer</p>
+<div class="flex gap-4 opacity-40 group-hover:opacity-100 transition-opacity">
+<a class="hover:text-secondary" href="#"><span class="material-symbols-outlined text-lg">share</span></a>
+<a class="hover:text-secondary" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+</div>
+</div>
+<div class="absolute -bottom-10 -right-10 text-primary/5 font-black text-8xl italic select-none">03</div>
+</div>
+<!-- Staff Card 4 -->
+<div class="glass-panel group p-6 rounded-xl border border-white/5 hover:border-secondary/30 transition-all duration-500 shimmer relative overflow-hidden">
+<div class="mb-6 overflow-hidden rounded-lg aspect-[4/5]">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="professional portrait of a woman in alpine clothing, warm lighting, soft mountain bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6L31b4CaaHdYkPSNz6U0b7ytdk9Nwnijr6KejYaryoz-iq-LsgK8oZ9QwiVXnn1cen14etskESjW7iQK_6BDSXjcZFTivJE79y_s3wBia6uHZovzRltFZ8PM5fuzs5h03sYSns9UqaYktc30UjOk18RMnT0H7Jcwoatf3JGquYuZHoljuNPNcrZXFeXvcXmww0I8-R4BpE5z-U08VNeXhGiZueD6dSSxtmggX-cK6W7ssBcDC-DxilDVEWWMWFn-li6pSpiFuT20"/>
+</div>
+<div class="relative z-10">
+<h4 class="font-headline text-xl font-bold text-white mb-1">Sana Kapoor</h4>
+<p class="font-label text-[10px] tracking-widest uppercase text-secondary mb-6">Logistics Lead</p>
+<div class="flex gap-4 opacity-40 group-hover:opacity-100 transition-opacity">
+<a class="hover:text-secondary" href="#"><span class="material-symbols-outlined text-lg">share</span></a>
+<a class="hover:text-secondary" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+</div>
+</div>
+<div class="absolute -bottom-10 -right-10 text-secondary/5 font-black text-8xl italic select-none">04</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#9be9f7]/10 bg-[#0e0e13] flex flex-col items-center gap-8 py-12">
+<div class="flex flex-col items-center gap-6">
+<div class="text-[#feb234] font-bold font-headline text-xl tracking-tight">LIQUID SUMMIT NEPAL</div>
+<div class="flex gap-10 font-['Inter'] font-light uppercase tracking-[0.2em] text-xs">
+<a class="text-white/40 hover:text-[#9be9f7] transition-colors ease-in-out duration-200" href="#">Terms</a>
+<a class="text-white/40 hover:text-[#9be9f7] transition-colors ease-in-out duration-200" href="#">Safety</a>
+<a class="text-white/40 hover:text-[#9be9f7] transition-colors ease-in-out duration-200" href="#">Contact</a>
+<a class="text-white/40 hover:text-[#9be9f7] transition-colors ease-in-out duration-200" href="#">Support</a>
+</div>
+</div>
+<div class="font-['Inter'] font-light uppercase tracking-[0.2em] text-[10px] text-white/20">
+            © 2024 LIQUID SUMMIT NEPAL. BEYOND THE CLOUDS.
+        </div>
+</footer>
+</body></html>

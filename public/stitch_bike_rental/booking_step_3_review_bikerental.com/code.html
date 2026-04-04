@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@100..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#f9f5fd",
+                    "surface-container-high": "#1f1f26",
+                    "surface-container-low": "#131319",
+                    "on-tertiary": "#614100",
+                    "secondary-fixed-dim": "#ffb63e",
+                    "on-surface": "#f9f5fd",
+                    "tertiary-dim": "#eea91f",
+                    "on-secondary-container": "#fff6ef",
+                    "surface-container": "#19191f",
+                    "inverse-surface": "#fcf8ff",
+                    "surface-tint": "#9be9f7",
+                    "primary-dim": "#8ddbe8",
+                    "tertiary-fixed": "#feb72f",
+                    "outline-variant": "#48474d",
+                    "on-tertiary-container": "#553900",
+                    "on-error": "#490006",
+                    "on-secondary-fixed-variant": "#6f4900",
+                    "error-container": "#9f0519",
+                    "on-tertiary-fixed-variant": "#604100",
+                    "on-surface-variant": "#acaab1",
+                    "on-primary-fixed-variant": "#00616c",
+                    "background": "#050507",
+                    "on-primary-fixed": "#00434b",
+                    "surface-container-lowest": "#000000",
+                    "on-primary-container": "#00272d",
+                    "error-dim": "#d7383b",
+                    "surface-variant": "#1a1a20",
+                    "surface-bright": "#2c2b33",
+                    "surface-container-highest": "#25252d",
+                    "outline": "#76747b",
+                    "surface-dim": "#0e0e13",
+                    "on-error-container": "#ffa8a3",
+                    "tertiary": "#ffc970",
+                    "surface": "#050507",
+                    "primary-container": "#5dacb9",
+                    "tertiary-fixed-dim": "#eea91f",
+                    "primary": "#9be9f7",
+                    "secondary": "#feb234",
+                    "tertiary-container": "#feb72f",
+                    "primary-fixed-dim": "#8ddbe8",
+                    "on-secondary-fixed": "#492f00",
+                    "secondary-dim": "#eea526",
+                    "secondary-fixed": "#ffc87a",
+                    "inverse-on-surface": "#55545b",
+                    "on-secondary": "#543600",
+                    "on-primary": "#005761",
+                    "primary-fixed": "#9be9f7",
+                    "secondary-container": "#815500",
+                    "error": "#ff716c",
+                    "on-tertiary-fixed": "#3a2600",
+                    "inverse-primary": "#006975"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Epilogue", "sans-serif"],
+                    "bebas": ["Bebas Neue", "cursive"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Plus Jakarta Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(254, 178, 52, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+        .amber-glow-border {
+            box-shadow: inset 0 0 20px rgba(254, 178, 52, 0.05), 0 0 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(254, 178, 52, 0.15);
+        }
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0.1) 55%,
+                transparent 100%
+            );
+            transform: rotate(25deg);
+            animation: shimmer-anim 4s infinite;
+        }
+        @keyframes shimmer-anim {
+            0% { transform: translateX(-100%) rotate(25deg); }
+            100% { transform: translateX(100%) rotate(25deg); }
+        }
+        .atmospheric-bg {
+            background: radial-gradient(circle at 50% 0%, rgba(155, 233, 247, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, rgba(254, 178, 52, 0.05) 0%, transparent 50%),
+                        #050507;
+        }
+    </style>
+</head>
+<body class="atmospheric-bg text-on-background font-body selection:bg-primary/30 min-h-screen">
+<header class="fixed top-0 w-full z-50 bg-background/40 backdrop-blur-2xl border-b border-outline-variant/10">
+<nav class="flex justify-between items-center px-8 py-5 max-w-screen-2xl mx-auto">
+<div class="text-cyan-400 font-headline font-black italic tracking-tighter text-2xl scale-105 active:scale-95 duration-200 cursor-pointer">SUMMIT</div>
+<div class="hidden md:flex gap-12">
+<a class="text-on-surface-variant font-headline text-xs tracking-[0.2em] hover:text-amber-300 transition-colors duration-300" href="#">BIKE SELECTION</a>
+<a class="text-on-surface-variant font-headline text-xs tracking-[0.2em] hover:text-amber-300 transition-colors duration-300" href="#">ADD EXTRAS</a>
+<a class="text-secondary font-headline text-xs tracking-[0.2em] border-b border-secondary/50 pb-1" href="#">REVIEW &amp; BOOK</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface font-label text-[10px] tracking-widest uppercase hover:text-primary transition-all opacity-80">LOGIN</button>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface/70 cursor-pointer hover:text-primary transition-all text-xl" data-icon="shopping_bag">shopping_bag</span>
+<span class="material-symbols-outlined text-on-surface/70 cursor-pointer hover:text-primary transition-all text-xl" data-icon="person">person</span>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-32 pb-24 px-8 max-w-screen-2xl mx-auto">
+<!-- Enhanced Progress Bar -->
+<div class="mb-20">
+<div class="flex items-center justify-center gap-6 max-w-4xl mx-auto">
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 transition-all duration-500">
+<span class="material-symbols-outlined text-lg" data-icon="check" style="font-variation-settings: 'wght' 600;">check</span>
+</div>
+<span class="font-label text-[9px] tracking-[0.25em] text-on-surface-variant/60">SELECTION</span>
+</div>
+<div class="h-[1px] w-20 bg-gradient-to-r from-primary/20 to-primary/20"></div>
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 transition-all duration-500">
+<span class="material-symbols-outlined text-lg" data-icon="check" style="font-variation-settings: 'wght' 600;">check</span>
+</div>
+<span class="font-label text-[9px] tracking-[0.25em] text-on-surface-variant/60">EXTRAS</span>
+</div>
+<div class="h-[1px] w-20 bg-gradient-to-r from-primary/20 to-secondary/40"></div>
+<div class="flex flex-col items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-on-secondary shadow-[0_0_25px_rgba(254,178,52,0.3)] animate-pulse border border-secondary/50">
+<span class="font-headline font-bold text-sm">3</span>
+</div>
+<span class="font-label text-[9px] tracking-[0.25em] text-secondary font-bold">REVIEW</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-10 items-start">
+<!-- Left: Reservation Summary -->
+<aside class="col-span-12 lg:col-span-3 space-y-8">
+<div class="liquid-glass amber-glow-border rounded-2xl p-8">
+<h3 class="font-bebas text-3xl mb-8 tracking-wider text-secondary">RESERVATION</h3>
+<div class="space-y-8">
+<div class="space-y-2">
+<label class="font-headline text-[10px] uppercase tracking-[0.3em] text-on-surface-variant">Pick-up Location</label>
+<p class="text-sm font-light text-on-surface tracking-wide">Manali Base Camp, Himachal Pradesh</p>
+</div>
+<div class="space-y-2">
+<label class="font-headline text-[10px] uppercase tracking-[0.3em] text-on-surface-variant">Adventure Timeline</label>
+<p class="text-sm font-light text-on-surface tracking-wide">Oct 12 — Oct 19, 2024 (7 Days)</p>
+</div>
+<div class="space-y-3">
+<label class="font-headline text-[10px] uppercase tracking-[0.3em] text-on-surface-variant">Selected Extras</label>
+<ul class="space-y-3">
+<li class="flex justify-between items-center text-xs">
+<span class="text-on-surface/80">Pannier Set (All-Weather)</span>
+<span class="text-primary font-bold tracking-tighter">INCLUDED</span>
+</li>
+<li class="flex justify-between items-center text-xs">
+<span class="text-on-surface/80">GoPro Hero 11 Mount</span>
+<span class="text-on-surface font-bold">+$45</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="rounded-2xl overflow-hidden grayscale contrast-125 hover:grayscale-0 transition-all duration-1000 h-64 relative border border-outline-variant/10">
+<img alt="Map" class="w-full h-full object-cover" data-alt="high contrast dark topographic map with thin neon route lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD28kPeG8YOjAygtAqtsN4pRUc7fiVWtszSxhCT9YFw7ddIoOMr9t1_Rdky38A50sNiUM_-v3xErsDeAi47Tgf20D6dzrbnZ2BeqPLkbU72gZR81sMS-3cj5tlpnnSUHOL5L5AjVNGI4OdBEQjQ1hEqqvOffI8d_vQdB82jt53TVegH8UCYMlrFaBtQgAss4uwzBv2AYNmxMvYEi2aFmumATmLm2aNDA3_-Pqwk18CeXjYhMtsZJLS13_4XOgwjDJpEUkowi93f5M0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<span class="font-headline text-[10px] tracking-[0.3em] text-primary uppercase bg-background/60 backdrop-blur-md px-3 py-1 rounded-full">Leh-Manali Expedition</span>
+</div>
+</div>
+</aside>
+<!-- Center: Main Content -->
+<div class="col-span-12 lg:col-span-6 space-y-12">
+<!-- Hero Bike Summary -->
+<div class="liquid-glass rounded-2xl overflow-hidden border border-outline-variant/5 group">
+<div class="relative h-[400px] flex items-center justify-center overflow-hidden">
+<div class="absolute top-12 left-12 z-10">
+<h2 class="font-bebas text-6xl md:text-7xl tracking-tighter leading-[0.8] italic text-on-surface">
+                            ROYAL ENFIELD<br/><span class="text-primary drop-shadow-[0_0_15px_rgba(155,233,247,0.3)]">HIMALAYAN 450</span>
+</h2>
+</div>
+<img alt="Motorcycle" class="w-full h-full object-contain scale-110 group-hover:scale-125 transition-transform duration-1000 drop-shadow-[0_30px_60px_rgba(0,0,0,0.8)] z-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD600M9MEkSraTxmqy80UkK_SY0Len_hSp8jC395FaCYTdy3Prli0NKkjHFCF0Y4u2sgUEmF16ykw14Nexi-8CtTThK4l3yPu4tzo9ccjnhAMElH9pBItk3HK8wQYm5YkwQae3SlexMEtvWww-SEw-ydmBg3SIneqwKZ0PxwGOY0cqOeM1oh172tlvQk1vt3ypOJW2YTgz0pBt8g5prwGuXjSZyEpseog4gOo-xiJVIQVBcf4kEmSdBvdipn6uWxk1f9xv6d1InJ3s"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent pointer-events-none"></div>
+</div>
+<div class="p-10 grid grid-cols-3 gap-10 border-t border-outline-variant/5 bg-white/5">
+<div class="text-center md:text-left">
+<p class="font-headline text-[9px] uppercase tracking-[0.4em] text-on-surface-variant mb-2">Engine</p>
+<p class="text-2xl font-bebas tracking-widest text-on-surface">452 <span class="text-xs font-headline opacity-50 uppercase">cc</span></p>
+</div>
+<div class="text-center md:text-left">
+<p class="font-headline text-[9px] uppercase tracking-[0.4em] text-on-surface-variant mb-2">Peak Power</p>
+<p class="text-2xl font-bebas tracking-widest text-on-surface">40 <span class="text-xs font-headline opacity-50 uppercase">bhp</span></p>
+</div>
+<div class="text-center md:text-left">
+<p class="font-headline text-[9px] uppercase tracking-[0.4em] text-on-surface-variant mb-2">Drive</p>
+<p class="text-2xl font-bebas tracking-widest text-on-surface">6-SPD</p>
+</div>
+</div>
+</div>
+<!-- Rider Details -->
+<div class="space-y-8">
+<h3 class="font-bebas text-4xl tracking-widest">RIDER DOSSIER</h3>
+<form class="grid grid-cols-2 gap-8">
+<div class="col-span-2 md:col-span-1 space-y-3">
+<label class="font-headline text-[10px] tracking-[0.3em] text-on-surface-variant/80 ml-1">FULL NAME</label>
+<input class="w-full bg-white/5 backdrop-blur-3xl border border-white/10 rounded-xl px-6 py-4 text-on-background focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-outline/30 font-headline text-sm" placeholder="COMMANDER JOHN DOE" type="text"/>
+</div>
+<div class="col-span-2 md:col-span-1 space-y-3">
+<label class="font-headline text-[10px] tracking-[0.3em] text-on-surface-variant/80 ml-1">EMAIL ADDRESS</label>
+<input class="w-full bg-white/5 backdrop-blur-3xl border border-white/10 rounded-xl px-6 py-4 text-on-background focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-outline/30 font-headline text-sm" placeholder="DOE@SUMMIT.ADVENTURE" type="email"/>
+</div>
+<div class="col-span-2 md:col-span-1 space-y-3">
+<label class="font-headline text-[10px] tracking-[0.3em] text-on-surface-variant/80 ml-1">MOBILE CONTACT</label>
+<input class="w-full bg-white/5 backdrop-blur-3xl border border-white/10 rounded-xl px-6 py-4 text-on-background focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-outline/30 font-headline text-sm" placeholder="+1 (555) 0123" type="tel"/>
+</div>
+<div class="col-span-2 md:col-span-1 space-y-3">
+<label class="font-headline text-[10px] tracking-[0.3em] text-on-surface-variant/80 ml-1">IDENTIFICATION NO.</label>
+<input class="w-full bg-white/5 backdrop-blur-3xl border border-white/10 rounded-xl px-6 py-4 text-on-background focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-outline/30 font-headline text-sm" placeholder="PASS: X-90887" type="text"/>
+</div>
+<div class="col-span-2 space-y-3">
+<label class="font-headline text-[10px] tracking-[0.3em] text-on-surface-variant/80 ml-1">STRATEGIC REQUIREMENTS</label>
+<textarea class="w-full bg-white/5 backdrop-blur-3xl border border-white/10 rounded-xl px-6 py-4 text-on-background focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-outline/30 font-headline text-sm" placeholder="DIETARY RESTRICTIONS, EQUIPMENT SPECIFICATIONS, ETC." rows="4"></textarea>
+</div>
+</form>
+</div>
+<!-- New Safety & Terms Section -->
+<div class="grid md:grid-cols-2 gap-6 pt-6">
+<div class="p-8 border border-outline-variant/10 rounded-2xl bg-white/[0.02]">
+<div class="flex items-center gap-4 mb-4 text-primary">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<h4 class="font-headline text-xs font-bold tracking-[0.2em]">SAFETY PROTOCOLS</h4>
+</div>
+<p class="text-xs leading-relaxed text-on-surface-variant font-headline">All riders undergo mandatory altitude acclimatization and safety briefings. Protective gear is inspected daily before departure.</p>
+</div>
+<div class="p-8 border border-outline-variant/10 rounded-2xl bg-white/[0.02]">
+<div class="flex items-center gap-4 mb-4 text-secondary">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<h4 class="font-headline text-xs font-bold tracking-[0.2em]">ADVENTURE TERMS</h4>
+</div>
+<p class="text-xs leading-relaxed text-on-surface-variant font-headline">Refundable security deposit required at pickup. Itineraries may shift based on weather conditions and mountain accessibility.</p>
+</div>
+</div>
+</div>
+<!-- Right: Pricing & Confirmation -->
+<aside class="col-span-12 lg:col-span-3 sticky top-32">
+<div class="liquid-glass amber-glow-border rounded-2xl p-10 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/10 blur-[60px] -mr-16 -mt-16"></div>
+<h3 class="font-bebas text-3xl mb-10 tracking-widest text-center border-b border-white/5 pb-6">SUMMARY</h3>
+<div class="space-y-6 mb-10">
+<div class="flex justify-between items-center text-xs">
+<span class="font-headline text-on-surface-variant uppercase tracking-widest">Base Rental</span>
+<span class="font-headline font-bold text-on-surface">$420.00</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="font-headline text-on-surface-variant uppercase tracking-widest">Equipment</span>
+<span class="font-headline font-bold text-on-surface">$45.00</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="font-headline text-on-surface-variant uppercase tracking-widest">Permit Fees</span>
+<span class="font-headline font-bold text-on-surface">$25.00</span>
+</div>
+<div class="pt-8 border-t border-white/10">
+<div class="flex justify-between items-end">
+<span class="font-headline text-[10px] tracking-[0.3em] font-bold text-on-surface-variant uppercase">Total Payable</span>
+<span class="text-5xl font-bebas text-secondary leading-none">$490</span>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<label class="flex items-start gap-4 cursor-pointer group">
+<div class="relative flex items-center mt-1">
+<input class="peer h-5 w-5 rounded-md bg-white/5 border border-white/10 text-secondary focus:ring-0 focus:ring-offset-0 checked:bg-secondary" type="checkbox"/>
+<span class="material-symbols-outlined absolute opacity-0 peer-checked:opacity-100 text-on-secondary pointer-events-none text-xs font-black p-1" data-icon="check" style="font-variation-settings: 'wght' 900;">check</span>
+</div>
+<span class="text-[10px] leading-relaxed font-headline text-on-surface-variant/80 group-hover:text-on-surface transition-colors uppercase tracking-widest">
+                            I accept the <a class="text-primary underline decoration-primary/30 underline-offset-4" href="#">safety standards</a> and <a class="text-primary underline decoration-primary/30 underline-offset-4" href="#">expedition terms</a>.
+                        </span>
+</label>
+<button class="shimmer w-full bg-gradient-to-br from-secondary via-tertiary to-secondary-dim text-on-secondary font-bebas text-2xl tracking-[0.1em] py-6 rounded-xl flex items-center justify-center gap-4 hover:shadow-[0_0_40px_rgba(254,178,52,0.4)] transition-all duration-500 transform active:scale-95 group">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-12 transition-transform" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+                        AUTHORIZE BOOKING
+                    </button>
+</div>
+<div class="mt-10 flex flex-col items-center gap-3">
+<div class="flex gap-2">
+<div class="w-8 h-5 bg-white/10 rounded-sm"></div>
+<div class="w-8 h-5 bg-white/10 rounded-sm"></div>
+<div class="w-8 h-5 bg-white/10 rounded-sm"></div>
+</div>
+<p class="text-[8px] text-on-surface-variant font-headline tracking-[0.4em] uppercase opacity-40">256-BIT ENCRYPTED QUANTUM SECURITY</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<footer class="w-full border-t border-white/5 bg-black/60 backdrop-blur-xl">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-20 gap-12 max-w-screen-2xl mx-auto">
+<div class="text-cyan-400 font-headline font-black italic text-3xl tracking-tighter">SUMMIT</div>
+<div class="flex flex-wrap justify-center gap-10">
+<a class="font-headline text-[10px] tracking-[0.3em] uppercase text-on-surface-variant hover:text-primary transition-all" href="#">SAFETY</a>
+<a class="font-headline text-[10px] tracking-[0.3em] uppercase text-on-surface-variant hover:text-primary transition-all" href="#">LOGISTICS</a>
+<a class="font-headline text-[10px] tracking-[0.3em] uppercase text-on-surface-variant hover:text-primary transition-all" href="#">INSURANCE</a>
+<a class="font-headline text-[10px] tracking-[0.3em] uppercase text-on-surface-variant hover:text-primary transition-all" href="#">CONTACT</a>
+</div>
+<div class="text-center md:text-right space-y-2">
+<p class="font-headline text-[9px] tracking-[0.3em] uppercase text-on-surface-variant">© 2024 LIQUID SUMMIT ADVENTURES</p>
+<p class="font-bebas text-xs tracking-widest text-primary opacity-50 italic">ENGINEERED FOR THE HIMALAYAS</p>
+</div>
+</div>
+</footer>
+</body></html>

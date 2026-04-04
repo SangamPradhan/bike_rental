@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | BIKERENTAL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Inter:wght@300;400;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#eea91f",
+                        "error-dim": "#d7383b",
+                        "surface-bright": "#2c2b33",
+                        "on-tertiary-fixed-variant": "#604100",
+                        "on-tertiary": "#614100",
+                        "on-surface-variant": "#acaab1",
+                        "tertiary-container": "#feb72f",
+                        "surface-container-lowest": "#000000",
+                        "primary-fixed": "#9be9f7",
+                        "on-secondary-fixed": "#492f00",
+                        "surface-tint": "#9be9f7",
+                        "on-error": "#490006",
+                        "primary-dim": "#8ddbe8",
+                        "surface": "#0e0e13",
+                        "inverse-surface": "#fcf8ff",
+                        "on-primary-fixed-variant": "#00616c",
+                        "primary-fixed-dim": "#8ddbe8",
+                        "tertiary-dim": "#eea91f",
+                        "on-primary": "#005761",
+                        "on-tertiary-fixed": "#3a2600",
+                        "tertiary": "#ffc970",
+                        "on-secondary": "#543600",
+                        "tertiary-fixed": "#feb72f",
+                        "on-secondary-fixed-variant": "#6f4900",
+                        "surface-container-highest": "#25252d",
+                        "secondary-container": "#815500",
+                        "surface-container-low": "#131319",
+                        "surface-container-high": "#1f1f26",
+                        "secondary-fixed": "#ffc87a",
+                        "primary-container": "#5dacb9",
+                        "outline": "#76747b",
+                        "background": "#0e0e13",
+                        "secondary-fixed-dim": "#ffb63e",
+                        "outline-variant": "#48474d",
+                        "on-tertiary-container": "#553900",
+                        "on-secondary-container": "#fff6ef",
+                        "error": "#ff716c",
+                        "inverse-on-surface": "#55545b",
+                        "surface-variant": "#25252d",
+                        "surface-container": "#19191f",
+                        "surface-dim": "#0e0e13",
+                        "secondary-dim": "#eea526",
+                        "primary": "#9be9f7",
+                        "on-surface": "#f9f5fd",
+                        "inverse-primary": "#006975",
+                        "secondary": "#feb234",
+                        "on-primary-container": "#00272d",
+                        "on-primary-fixed": "#00434b",
+                        "on-error-container": "#ffa8a3",
+                        "error-container": "#9f0519",
+                        "on-background": "#f9f5fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Inter"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(155, 233, 247, 0.3);
+        }
+        .amber-glow {
+            box-shadow: 0 0 30px rgba(254, 178, 52, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary selection:text-on-secondary overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 w-full bg-slate-950/80 backdrop-blur-xl shadow-2xl shadow-cyan-900/20 font-['Epilogue'] tracking-tight no-border bg-gradient-to-b from-slate-900/50 to-transparent">
+<div class="text-2xl font-black tracking-tighter text-cyan-400">BIKERENTAL</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-300 hover:text-white transition-colors hover:text-amber-400 transition-all duration-300" href="#">Fleet</a>
+<a class="text-slate-300 hover:text-white transition-colors hover:text-amber-400 transition-all duration-300" href="#">Adventures</a>
+<a class="text-slate-300 hover:text-white transition-colors hover:text-amber-400 transition-all duration-300" href="#">Gear</a>
+<a class="text-cyan-400 font-bold border-b-2 border-cyan-400 pb-1 hover:text-amber-400 transition-all duration-300" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary hover:scale-105 active:scale-95 transition-all text-on-primary px-6 py-2 rounded-xl font-bold tracking-tight">Book Now</button>
+<img alt="User profile" class="w-10 h-10 rounded-full border-2 border-primary/20" data-alt="Close-up studio portrait of a male rider with weathered skin and kind eyes, soft cinematic lighting with dark blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-eoj2n1wgL9995gNQDY0ylAVv9psxFsYU_uQ2IKznXI3M0SqvYUYA-j1-Oj_DGV_zS5ssvhY4iWSV3sNGuaTVQMAl-qJzd380ZpmkfqbFNba5UrwzJWkXjZBLrADeu1jPnqxq-myzUTi9y3lIzT6vGRJ3OHEq9v3_pp9ngt174UQ4NVxWdRbGnR8-ZvbQT_TnIRe5pJ_GXfQRvMK2fkvbXrdNJJixB0LRp4Hq7fs7Nbmt7oKQBObGXcdW0BZsYjOMe6-ZuMiRtsw"/>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative w-full h-[819px] flex items-center justify-center overflow-hidden">
+<img alt="Himalayan mountains" class="absolute inset-0 w-full h-full object-cover" data-alt="Panoramic view of majestic Himalayan peaks at sunrise with dramatic orange and pink lighting hitting the snow-capped summits" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsdHRuraZCELPsgY0P9_4oR-amOAFF3WIMfs3Q8WfeVFswuqD3BYd6HABm34KssEExzcpSquBWM8ohnsSF0XOLGcS2jsLczYlV663D_tC5mjbRbb36KZNNO6Riu_JYLan4911J6z-TFNOVoGpCydIyOaltKFo2LBqGj4sEr4iHlehF3Tz4ONIri5CBxX0Uw3j1En5lnuKs-4s7rRVl7aTfKlPnBrXOaYlWltgJeA6GCfPmfBiAYw3No4oyT1I7D0TJunar1QeP9Uc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-slate-900/30"></div>
+<div class="relative z-10 text-center px-4">
+<h1 class="font-headline font-black text-7xl md:text-9xl text-white tracking-tighter leading-none text-glow">
+                OUR STORY
+            </h1>
+<div class="mt-4 w-32 h-1 bg-secondary mx-auto amber-glow"></div>
+</div>
+</header>
+<!-- Story Section -->
+<section class="max-w-7xl mx-auto px-8 py-24 grid md:grid-cols-2 gap-16 items-center">
+<div class="relative h-[600px]">
+<div class="absolute top-0 left-0 w-4/5 h-4/5 liquid-glass rounded-xl p-2 rotate-[-4deg] border border-outline-variant/15 z-20">
+<img alt="Luxury Bike" class="w-full h-full object-cover rounded-lg" data-alt="High-end adventure motorcycle parked on a high mountain pass with a sweeping valley and distant glaciers in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ6MH1Svleep2NVIyub8gixVLnmiHiLKaZddjl6K_U_yW6Zdfj486byM7s-NbhSW3yxITIDWNd2QuWu5CCh0wI_4bWAiAeQHEhkMvyykVMy6hcMPZknZCMIvDXKPTlun9uzjtr7mcwjAyfQ-kF-Am4Dyx0-Zmdmu-CmK93KJvQzkaNR8LXtQJycFR0qdAqHsN8ZOf1r5LATS5DdQf-VlteuCTJHf07SlyP7nIVo5Kq29mSK2lraPjpRrT8XdezTk-zsueMyCoB7WY"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3/4 h-3/4 liquid-glass rounded-xl p-2 rotate-[6deg] border border-outline-variant/15 z-10">
+<img alt="Rider in Nepal" class="w-full h-full object-cover rounded-lg" data-alt="Close-up of a professional motorcycle rider in technical gear looking out over a rugged cliff edge towards a Tibetan plateau" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4_GHdwMGS5FKkdKsCTwaXnIAPLnfiQs0jOh-pj2V11e9Q-yVxOW1x0Twgm12bEfbcmuJj_2ANOaQ-T-ZkLTnke6T8nLMbR2CJgukcxqmAN3D0RD2EWqKkwKATQirnGYZrZlBJ9Xd712RNZ2EkljcVKwkVcvJKYJnhqAmhkYAPeShwmNDpGokJokTb1ThEZYcHLD2JeWEqT17tYvDQU6HDxRyye5xGm8QEuOU_OGLcRRss9zO2BJ20imuVevt96b5QPQ3VvNhpYIw"/>
+</div>
+</div>
+<div class="space-y-8">
+<div class="space-y-4">
+<h2 class="font-headline text-5xl md:text-6xl font-black text-white tracking-tight uppercase">
+                    A Legacy of <span class="text-secondary">Adventure</span>
+</h2>
+<div class="w-48 h-1.5 bg-secondary/80"></div>
+</div>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                Founded in the heart of Kathmandu, BIKERENTAL emerged from a singular obsession: to provide the most refined mechanical companions for the most challenging terrain on Earth. For over two decades, we have been the silent architects of countless trans-Himalayan expeditions.
+            </p>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                What started with three vintage Royal Enfields in a small garage has evolved into Nepal's premier fleet of precision-tuned adventure machines. We don't just rent bikes; we provide the keys to the roof of the world, forged in ice and engineered for the ultimate ascent.
+            </p>
+<div class="flex gap-12 pt-4">
+<div>
+<span class="block text-4xl font-headline font-bold text-primary">20+</span>
+<span class="text-sm font-label uppercase tracking-widest text-outline">Years Active</span>
+</div>
+<div>
+<span class="block text-4xl font-headline font-bold text-primary">15k+</span>
+<span class="text-sm font-label uppercase tracking-widest text-outline">Expeditions</span>
+</div>
+<div>
+<span class="block text-4xl font-headline font-bold text-primary">100%</span>
+<span class="text-sm font-label uppercase tracking-widest text-outline">Safety Record</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Brand Ambassador Section -->
+<section class="bg-surface-container-low py-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary/10 blur-3xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+<img alt="Brand Ambassador" class="relative z-10 w-full aspect-[4/5] object-cover rounded-2xl shadow-2xl" data-alt="A heroic shot of a Sherpa mountain guide and master rider in full adventure gear, standing proudly against a backdrop of prayer flags and Annapurna peaks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEVeRNVt7OUlKjAqq_UPPvzg0xnJnY6ZbgHVvlDCSyzNlpU88B-5iuHNqWZdRTXJQbWMPfJWheHQgExYO6-5bF_kqbA2US_CJCMerCiNR8cGHuBvl2MQPJ-wWR28C22doF0HOwJncRuRJbiBZKrFb7j5UJs4txzPLDxw83iMw6Spbhp0hPN1KSmEaSed39B1a-395jgJFedU_GO9j6_YezqckTeGlFnJUtDLbF0hbiPe0VyCUr4ZstrdSvkP4sIT_ZxjUkwoMTy0U"/>
+</div>
+<div class="space-y-8">
+<div class="flex flex-col gap-2">
+<span class="font-label text-secondary tracking-[0.3em] font-bold uppercase text-sm">Our Voice</span>
+<h2 class="font-headline text-4xl font-black text-white">Nima Tashi</h2>
+<p class="text-primary font-bold">Chief Expedition Architect &amp; Ambassador</p>
+</div>
+<div class="liquid-glass p-1 rounded-xl flex border border-outline-variant/10">
+<button class="flex-1 py-3 text-sm font-bold tracking-widest uppercase text-on-secondary bg-secondary rounded-lg transition-all shadow-lg amber-glow">Legacy</button>
+<button class="flex-1 py-3 text-sm font-bold tracking-widest uppercase text-outline hover:text-white transition-all">Mission</button>
+<button class="flex-1 py-3 text-sm font-bold tracking-widest uppercase text-outline hover:text-white transition-all">Vision</button>
+</div>
+<div class="space-y-6 min-h-[200px]">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+<p class="text-on-surface-variant text-lg">
+                            "The mountains don't care about your plan, they care about your preparation. We've spent 25 years perfecting the technical specs required to survive the thin air and punishing switchbacks of the Manang valley."
+                        </p>
+</div>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Standardized 45-point pre-ride inspections</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Bespoke suspension tuning for local terrain</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Carousel -->
+<section class="py-24 px-8 max-w-7xl mx-auto">
+<h2 class="font-headline text-5xl font-black text-center text-white mb-16 tracking-tighter uppercase">
+            What our <span class="text-secondary">Riders</span> say
+        </h2>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="liquid-glass p-8 rounded-2xl border border-outline-variant/10 flex flex-col justify-between hover:scale-[1.02] transition-transform">
+<div class="space-y-6">
+<span class="material-symbols-outlined text-secondary text-5xl" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="text-on-surface italic text-lg leading-relaxed">
+                        "The KTM 890 Adventure R I rented was tuned to perfection. Crossing the Thorong La pass was effortless. The gear provided was top-tier."
+                    </p>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/10">
+<div class="flex text-secondary mb-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h4 class="font-bold text-white">James Sterling</h4>
+<span class="text-xs font-label text-outline uppercase tracking-widest">London, UK</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="liquid-glass p-8 rounded-2xl border border-outline-variant/10 flex flex-col justify-between hover:scale-[1.02] transition-transform">
+<div class="space-y-6">
+<span class="material-symbols-outlined text-secondary text-5xl" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="text-on-surface italic text-lg leading-relaxed">
+                        "Unbeatable service. They helped with permits, route planning, and even tracked my GPS throughout the Mustang circuit. Pure peace of mind."
+                    </p>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/10">
+<div class="flex text-secondary mb-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h4 class="font-bold text-white">Elena Rossi</h4>
+<span class="text-xs font-label text-outline uppercase tracking-widest">Milan, Italy</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="liquid-glass p-8 rounded-2xl border border-outline-variant/10 flex flex-col justify-between hover:scale-[1.02] transition-transform">
+<div class="space-y-6">
+<span class="material-symbols-outlined text-secondary text-5xl" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="text-on-surface italic text-lg leading-relaxed">
+                        "The Himalayan was built for these trails, but the BIKERENTAL team took it to another level with their custom mods. Can't wait to return."
+                    </p>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/10">
+<div class="flex text-secondary mb-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h4 class="font-bold text-white">Akira Tanaka</h4>
+<span class="text-xs font-label text-outline uppercase tracking-widest">Tokyo, Japan</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-950 border-t border-secondary/30 relative py-12 px-8 w-full tonal-step bg-slate-900/50">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-50"></div>
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 font-['Inter'] font-light tracking-wide">
+<div class="space-y-4 text-center md:text-left">
+<div class="text-xl font-bold text-slate-100">BIKERENTAL.COM</div>
+<p class="text-slate-500 max-w-xs text-sm">Precision engineered rentals for the world's most demanding peaks.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-cyan-300 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Expeditions</a>
+<a class="text-slate-500 hover:text-cyan-300 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-cyan-300 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Technical Specs</a>
+<a class="text-slate-500 hover:text-cyan-300 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Contact</a>
+</div>
+<div class="text-slate-500 text-xs text-center md:text-right">
+                © 2024 THE LIQUID SUMMIT. FORGED IN THE HIMALAYAS.
+            </div>
+</div>
+</footer>
+</body></html>

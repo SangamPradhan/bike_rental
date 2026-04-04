@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The High Passes of Spiti: A 10-Day Solo Journey | SUMMIT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;700;900&amp;family=Inter:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#0e0e13",
+                        "surface-variant": "#25252d",
+                        "on-primary-fixed-variant": "#00616c",
+                        "on-secondary-container": "#fff6ef",
+                        "primary-container": "#5dacb9",
+                        "surface-tint": "#9be9f7",
+                        "on-secondary": "#543600",
+                        "error-dim": "#d7383b",
+                        "on-primary-container": "#00272d",
+                        "inverse-primary": "#006975",
+                        "surface-container-high": "#1f1f26",
+                        "on-primary-fixed": "#00434b",
+                        "outline-variant": "#48474d",
+                        "on-error": "#490006",
+                        "tertiary-fixed": "#feb72f",
+                        "secondary-dim": "#eea526",
+                        "tertiary": "#ffc970",
+                        "error": "#ff716c",
+                        "secondary-container": "#815500",
+                        "on-secondary-fixed-variant": "#6f4900",
+                        "primary-fixed-dim": "#8ddbe8",
+                        "on-tertiary-fixed-variant": "#604100",
+                        "inverse-on-surface": "#55545b",
+                        "on-surface-variant": "#acaab1",
+                        "on-primary": "#005761",
+                        "secondary-fixed": "#ffc87a",
+                        "on-tertiary-container": "#553900",
+                        "on-secondary-fixed": "#492f00",
+                        "surface-bright": "#2c2b33",
+                        "surface-container-low": "#131319",
+                        "inverse-surface": "#fcf8ff",
+                        "primary-dim": "#8ddbe8",
+                        "secondary": "#feb234",
+                        "on-background": "#f9f5fd",
+                        "on-tertiary-fixed": "#3a2600",
+                        "on-tertiary": "#614100",
+                        "surface-container-highest": "#25252d",
+                        "on-surface": "#f9f5fd",
+                        "outline": "#76747b",
+                        "surface-container": "#19191f",
+                        "surface-dim": "#0e0e13",
+                        "tertiary-container": "#feb72f",
+                        "surface": "#0e0e13",
+                        "primary-fixed": "#9be9f7",
+                        "primary": "#9be9f7",
+                        "tertiary-fixed-dim": "#eea91f",
+                        "tertiary-dim": "#eea91f",
+                        "secondary-fixed-dim": "#ffb63e",
+                        "error-container": "#9f0519",
+                        "surface-container-lowest": "#000000",
+                        "on-error-container": "#ffa8a3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Inter"],
+                        "label": ["Plus Jakarta Sans"],
+                        "bebas": ["Bebas Neue"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .liquid-gradient {
+            background: linear-gradient(135deg, #9be9f7 0%, #5dacb9 100%);
+        }
+        .custom-cursor {
+            width: 12px;
+            height: 12px;
+            background: #feb234;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 15px #feb234;
+            transform: translate(-50%, -50%);
+        }
+        body {
+            cursor: none;
+        }
+        a, button, [role="button"] {
+            cursor: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary selection:text-on-secondary">
+<div class="custom-cursor hidden md:block"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-xl bg-gradient-to-b from-white/5 to-transparent shadow-2xl shadow-cyan-900/20 flex justify-between items-center px-8 py-4 max-w-full">
+<div class="text-2xl font-black tracking-tighter text-cyan-200">SUMMIT</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-epilogue tracking-tight text-lg text-slate-300 hover:text-white transition-colors hover:scale-105 hover:bg-white/5 transition-all duration-300" href="#">Fleet</a>
+<a class="font-epilogue tracking-tight text-lg text-amber-400 font-bold border-b-2 border-amber-400 pb-1 hover:scale-105 hover:bg-white/5 transition-all duration-300" href="#">Adventures</a>
+<a class="font-epilogue tracking-tight text-lg text-slate-300 hover:text-white transition-colors hover:scale-105 hover:bg-white/5 transition-all duration-300" href="#">Gear</a>
+<a class="font-epilogue tracking-tight text-lg text-slate-300 hover:text-white transition-colors hover:scale-105 hover:bg-white/5 transition-all duration-300" href="#">About</a>
+</div>
+<button class="liquid-gradient text-on-primary-container font-epilogue font-bold py-2 px-6 rounded-md shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+            Book Now
+        </button>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-[870px] w-full overflow-hidden">
+<div class="absolute inset-0">
+<img class="w-full h-full object-cover" data-alt="Cinematic wide shot of a rugged adventure motorcycle parked on a winding Himalayan mountain pass with jagged snow-capped peaks and dramatic clouds at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ8zofteJSdA-JeppeiNQF5SoR04-KK5Osg_pdSYbLat5zqY7r8KF6F-W7tZAAlnb6LfZlA1Fg2Xhnhl-te4ONiUa4xJ-9zUXse3CR9p7MUMK2TxJeGSN6ARt9PxBPYmrU08-BFzOTSJK8bMEfL0aB8U1JOvMUlgk8oSSNL8BiOOs-ZvlckcCqNEbADswqY-vphWW_GSdEYNMpaxls4HJ5DXMxQ7mqsew0NZ_GPPMNd926Er0yqot027qOzEqVb2QrSduprCXL6Zk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-black/40"></div>
+</div>
+<div class="absolute inset-0 flex flex-col justify-end pb-24 px-8 md:px-20 max-w-7xl mx-auto">
+<div class="mb-6 flex gap-2 items-center text-secondary font-label font-bold tracking-widest text-xs uppercase">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">distance</span>
+                Expedition Log
+            </div>
+<h1 class="font-headline text-5xl md:text-8xl font-black text-white leading-none tracking-tighter drop-shadow-2xl max-w-4xl">
+                THE HIGH PASSES OF SPITI: <br/>A 10-DAY SOLO JOURNEY
+            </h1>
+<div class="mt-8 flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/30">
+<img class="w-full h-full object-cover" data-alt="Portrait of a rugged adventure motorcyclist wearing gear, outdoors in natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWaIDmKRjdjLnnEUSSnZY0eTrmBWLtaSeKPJTXH-XcceJJy3s68Rx4_TYpCIKvH-zS6OUSdcdNVvQKc7XR0AjfyZM6paISdkl372uXclVtsDGfiseeP8RbzgJnlTtCt3UJaqQc2bkWkxi85IQQDgmfY_2x4RUCN-KfTEuar-0Uq-2bmFT0zZPvhgsSDxC_IN9Ds1VwpWTYfnj7ELDzrAALpyBwQpIzsI28tjaZL9hwieGvXcQKU0nqy7bDMTkKzT6Kf3NZmJVa1T0"/>
+</div>
+<div>
+<p class="font-label text-xs font-bold text-primary">WRITTEN BY</p>
+<p class="text-on-surface font-semibold">Tenzin Norbu</p>
+</div>
+</div>
+<div class="h-8 w-[1px] bg-white/20"></div>
+<div class="flex flex-col">
+<p class="font-label text-xs font-bold text-primary">PUBLISHED</p>
+<p class="text-on-surface font-semibold">Sept 12, 2024</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Breadcrumbs -->
+<section class="max-w-7xl mx-auto px-8 py-8">
+<nav class="flex items-center gap-3 text-sm font-label text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Adventures</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-secondary font-semibold">Spiti Journey</span>
+</nav>
+</section>
+<!-- Main Content Layout -->
+<main class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 pb-32">
+<!-- Left Article Content -->
+<article class="lg:col-span-8 space-y-12">
+<div class="space-y-8">
+<h2 class="font-bebas text-5xl text-white tracking-wide">Into the Thin Air</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed font-light">
+                    The roar of the 411cc engine was the only companion I had as I crossed the Rohtang Pass. Below me, the lush valleys of Kullu disappeared, replaced by the stark, lunar landscapes of Lahaul. Spiti is not just a destination; it's a test of mettle, a dialogue between man and machine under the infinite blue of the Himalayan sky.
+                </p>
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+<img class="relative w-full rounded-xl object-cover h-[450px]" data-alt="A Royal Enfield Himalayan motorcycle standing in a vast, dry Spiti valley with towering brown mountains and a crystal clear blue river in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAufa_z1ikrwBNpK2fqQ-k7N11U4ThMOvAyM2mi6AqeV-6ZqfmFEp4op--8XeczOI7Aanbnu0X5BhKEnxUumLeiOPqt1igB0axjXXTNcdMpzqyqA2z9fulflfpsYHY-yn9Nx8_Oq0bjyjkAM48-rn2u8C7a-bzBVYWCHHgJCTEKtrZDfHXEhs4MIyeH4szYcY37Fy2Tsad2Kcvi3Bcv9luCoPzYbrlWdGViaUWKHL8unCdeL8BjuD7krzHcVCtPdp-nFmuIsqrUdC0"/>
+</div>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                    The ride from Kaza to Hikkim is where the altitude really begins to play with your senses. At over 4,400 meters, every breath is a conscious effort. Yet, the motorcycle performed flawlessly, its torque-rich delivery making short work of the steep, gravel-strewn inclines.
+                </p>
+<!-- Pull Quote -->
+<blockquote class="relative py-10 px-12 border-l-4 border-secondary glass-panel rounded-r-xl my-12 overflow-hidden">
+<span class="material-symbols-outlined absolute -top-4 -left-2 text-9xl text-secondary/10 pointer-events-none" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="font-bebas text-4xl text-secondary leading-tight italic">
+                        "In the silence of the high passes, you don't find yourself; you create yourself. Every hairpin turn is a new chapter in the book of the wild."
+                    </p>
+</blockquote>
+<h3 class="font-bebas text-4xl text-white tracking-wide">The Kaza Connection</h3>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                    Arriving in Kaza felt like landing on another planet. The mud-brick houses, the prayer flags fluttering in the cold wind, and the warmth of the local tea shops offered a sharp contrast to the brutal cold outside. I spent two days here, acclimatizing and checking the chain tension before the final push toward the Kunzum Pass.
+                </p>
+<div class="grid grid-cols-2 gap-4">
+<img class="rounded-lg h-64 w-full object-cover" data-alt="A close up of colorful Tibetan prayer flags flapping in the strong mountain wind against a background of sharp peaks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvTn_x1U2MrypyfLp_b70sPVGxZozcAIhSRBeIHMdySNqpTco3UxfPmG6HtmoED-Mjbi3_FNEzudKd4hJJd920deWQJAId-fuv43rdpgMA2OVD9BXutqtyf7iXwiVwRL1mjn2o6_we1KSsxZYyB-GhlI6ZK0WwrASiJyn9R9n7O9MFlmGj8MpY7-CkCB_m6CYsgP501BZj9-q9XvmH8MT0uLj40Hgw9fK1lBMx-IsC86sKJr5OI00_jrxftjmlgcmN2KHM0y5qgYs"/>
+<img class="rounded-lg h-64 w-full object-cover" data-alt="Rustic interior of a Himalayan tea house with local pottery and steam rising from a cup of butter tea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNHwzIxBP7Vn0x1sE9XHj1zbzT3IW0SuavfZCvMV5cEnyXqO0BdK1A8-etUdR2X2lPrR1fqMY3QC82x3ogxeiFInYBrGfbP2-dr-1tkbxq1yvwmEazI6JyGg5KJ9j02CzBgAxdpSQYFoLPNay_E-vo5_8Y4SuRpA4VdOOQQvgDDeCSinDGhHZUFmr21Bky0P1I3sGyZA1ATsowvy6-H6Vi8l3vYCbiOt99YJEc5cFWm7VO_pREkRe4I1cBwAvod5mSQZEgOQWxxww"/>
+</div>
+</div>
+<!-- Share Buttons -->
+<div class="pt-16 border-t border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex flex-wrap gap-4">
+<button class="flex items-center gap-2 px-5 py-3 rounded-full bg-[#1877f2]/10 text-[#1877f2] font-label font-bold text-xs hover:bg-[#1877f2]/20 transition-all">
+<span class="material-symbols-outlined text-sm">share</span> FACEBOOK
+                    </button>
+<button class="flex items-center gap-2 px-5 py-3 rounded-full bg-[#1da1f2]/10 text-[#1da1f2] font-label font-bold text-xs hover:bg-[#1da1f2]/20 transition-all">
+<span class="material-symbols-outlined text-sm">share</span> TWITTER
+                    </button>
+<button class="flex items-center gap-2 px-5 py-3 rounded-full bg-[#e4405f]/10 text-[#e4405f] font-label font-bold text-xs hover:bg-[#e4405f]/20 transition-all">
+<span class="material-symbols-outlined text-sm">share</span> INSTAGRAM
+                    </button>
+<button class="flex items-center gap-2 px-5 py-3 rounded-full bg-[#25d366]/10 text-[#25d366] font-label font-bold text-xs hover:bg-[#25d366]/20 transition-all">
+<span class="material-symbols-outlined text-sm">share</span> WHATSAPP
+                    </button>
+</div>
+<button class="flex items-center gap-2 text-primary font-label font-bold hover:gap-4 transition-all">
+                    SAVE STORY <span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+</article>
+<!-- Right Sidebar -->
+<aside class="lg:col-span-4 space-y-8">
+<!-- Ready to Ride CTA -->
+<div class="glass-panel p-8 rounded-xl border border-white/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-8xl">motorcycle</span>
+</div>
+<h4 class="font-bebas text-3xl text-white mb-2">Ready to Ride?</h4>
+<p class="text-on-surface-variant text-sm mb-6">Experience the Spiti loop on our fleet of specially prepared Himalayan BS6 bikes.</p>
+<button class="w-full bg-secondary hover:bg-secondary-dim text-on-secondary py-4 rounded-lg font-headline font-black text-lg transition-all shadow-xl shadow-secondary/20">
+                    BOOK NOW
+                </button>
+</div>
+<!-- Categories -->
+<div class="space-y-4">
+<h5 class="font-label font-bold text-primary tracking-widest text-xs uppercase">Categories</h5>
+<div class="flex flex-col gap-2">
+<a class="flex justify-between items-center p-4 glass-panel rounded-lg hover:bg-white/10 transition-all group" href="#">
+<span class="text-on-surface font-medium">Road Trips</span>
+<span class="text-secondary group-hover:translate-x-1 transition-transform">12</span>
+</a>
+<a class="flex justify-between items-center p-4 glass-panel rounded-lg hover:bg-white/10 transition-all group" href="#">
+<span class="text-on-surface font-medium">Gear Reviews</span>
+<span class="text-secondary group-hover:translate-x-1 transition-transform">08</span>
+</a>
+<a class="flex justify-between items-center p-4 glass-panel rounded-lg hover:bg-white/10 transition-all group" href="#">
+<span class="text-on-surface font-medium">Safety Tips</span>
+<span class="text-secondary group-hover:translate-x-1 transition-transform">05</span>
+</a>
+</div>
+</div>
+<!-- Recent Adventures -->
+<div class="space-y-4">
+<h5 class="font-label font-bold text-primary tracking-widest text-xs uppercase">Recent Adventures</h5>
+<div class="space-y-4">
+<div class="flex gap-4 group">
+<div class="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Forest motorcycle trail with shafts of morning light cutting through pine trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6AVP89ao07pgH_8GxfVcbfzZ0tT37eZCxCDunI-ejABHkH1U81RSbkGyX1P7H9tyw7stmcW6-TO3Ep8GlcbTZbb4nOzckz5tv56_63RMBcyZkWfsvEkhrew4plHgvpNwSIaplPnf0QDe2Oy0khgyLLtYQlrKOll8-WEREjDGRDsKphiSF1r-Mr4ka49B3C13VuvF1shDFDBuCSt3RIzo6HBEL8yNcb7mGx4CwKk5PR4U0iyMD8mNK4JMeLHsVVs3evhMTyRqmnVo"/>
+</div>
+<div>
+<h6 class="text-on-surface font-bold text-sm leading-tight mb-1 group-hover:text-secondary transition-colors">Coastal Cruising: The Goan Backwaters</h6>
+<p class="text-xs text-on-surface-variant font-label uppercase tracking-tighter">Aug 28, 2024</p>
+</div>
+</div>
+<div class="flex gap-4 group">
+<div class="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Sand dunes of Rajasthan with a motorcycle silhouette against a burning orange horizon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeoKOHKh2eqdFwO23RX08tMzD1cSWyHiV9gkx61gazi8gE-GsDPgvshz_fIe86eg1W2LFvhE7oiDf-tCqB6HhFLsmeWODDQBYg6ahAIVT8fsuYzWM8JU-pwE8Bj7pWv3p6uqlbwGLoKTHZ7KURpi3-51H1Yi3rVEbPXA2qm4bmVkn2nUjBhJYAm7wGbVEzQOg75Qio5yBgxNw89kGTu72McK9QdajqCt1fCnkwgDOCbEcX7ijGrbQ6y-jIWH7NNDTnVPsr1T6f4zE"/>
+</div>
+<div>
+<h6 class="text-on-surface font-bold text-sm leading-tight mb-1 group-hover:text-secondary transition-colors">Desert Storm: Rajasthan Off-Road</h6>
+<p class="text-xs text-on-surface-variant font-label uppercase tracking-tighter">Aug 15, 2024</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0e0e13] w-full py-16 px-12 border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-xl font-bold text-cyan-300">SUMMIT</div>
+<p class="font-inter text-sm tracking-wide text-slate-500">
+                    Premium motorcycle adventures in the most rugged terrains on earth. Crafted for the bold.
+                </p>
+</div>
+<div>
+<h4 class="text-amber-500 font-inter text-sm tracking-widest font-bold mb-6 uppercase">Fleet</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-cyan-200 transition-all opacity-80 hover:opacity-100 font-inter text-sm" href="#">Himalayan 411</a></li>
+<li><a class="text-slate-500 hover:text-cyan-200 transition-all opacity-80 hover:opacity-100 font-inter text-sm" href="#">Scram 411</a></li>
+<li><a class="text-slate-500 hover:text-cyan-200 transition-all opacity-80 hover:opacity-100 font-inter text-sm" href="#">Interceptor 650</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-amber-500 font-inter text-sm tracking-widest font-bold mb-6 uppercase">Resources</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-cyan-200 transition-all opacity-80 hover:opacity-100 font-inter text-sm" href="#">Expeditions</a></li>
+<li><a class="text-slate-500 hover:text-cyan-200 transition-all opacity-80 hover:opacity-100 font-inter text-sm" href="#">Safety Manual</a></li>
+<li><a class="text-slate-500 hover:text-cyan-200 transition-all opacity-80 hover:opacity-100 font-inter text-sm" href="#">Rental Terms</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-amber-500 font-inter text-sm tracking-widest font-bold mb-6 uppercase">Newsletter</h4>
+<div class="relative">
+<input class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Email Address" type="email"/>
+<button class="absolute right-2 top-2 p-1 text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto pt-16 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/5 mt-16">
+<p class="font-inter text-sm tracking-wide text-slate-500">© 2024 LIQUID SUMMIT ADVENTURES. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-amber-400 transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-slate-500 hover:text-amber-400 transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="text-slate-500 hover:text-amber-400 transition-colors" href="#"><span class="material-symbols-outlined">podcasts</span></a>
+</div>
+</div>
+</footer>
+<script>
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mousedown', () => cursor.style.transform = 'translate(-50%, -50%) scale(0.8)');
+        document.addEventListener('mouseup', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+
+        const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.backgroundColor = 'transparent';
+                cursor.style.border = '2px solid #feb234';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '12px';
+                cursor.style.height = '12px';
+                cursor.style.backgroundColor = '#feb234';
+                cursor.style.border = 'none';
+            });
+        });
+    </script>
+</body></html>

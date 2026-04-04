@@ -1,0 +1,291 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800&amp;family=Inter:wght@400;500&amp;family=Plus+Jakarta+Sans:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#feb72f",
+            "on-primary": "#005761",
+            "on-surface-variant": "#acaab1",
+            "tertiary-container": "#feb72f",
+            "secondary": "#feb234",
+            "surface-bright": "#2c2b33",
+            "surface-container-low": "#131319",
+            "outline": "#76747b",
+            "on-secondary": "#543600",
+            "surface-container-high": "#1f1f26",
+            "on-surface": "#f9f5fd",
+            "inverse-surface": "#fcf8ff",
+            "background": "#0e0e13",
+            "surface-container-highest": "#25252d",
+            "secondary-dim": "#eea526",
+            "secondary-container": "#815500",
+            "surface-variant": "#25252d",
+            "primary-fixed-dim": "#8ddbe8",
+            "primary-fixed": "#9be9f7",
+            "on-primary-container": "#00272d",
+            "secondary-fixed-dim": "#ffb63e",
+            "on-error": "#490006",
+            "on-secondary-fixed-variant": "#6f4900",
+            "on-secondary-container": "#fff6ef",
+            "tertiary": "#ffc970",
+            "primary-dim": "#8ddbe8",
+            "on-tertiary-fixed": "#3a2600",
+            "on-tertiary": "#614100",
+            "inverse-on-surface": "#55545b",
+            "error-dim": "#d7383b",
+            "surface-container-lowest": "#000000",
+            "primary": "#9be9f7",
+            "inverse-primary": "#006975",
+            "tertiary-dim": "#eea91f",
+            "on-primary-fixed-variant": "#00616c",
+            "surface-container": "#19191f",
+            "secondary-fixed": "#ffc87a",
+            "surface-tint": "#9be9f7",
+            "on-tertiary-container": "#553900",
+            "on-secondary-fixed": "#492f00",
+            "tertiary-fixed-dim": "#eea91f",
+            "error": "#ff716c",
+            "on-primary-fixed": "#00434b",
+            "error-container": "#9f0519",
+            "surface": "#0e0e13",
+            "surface-dim": "#0e0e13",
+            "on-tertiary-fixed-variant": "#604100",
+            "on-background": "#f9f5fd",
+            "outline-variant": "#48474d",
+            "primary-container": "#5dacb9",
+            "on-error-container": "#ffa8a3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Epilogue", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Plus Jakarta Sans", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .liquid-gradient {
+      background: linear-gradient(135deg, #9be9f7 0%, #5dacb9 100%);
+    }
+    .amber-glow:hover {
+      box-shadow: 0 0 20px rgba(254, 178, 52, 0.4);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary selection:text-on-secondary">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-10 py-6 max-w-none bg-slate-950/80 backdrop-blur-xl">
+<div class="text-xl font-bold tracking-tighter text-cyan-100 font-headline uppercase">THE LIQUID SUMMIT</div>
+<div class="hidden md:flex gap-10">
+<a class="text-slate-400 font-medium pb-1 hover:text-amber-400 transition-colors duration-300 font-label" href="#">Explore</a>
+<a class="text-slate-400 font-medium pb-1 hover:text-amber-400 transition-colors duration-300 font-label" href="#">Motorcycles</a>
+<a class="text-cyan-400 font-bold border-b-2 border-amber-400 pb-1 font-label" href="#">Safety Guide</a>
+<a class="text-slate-400 font-medium pb-1 hover:text-amber-400 transition-colors duration-300 font-label" href="#">Expeditions</a>
+<a class="text-slate-400 font-medium pb-1 hover:text-amber-400 transition-colors duration-300 font-label" href="#">Journal</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-slate-300 cursor-pointer hover:text-secondary">person</span>
+<button class="liquid-gradient text-on-primary font-bold px-6 py-2 rounded-xl active:scale-95 transition-transform duration-200 font-label">Rent Now</button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center px-10 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover brightness-[0.4]" data-alt="Cinematic aerial shot of winding Himalayan mountain pass roads cutting through jagged peaks under a cold blue twilight sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ599yqvT_RfjtVumQ0Lgqse9gsmoNI3yTde_1jIYNHDpspD_6Q2xlY5w-RFNGeZ11rTcCGw9RfPmhvg3a0zX7HHhlpyJnpb-kADkhUoYtEr34DVx_qUwuSfNG9O_66BAMul7msXMH1BHuJR1FafAT_-aD9lXqf3uQf1CaqpQuWby39_kR73Yk2wX63_vf07Yo_sWDkA8bDGteNsCD5MIidtbmrYnqhU04uKDKHnhuAvN7bjzD23_o3NE2Hod32fGTfn20q5hXTYQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-4xl">
+<h1 class="font-headline font-extrabold text-[5rem] md:text-[8rem] leading-[0.9] tracking-tighter text-on-surface mb-6">
+          RIDE SAFE,<br/><span class="text-secondary">RIDE HIGHER</span>
+</h1>
+<p class="font-body text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+          The Himalayas don't forgive, they only teach. Safety isn't a checklist; it's the foundation of your summit. We equip you with the precision of a surgeon and the resilience of a mountain.
+        </p>
+</div>
+</section>
+<!-- Safety Protocols (Bento Grid) -->
+<section class="px-10 py-32 bg-surface">
+<div class="mb-20">
+<h2 class="font-headline text-5xl font-bold tracking-tight mb-4">SAFETY PROTOCOLS</h2>
+<div class="h-1 w-24 bg-primary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- High-Altitude Awareness -->
+<div class="glass-card p-10 rounded-xl border border-outline-variant/15 flex flex-col gap-6 group hover:bg-white/10 transition-all">
+<div class="w-16 h-16 rounded-lg liquid-gradient flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-3xl">air</span>
+</div>
+<h3 class="font-headline text-2xl font-bold">High-Altitude Awareness</h3>
+<p class="text-on-surface-variant leading-relaxed">Breathing becomes a conscious act at 5,000m. Focus on rhythmic hydration and immediate descent if symptoms of AMS appear. Your lungs are your primary engine.</p>
+<ul class="mt-4 space-y-3 font-label text-sm tracking-wide">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> 4-5 LITERS OF WATER DAILY</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> ASCEND SLOWLY, SLEEP LOW</li>
+</ul>
+</div>
+<!-- Emergency Procedures -->
+<div class="glass-card p-10 rounded-xl border border-outline-variant/15 flex flex-col gap-6 group hover:bg-white/10 transition-all">
+<div class="w-16 h-16 rounded-lg liquid-gradient flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-3xl">sos</span>
+</div>
+<h3 class="font-headline text-2xl font-bold">Emergency Procedures</h3>
+<p class="text-on-surface-variant leading-relaxed">When the grid vanishes, our satellite protocols take over. Every bike is tracked. In case of distress, use the hard-linked SOS switch on your console.</p>
+<ul class="mt-4 space-y-3 font-label text-sm tracking-wide">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> SATELLITE PHONE TRAINING</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> 24/7 BASECAMP MONITORING</li>
+</ul>
+</div>
+<!-- Gear Requirements -->
+<div class="glass-card p-10 rounded-xl border border-outline-variant/15 flex flex-col gap-6 group hover:bg-white/10 transition-all">
+<div class="w-16 h-16 rounded-lg liquid-gradient flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-3xl">shield</span>
+</div>
+<h3 class="font-headline text-2xl font-bold">Gear Requirements</h3>
+<p class="text-on-surface-variant leading-relaxed">The terrain is unforgiving. We mandate full armored protection. Our gear is tested in sub-zero conditions to ensure you stay warm and shielded.</p>
+<ul class="mt-4 space-y-3 font-label text-sm tracking-wide">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> LEVEL 2 CE ARMOR MANDATORY</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> ALL-WEATHER GORE-TEX LAYERS</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Summit-Ready Checklist -->
+<section class="px-10 py-32 relative bg-surface-container-low">
+<div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+<div class="w-full lg:w-1/2">
+<h2 class="font-headline text-6xl font-extrabold mb-8 tracking-tighter uppercase leading-none">SUMMIT-READY<br/><span class="text-primary">CHECKLIST</span></h2>
+<p class="text-on-surface-variant text-lg mb-10 leading-relaxed">Every machine in our fleet undergoes a 42-point inspection by factory-trained technicians before it leaves basecamp. We don't just rent bikes; we provide precision instruments for the peaks.</p>
+<div class="glass-card p-8 rounded-xl border border-outline-variant/10">
+<div class="space-y-6">
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded border-2 border-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label font-bold tracking-wider uppercase">High-Traction Tires</span>
+</div>
+<span class="text-on-surface-variant text-sm">Checked 2h ago</span>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded border-2 border-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label font-bold tracking-wider uppercase">Dual-Channel ABS Brakes</span>
+</div>
+<span class="text-on-surface-variant text-sm">Pressure Verified</span>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded border-2 border-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label font-bold tracking-wider uppercase">Synthetic Fluid Levels</span>
+</div>
+<span class="text-on-surface-variant text-sm">Fully Synthetic</span>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded border-2 border-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label font-bold tracking-wider uppercase">Electronic Diagnostics</span>
+</div>
+<span class="text-on-surface-variant text-sm">Zero Errors</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/2 relative h-[500px]">
+<img class="w-full h-full object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-700" data-alt="Extreme close-up of a rugged motorcycle tire tread and suspension covered in fine mountain dust with sharp metallic highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr5QM-e7-Q5BI-EgDtUxLXXZAk5m343Hc7OxAxj4ecDW9RcU6DBt1WDqyDpmNeD5OvoFh6dGp0THHq4-Yjj_2-0JVEKeCspsdaEMuPwPaq2duX-WOwavbv2IHLWhzBZ-F5eVD86ul-U-pkR4i_8wLQp8CA6oS8D0mVevszthNZnZan_6PXNE3_9y_mqHg2vmKUu5DwOXlq1OXPkWrbH3bTF8MyrPBW43bFNFfsvrfPHjMtN6MOom1MVkggAC584H372hsRIwgNGwc"/>
+<div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-xl border border-outline-variant/15 max-w-[280px]">
+<p class="text-xs font-label text-secondary mb-2 tracking-[0.2em] uppercase">Technician Note</p>
+<p class="text-sm italic text-on-surface-variant">"The Himalayan air is thin and cold. We tune every fuel injection system specifically for high-altitude combustion efficiency."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Himalayan Terrain Guide -->
+<section class="px-10 py-32 bg-background">
+<div class="mb-20 text-center">
+<h2 class="font-headline text-5xl font-bold tracking-tight mb-4">TERRAIN GUIDE</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">Master the elements. The mountain changes every kilometer. From loose gravel to icy river crossings.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group relative overflow-hidden rounded-xl h-[400px]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 brightness-75" data-alt="Extreme mountain switchback road with sharp turns descending into a deep valley with dramatic rock formations" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCggbPfx7ebZEiIaHNjqeFfKIBgE6eszY1aUglfUkgg6OwgV2yv9DKINk0rtAgv0cwtD-E9AAcYv2qTk5it6h-m0fP03k3Dp-BBCPIa9Bd1chhX0qi1HPM7Gr3EH3D9GFPwvkyRVS3zUqxyi3490qSIx-o5LWssihPx1LLcCohk8jK1E_4PSBNcxv6qq90wdhOsDPO7OSSCdIBTajQuZvgQsZ1E8lQ0omM4roe558SDrtR6iQ1ZuJs4veBdngI-XurCrnTgr8BbSFA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-8">
+<h4 class="font-headline text-2xl font-bold mb-2">Mountain Switchbacks</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Focus on the exit. Keep your eyes up and your weight balanced. Lean the bike, not your body, for maximum control on hairpin turns.</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl h-[400px]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 brightness-75" data-alt="A shallow glacial river crossing a dirt road with water splashing against stones and sunlight reflecting off the ripples" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQXEx5wTsMGWJfJGRaMCH16xWnQObCfAC-ffT8pb4U8CfA7KfTG2w4JmcHd2UGVoE-WV9T23Y5rOGsMriPtJXU-C0DQRWehBGmIL0YtBNqdpX7aco0PQklpl23bf67tHQZVct8ib2icAB9FcIOxsWRji0uCWnTIwL_c72082Z3ak1zVx1QVbWZ-AbatJvVG2Q5x0UDpU49iYuKHU_r2YNUw3viNqVNZzG1th8x53NjDm2M7MF2fi6Vtf9HxoUF89joLIVTDMR9KkY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-8">
+<h4 class="font-headline text-2xl font-bold mb-2">River Crossings</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Enter with momentum. Pick a line and commit. The rocks are slippery; maintain steady throttle and keep your boots on the pegs.</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl h-[400px]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 brightness-75" data-alt="Wide shot of a dusty gravel road stretching toward snow-capped Himalayan peaks under a bright clear sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBom3ak-19rJlX1iQQtLKWRCy2E281O4txMSYtqOpFVGbJXXD5xluhHZg8Iis1FzUkWIvoPv-t8FRgNKGnbSSs2QBv_5u5yKxTBSO07_wAX02hCJFYxI6bVrRq2QuJoEESSxo2thnulzqinwFsMsTHEErjtk5EDMA_W1XYwAtZ44v5vcbtmweDnDg---OE7wRh_VkFiRxMzfZlgU2OHlVnYj20ZHkP0OLunDgcKPW5TMjKtjFCtaMXsJ7VyUS3wuE9g0WnIpVqANEA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-8">
+<h4 class="font-headline text-2xl font-bold mb-2">Loose Gravel</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Let the bike dance. Grip the tank with your knees and keep your arms loose. Trust the machine's geometry to find its path.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Call to Action -->
+<section class="py-32 px-10">
+<div class="glass-card rounded-3xl p-20 flex flex-col items-center text-center border border-outline-variant/10 overflow-hidden relative">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent opacity-50"></div>
+<h2 class="font-headline text-6xl font-extrabold mb-6 tracking-tighter uppercase">Equipped and Ready?</h2>
+<p class="text-on-surface-variant text-xl max-w-2xl mb-12">The peak is calling. Your machine is prepped. The only thing missing is your courage. Secure your rental for the ultimate Himalayan journey.</p>
+<button class="bg-secondary text-on-secondary px-12 py-5 rounded-xl font-headline text-xl font-bold tracking-widest hover:scale-105 active:scale-95 transition-all amber-glow uppercase">
+          Rent Now
+        </button>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full flex flex-col items-center gap-8 bg-slate-950 py-20 px-10 border-t border-slate-800/30">
+<div class="text-lg font-black text-slate-200 uppercase font-headline">THE LIQUID SUMMIT</div>
+<div class="flex flex-wrap justify-center gap-10">
+<a class="text-slate-500 hover:text-cyan-300 transition-all duration-300 font-label text-xs tracking-widest uppercase" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-cyan-300 transition-all duration-300 font-label text-xs tracking-widest uppercase" href="#">Insurance Policy</a>
+<a class="text-slate-500 hover:text-cyan-300 transition-all duration-300 font-label text-xs tracking-widest uppercase" href="#">Himalayan Safety Protocols</a>
+<a class="text-slate-500 hover:text-cyan-300 transition-all duration-300 font-label text-xs tracking-widest uppercase" href="#">Contact Basecamp</a>
+</div>
+<div class="text-slate-500 font-label text-xs tracking-[0.2em] mt-8">
+      © 2024 THE LIQUID SUMMIT. RUGGED POWER, REFINED PRECISION.
+    </div>
+</footer>
+</body></html>
