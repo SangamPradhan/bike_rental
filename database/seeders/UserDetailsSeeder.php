@@ -22,18 +22,18 @@ class UserDetailsSeeder extends Seeder
         // Admin user
         $admin = User::create([
             'name' => 'Admin',
-            'email' => 'admin@Gratifyspa.com.np',
+            'email' => 'admin@Bikerental.com.np',
             'phone' => '9801234567',
-            'password' => bcrypt('Gratifyspa@123')
+            'password' => bcrypt('Bikerental@123')
         ]);
         $admin->assignRole($adminRole); // Assign the role object
 
         // Staff user
         $staff = User::create([
             'name' => 'Staff',
-            'email' => 'staff@Gratifyspa.com.np',
+            'email' => 'staff@Bikerental.com.np',
             'phone' => '9876543211',
-            'password' => bcrypt('MediStaff@123')
+            'password' => bcrypt('StaffBikerental@123')
         ]);
         $staff->assignRole($staffRole);
 
@@ -41,9 +41,9 @@ class UserDetailsSeeder extends Seeder
 
         $admin = User::create([
             'name' => 'Admin',
-            'email' => 'clinic.Gratifyspa@gmail.com',
+            'email' => 'Bikerental.user@gmail.com',
             'phone' => '061590664',
-            'password' => bcrypt('forMail@only')
+            'password' => bcrypt('UserBikerental@123')
         ]);
         $admin->assignRole($adminRole);
     }

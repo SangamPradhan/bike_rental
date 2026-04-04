@@ -69,11 +69,11 @@
             @foreach($galleries as $gallery)
                 <div class="masonry-item relative group overflow-hidden rounded-2xl bg-surface-container-high transition-all duration-700 hover:scale-[1.02] shadow-2xl border border-white/5">
                     <img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110" 
-                         src="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png')}}" 
+                        src="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png') }}" 
                          alt="Gallery Image" />
                     
                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 liquid-glass m-4 rounded-xl border border-white/10">
-                        <span class="material-symbols-outlined text-secondary text-4xl mb-4 self-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500" style="font-variation-settings: 'FILL' 1;">open_in_full</span>
+                        <a href="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png') }}" class="material-symbols-outlined text-secondary text-4xl mb-4 self-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 fancybox" data-fancybox="gallery" style="font-variation-settings: 'FILL' 1;">open_in_full</a>
                         <h3 class="font-headline text-2xl font-bold text-white mb-1 uppercase tracking-tight transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Himalayan Peak</h3>
                         <p class="font-label text-[10px] tracking-widest text-primary uppercase font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">Series Alpha • 2024</p>
                     </div>
