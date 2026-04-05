@@ -92,7 +92,7 @@
                     </div>
                     <div class="glass-panel p-1 rounded-xl flex border border-white/10">
                         <button
-                            class="flex-1 py-3 text-sm font-bold tracking-widest uppercase text-on-secondary bg-secondary rounded-lg transition-all shadow-lg amber-glow">Legacy</button>
+                            class="flex-1 py-3 text-white text-sm font-bold tracking-widest uppercase bg-secondary rounded-lg transition-all shadow-lg amber-glow">Legacy</button>
                         <button
                             class="flex-1 py-3 text-sm font-bold tracking-widest uppercase text-white/40 hover:text-white transition-all">Mission</button>
                         <button
@@ -127,7 +127,7 @@
             <div class="max-w-7xl mx-auto px-8">
                 <div class="text-center mb-16">
                     <span class="text-secondary font-label text-sm font-bold uppercase tracking-[0.3em]">The Experts</span>
-                    <h3 class="text-5xl font-headline font-black mt-4">Our Dedicated Specialists</h3>
+                    <h3 class="text-5xl font-headline font-black mt-4 text-white">Our Dedicated Specialists</h3>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
