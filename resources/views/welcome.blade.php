@@ -2,52 +2,110 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section class="relative min-h-screen w-full flex items-stretch justify-center overflow-visible bg-surface">
+        <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img class="w-full h-full object-cover brightness-50"
-                alt="Cinematic shot of a rugged adventure motorcycle parked on a high mountain pass in the Himalayas at sunrise with misty peaks background"
+            <img class="w-full h-full object-cover brightness-[0.4]"
+                alt="Adventure motorcycle in the Himalayas"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG51RImK1RojzTYfPf6jvi2VoKEPEfJIDLwC_XQfViaPnZaQBGcE22yiDO5rGAZbq_nLGWdYuEdgOjA5POUEe00lI4t0QSOi1n5ITTkiMAOD9lrnOkGNRIqRGERAE9-EjzOTEaGhs4i1fH8Iw9sGXNWs5BiOzHKvhoNxGOs-xnUCdDUoArJUI9Tv_ynzKcbmcte29XVwKvwjo6y6KAe9o3pnRAK_J6BT0g-lLF_l5sOnXwvEcFSohy2wKUq7GqyF1quR444VH1I3o" />
-            <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-surface/20 via-transparent to-surface"></div>
         </div>
-        <div class="relative z-10 w-full max-w-screen-2xl px-12 pt-32">
-            <div class="flex flex-col items-start max-w-4xl">
-                <h1
-                    class="font-accent text-8xl md:text-[12rem] leading-[0.9] text-white tracking-tighter uppercase drop-shadow-2xl">
-                    Ride the <span class="text-primary italic">Himalayas.</span>
-                </h1>
-                <!-- Booking Widget -->
-                <div class="mt-12 w-full max-w-3xl glass-panel p-1 rounded-xl shadow-2xl text-white">
-                    <div class="flex p-4 gap-4">
-                        <button
-                            class="px-6 py-2 bg-secondary text-on-secondary rounded-lg font-label text-sm font-bold uppercase tracking-widest amber-glow">Vehicle</button>
-                        <button
-                            class="px-6 py-2 text-white/60 hover:text-white font-label text-sm font-bold uppercase tracking-widest transition-colors">Tour</button>
+
+        <div class="relative z-20 w-full max-w-screen-2xl px-6 md:px-12 booking-search-container">
+            <div class="flex flex-col h-full">
+                <!-- Hero Headline -->
+                <div class="mt-16 lg:mt-24 mb-10 w-full max-w-[1100px] mx-auto">
+                    <h1 class="font-accent text-6xl md:text-8xl lg:text-9xl leading-[0.9] text-white tracking-tighter uppercase drop-shadow-2xl text-left">
+                        Ride to the <span class="text-[#9be9f7] italic">Himalayas.</span>
+                    </h1>
+                </div>
+
+                <!-- Advanced Booking Search Widget (Pushed to bottom by flex-end in CSS) -->
+                <div class="booking-widget-wrapper">
+                    <!-- Tabs -->
+                    <div class="booking-tabs">
+                        <button type="button" id="tab-rent" class="tab-btn active" onclick="switchBookingTab('rent')">Rent a Bike</button>
+                        <button type="button" id="tab-pickup" class="tab-btn" onclick="switchBookingTab('pickup')">Pick Up</button>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-0.5 bg-white/5 rounded-b-lg">
-                        <div
-                            class="p-6 border-b md:border-b-0 md:border-r border-white/5 hover:bg-white/5 transition-colors group">
-                            <span class="block text-[10px] uppercase tracking-widest text-primary font-bold mb-2">Select
-                                Model</span>
-                            <span class="text-lg font-headline font-bold">Himalayan 450</span>
-                        </div>
-                        <div
-                            class="p-6 border-b md:border-b-0 md:border-r border-white/5 hover:bg-white/5 transition-colors group">
-                            <span
-                                class="block text-[10px] uppercase tracking-widest text-primary font-bold mb-2">Location</span>
-                            <span class="text-lg font-headline font-bold">Leh, Ladakh</span>
-                        </div>
-                        <div
-                            class="p-6 border-b md:border-b-0 md:border-r border-white/5 hover:bg-white/5 transition-colors group">
-                            <span class="block text-[10px] uppercase tracking-widest text-primary font-bold mb-2">Pick
-                                Up</span>
-                            <span class="text-lg font-headline font-bold">Oct 24, 2024</span>
-                        </div>
-                        <div class="p-4 flex items-center">
-                            <button
-                                class="w-full h-full liquid-gradient text-on-primary font-headline uppercase font-black text-sm tracking-widest rounded-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all shadow-[0_0_15px_rgba(155,233,247,0.3)]">
-                                <span class="material-symbols-outlined">search</span> Search
-                            </button>
-                        </div>
+
+                    <!-- Form Content -->
+                    <div class="booking-form-content">
+                        <h2 class="booking-title">Advanced Booking Search</h2>
+                        
+                        <form action="#" method="GET" id="booking-form">
+                            <input type="hidden" name="booking_type" id="booking_type" value="rent">
+                            
+                            <div class="booking-grid">
+                                <!-- Pick Up Date -->
+                                <div class="booking-field-group">
+                                    <label class="booking-label">Pick Up Date <span class="required">*</span></label>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-gray-500 text-sm">calendar_month</span>
+                                        <input type="date" name="pickup_date" id="pickup_date" class="booking-input" required>
+                                    </div>
+                                </div>
+
+                                <!-- Drop off Date -->
+                                <div class="booking-field-group">
+                                    <label class="booking-label">Drop off Date <span class="required">*</span></label>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-gray-500 text-sm">calendar_month</span>
+                                        <input type="date" name="dropoff_date" id="dropoff_date" class="booking-input" required>
+                                    </div>
+                                </div>
+
+                                <!-- Pickup Location -->
+                                <div class="booking-field-group">
+                                    <label class="booking-label">Pickup Location <span class="required">*</span></label>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-gray-500 text-sm">location_on</span>
+                                        <select name="pickup_location" id="pickup_location" class="booking-input" required>
+                                            <option value="" disabled selected>Select City</option>
+                                            <option value="Kathmandu">Kathmandu</option>
+                                            <option value="Pokhara">Pokhara</option>
+                                            <option value="Butwal">Butwal</option>
+                                            <option value="Narayangadh">Narayangadh</option>
+                                            <option value="Gorkha">Gorkha</option>
+                                        </select>
+                                        <!-- Placeholder for fixed location -->
+                                        <input type="text" id="pickup_location_fixed" class="booking-input hidden" value="Pokhara-15, Lakeside" readonly disabled>
+                                    </div>
+                                </div>
+
+                                <!-- Dropoff Location -->
+                                <div class="booking-field-group">
+                                    <label class="booking-label">Dropoff Location <span class="required">*</span></label>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-gray-500 text-sm">location_on</span>
+                                        <select name="dropoff_location" id="dropoff_location" class="booking-input" required>
+                                            <option value="" disabled selected>Select City</option>
+                                            <option value="Kathmandu">Kathmandu</option>
+                                            <option value="Pokhara">Pokhara</option>
+                                            <option value="Butwal">Butwal</option>
+                                            <option value="Narayangadh">Narayangadh</option>
+                                            <option value="Gorkha">Gorkha</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Vehicle Type -->
+                                <div class="booking-field-group">
+                                    <label class="booking-label">Type <span class="required">*</span></label>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-gray-500 text-sm">sell</span>
+                                        <select name="vehicle_type" id="vehicle_type" class="booking-input" required>
+                                            <option value="Bike">Bike</option>
+                                            <option value="Scooter">Scooter</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Search Button -->
+                                <div class="flex items-end">
+                                    <button type="submit" class="search-submit-btn w-full">SEARCH</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -59,7 +117,7 @@
         <div class="max-w-screen-2xl mx-auto px-12">
             <div class="mb-20">
                 <span class="text-secondary font-label text-sm font-bold uppercase tracking-[0.3em]">The Journey</span>
-                <h2 class="text-5xl md:text-6xl font-headline font-black mt-4">Simple 4-Step Process</h2>
+                <h2 class="text-5xl md:text-6xl font-headline font-black mt-4 text-white">Simple 4-Step Process</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div
@@ -68,7 +126,7 @@
                         <span class="text-9xl font-headline font-black">01</span>
                     </div>
                     <span class="material-symbols-outlined text-5xl text-secondary mb-6 amber-glow">motorcycle</span>
-                    <h3 class="text-xl font-headline font-bold mb-4 uppercase tracking-tighter">Choose Your Bike</h3>
+                    <h3 class="text-xl font-headline font-bold mb-4 uppercase tracking-tighter text-white">Choose Your Bike</h3>
                     <p class="text-on-surface-variant font-body">Browse our fleet of expedition-ready Royal Enfields and
                         KTMs.</p>
                 </div>
@@ -78,7 +136,7 @@
                         <span class="text-9xl font-headline font-black">02</span>
                     </div>
                     <span class="material-symbols-outlined text-5xl text-secondary mb-6 amber-glow">book_online</span>
-                    <h3 class="text-xl font-headline font-bold mb-4 uppercase tracking-tighter">Make a Booking</h3>
+                    <h3 class="text-xl font-headline font-bold mb-4 uppercase tracking-tighter text-white">Make a Booking</h3>
                     <p class="text-on-surface-variant font-body">Secure your dates with our transparent liquid-fast
                         interface.</p>
                 </div>
@@ -88,7 +146,7 @@
                         <span class="text-9xl font-headline font-black">03</span>
                     </div>
                     <span class="material-symbols-outlined text-5xl text-secondary mb-6 amber-glow">map</span>
-                    <h3 class="text-xl font-headline font-bold mb-4 uppercase tracking-tighter">Select Location</h3>
+                    <h3 class="text-xl font-headline font-bold mb-4 uppercase tracking-tighter text-white">Select Location</h3>
                     <p class="text-on-surface-variant font-body">Choose pickup points across Leh, Manali, or Srinagar.
                     </p>
                 </div>
@@ -98,7 +156,7 @@
                         <span class="text-9xl font-headline font-black">04</span>
                     </div>
                     <span class="material-symbols-outlined text-5xl text-secondary mb-6 amber-glow">vaping_rooms</span>
-                    <h3 class="text-xl font-headline font-bold mb-4 uppercase tracking-tighter">Ride with Pride</h3>
+                    <h3 class="text-xl font-headline font-bold mb-4 uppercase tracking-tighter text-white">Ride with Pride</h3>
                     <p class="text-on-surface-variant font-body">Hit the high passes with premium gear and 24/7 roadside
                         support.</p>
                 </div>
@@ -111,7 +169,7 @@
         <div class="max-w-screen-2xl mx-auto px-12">
             <div class="text-center mb-24">
                 <span class="text-secondary font-label text-sm font-bold uppercase tracking-[0.3em]">Core Values</span>
-                <h2 class="text-5xl md:text-6xl font-headline font-black mt-4">Best Brands?</h2>
+                <h2 class="text-5xl md:text-6xl font-headline font-black mt-4 text-white">Best Brands?</h2>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
                 <!-- Left Info Points -->
@@ -122,7 +180,7 @@
                             <span class="material-symbols-outlined text-3xl text-primary">support_agent</span>
                         </div>
                         <div>
-                            <h4 class="text-xl font-headline font-black uppercase mb-3">24-Hour Service</h4>
+                            <h4 class="text-xl font-headline font-black uppercase mb-3 text-white">24-Hour Service</h4>
                             <p class="text-on-surface-variant text-sm leading-relaxed max-w-xs ml-auto">Round-the-clock
                                 emergency assistance and support for all our riders in the mountains.</p>
                         </div>
@@ -133,7 +191,7 @@
                             <span class="material-symbols-outlined text-3xl text-primary">handyman</span>
                         </div>
                         <div>
-                            <h4 class="text-xl font-headline font-black uppercase mb-3">Dedicated Workshop</h4>
+                            <h4 class="text-xl font-headline font-black uppercase mb-3 text-white">Dedicated Workshop</h4>
                             <p class="text-on-surface-variant text-sm leading-relaxed max-w-xs ml-auto">In-house
                                 maintenance by certified mechanics ensures every bike is expedition-ready.</p>
                         </div>
@@ -154,7 +212,7 @@
                             <span class="material-symbols-outlined text-3xl text-primary">verified</span>
                         </div>
                         <div>
-                            <h4 class="text-xl font-headline font-black uppercase mb-3">ISO Certification</h4>
+                            <h4 class="text-xl font-headline font-black uppercase mb-3 text-white">ISO Certification</h4>
                             <p class="text-on-surface-variant text-sm leading-relaxed max-w-xs">We adhere to
                                 international safety and quality standards for motorcycle fleet management.</p>
                         </div>
@@ -165,7 +223,7 @@
                             <span class="material-symbols-outlined text-3xl text-primary">map</span>
                         </div>
                         <div>
-                            <h4 class="text-xl font-headline font-black uppercase mb-3">All Nepal Service</h4>
+                            <h4 class="text-xl font-headline font-black uppercase mb-3 text-white">All Nepal Service</h4>
                             <p class="text-on-surface-variant text-sm leading-relaxed max-w-xs">Pickup and drop-off
                                 network spanning across all provinces and major high-altitude hubs.</p>
                         </div>
@@ -186,7 +244,7 @@
             </div>
             <div>
                 <span class="text-secondary font-label text-sm font-bold uppercase tracking-[0.3em]">Superiority</span>
-                <h2 class="text-5xl md:text-6xl font-headline font-black mt-4 mb-12">The Liquid Summit Edge.</h2>
+                <h2 class="text-5xl md:text-6xl font-headline font-black mt-4 mb-12 text-white">The Liquid Summit Edge.</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="glass-panel p-6 rounded-lg border border-white/5 flex flex-col gap-3 group hover:border-primary/40 transition-colors">
                         <span class="text-primary font-headline font-bold text-3xl">24/7</span>
@@ -223,7 +281,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div>
                     <span class="text-secondary font-label text-sm font-bold uppercase tracking-[0.3em]">Knowledge Base</span>
-                    <h2 class="text-5xl font-headline font-black mt-4 mb-10">Have Any Questions?</h2>
+                    <h2 class="text-5xl font-headline font-black mt-4 mb-10 text-white">Have Any Questions?</h2>
                     <div class="space-y-4">
                         <!-- FAQ Item 1 -->
                         <details class="group glass-panel rounded-xl border border-white/5 overflow-hidden open:border-primary/30 transition-all duration-300" open>
@@ -329,12 +387,12 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Blog Card 1 -->
-                <div class="group glass-panel rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-500">
+                <div class="blog-card group glass-panel rounded-xl overflow-hidden border border-white/5 transition-all duration-500">
                     <div class="h-64 overflow-hidden relative">
                         <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             alt="First person perspective from a motorcycle rider looking at a narrow winding road through a steep mountain gorge"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcl1vnQ6vT120ehZJIoZbTQlihJJrViGoI9VlELHeMyORu0n6VaFIgK4gNn1t9KBzckp1GGBNem4_r8ZQ08QUMd9lTnYLWM5huc-WsLEwSGObY6qKRpdBQtimghij1RTiqKk-4YcKZhaMhuThXQW_sZB4r3JS1td7-zNrmfFiw_glUEH6d7WoBmhXa3g1YFR8SxcGrGQDAaUUxhCnhUDYfs5EOx1g8L5Lc07FLoSWhUN5fE7HRxesHzFplCS9eiU_i79w8Nc4VGgs" />
-                        <span class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">Adventure</span>
+                        <span class="tag-span absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">Adventure</span>
                     </div>
                     <div class="p-8">
                         <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors">Crossing the Khardung La Pass</h4>
@@ -347,12 +405,12 @@
                     </div>
                 </div>
                 <!-- Blog Card 2 -->
-                <div class="group glass-panel rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-500">
+                <div class="blog-card group glass-panel rounded-xl overflow-hidden border border-white/5 transition-all duration-500">
                     <div class="h-64 overflow-hidden relative">
                         <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             alt="Close up of essential motorcycle camping gear laid out on a topographical map, including gloves, multi-tool, and a helmet"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-U4flATo5I_gdHa2BF3IjsNeQJ9NySdHeOisr7ZxJXP0SXZ9spLM3DP7Nxc4IRRbTN8RHJajalkZ2Q0CdRV1JUtx_oZwVtz8MS44ZsskZmzUoLLxmZP24ObNOiUCXgwffoq_sV_Ab2ti5-4KRgzYoimlNRD-MIFRWUqAXx6OgEQwnmVZJkuVWW5zcE_cHgqXvLCTyZfGjMNBB6JTuY0MT6-eofhGTHJ3rhuMogrmA4rbAq_ZoVRrkk213Mqkf0fvZDBUk4nnKfao" />
-                        <span class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">Gear Guide</span>
+                        <span class="tag-span absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">Gear Guide</span>
                     </div>
                     <div class="p-8">
                         <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors">Packing List for Spiti Valley</h4>
@@ -365,12 +423,12 @@
                     </div>
                 </div>
                 <!-- Blog Card 3 -->
-                <div class="group glass-panel rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-500">
+                <div class="blog-card group glass-panel rounded-xl overflow-hidden border border-white/5 transition-all duration-500">
                     <div class="h-64 overflow-hidden relative">
                         <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             alt="Beautiful landscape of a turquoise high-altitude lake surrounded by barren brown mountains under a deep blue sky"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk5NVZd5VQdhq0qPVZt7t8ghQ5qD6p8rWkzUBokXoRNXzWi2e3LRXhw_kpcgBLxO3HSo52o_CekrbnsVu21HIf4lFRH0kR0OrCYwlSHQhEXMkKJisgFfp0xL0-tudFHa6e3Lhmfe88-DWcX3nusGH4pg2n1TdTLGNtXu7ejTaHSbBBV_5q0SrDZiW4u3ZA4zOv7Gu8vyZ0PFzNsWuFm2UdwS2pjlLpJOMNzKaYLXlvernjpkxZ3v4_KC5eeLhi8--2kBCTcVqeDbM" />
-                        <span class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">Itinerary</span>
+                        <span class="tag-span absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">Itinerary</span>
                     </div>
                     <div class="p-8">
                         <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors">Ladakh: The 14-Day Circuit</h4>
@@ -385,4 +443,115 @@
             </div>
         </div>
     </section>
+
+    <!-- Instant Booking CTA -->
+    <section class="py-24 bg-surface pb-32">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12">
+            <div class="relative h-[500px] w-full rounded-[4rem] md:rounded-[5rem] overflow-hidden group shadow-[0_45px_90px_-15px_rgba(0,0,0,0.9)] border border-white/5 border-t-white/10">
+                <!-- Background Image & Parallax Hover -->
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG51RImK1RojzTYfPf6jvi2VoKEPEfJIDLwC_XQfViaPnZaQBGcE22yiDO5rGAZbq_nLGWdYuEdgOjA5POUEe00lI4t0QSOi1n5ITTkiMAOD9lrnOkGNRIqRGERAE9-EjzOTEaGhs4i1fH8Iw9sGXNWs5BiOzHKvhoNxGOs-xnUCdDUoArJUI9Tv_ynzKcbmcte29XVwKvwjo6y6KAe9o3pnRAK_J6BT0g-lLF_l5sOnXwvEcFSohy2wKUq7GqyF1quR444VH1I3o" 
+                     alt="Expedition motorcycle in the high Himalayas" 
+                     class="absolute inset-0 w-full h-full object-cover brightness-[0.4] transition-transform duration-[3s] group-hover:scale-110" />
+                
+                <!-- Advanced Overlay (Dark Glass) -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-100"></div>
+
+                <!-- Content Layer -->
+                <div class="relative h-full flex flex-col items-center justify-center text-center px-10">
+                    <div class="space-y-8 max-w-4xl">
+                        <!-- Headline -->
+                        <h2 class="text-4xl md:text-7xl font-accent font-black text-white uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
+                            Book Your Dream <span class="text-secondary italic">Ride Today.</span>
+                        </h2>
+                        
+                        <!-- Subheadline -->
+                        <p class="text-white font-body text-base md:text-xl max-w-3xl mx-auto uppercase tracking-[0.4em] font-black opacity-80 mb-10 border-y border-white/10 py-4 inline-block">
+                            Transform your journey with our expert care.
+                        </p>
+                        
+                        <!-- CTA Button -->
+                        <div class="pt-6">
+                            <a href="{{ route('services') }}" 
+                               class="inline-block px-14 py-6 bg-secondary text-black font-headline font-black uppercase text-sm tracking-[0.3em] rounded-full hover:scale-110 active:scale-95 transition-all duration-500 shadow-[0_25px_50px_rgba(254,178,52,0.5)] hover:shadow-[0_45px_90px_rgba(254,178,52,0.3)]">
+                               Reserve Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
+
+@push('js')
+<script>
+    /**
+     * Toggles between "Rent a Bike" (Delivery) and "Pick Up" (Store) tabs.
+     * Updates the Pickup Location field accordingly.
+     */
+    function switchBookingTab(type) {
+        const tabRent = document.getElementById('tab-rent');
+        const tabPickup = document.getElementById('tab-pickup');
+        const bookingType = document.getElementById('booking_type');
+        const pickupSelect = document.getElementById('pickup_location');
+        const pickupFixed = document.getElementById('pickup_location_fixed');
+
+        if (type === 'rent') {
+            tabRent.classList.add('active');
+            tabPickup.classList.remove('active');
+            bookingType.value = 'rent';
+            
+            // Show city dropdown for delivery
+            pickupSelect.classList.remove('hidden');
+            pickupSelect.disabled = false;
+            pickupSelect.required = true;
+            
+            // Hide fixed address
+            pickupFixed.classList.add('hidden');
+            pickupFixed.disabled = true;
+        } else {
+            tabPickup.classList.add('active');
+            tabRent.classList.remove('active');
+            bookingType.value = 'pickup';
+            
+            // Hide city dropdown
+            pickupSelect.classList.add('hidden');
+            pickupSelect.disabled = true;
+            pickupSelect.required = false;
+            
+            // Show fixed store address
+            pickupFixed.classList.remove('hidden');
+            pickupFixed.disabled = false;
+            // The fixed input is readonly, so it acts as a label/locked field
+        }
+    }
+
+    /**
+     * Date Validation Setup
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        const today = new Date().toISOString().split('T')[0];
+        const pickupDateInput = document.getElementById('pickup_date');
+        const dropoffDateInput = document.getElementById('dropoff_date');
+
+        if (pickupDateInput) {
+            // Pick up date cannot be in the past
+            pickupDateInput.min = today;
+            
+            pickupDateInput.addEventListener('change', function() {
+                // Drop off date must be at least the pick up date
+                dropoffDateInput.min = this.value;
+                
+                // If drop off is now before pick up, reset it
+                if (dropoffDateInput.value && dropoffDateInput.value < this.value) {
+                    dropoffDateInput.value = this.value;
+                }
+            });
+        }
+
+        if (dropoffDateInput) {
+            dropoffDateInput.min = today;
+        }
+    });
+</script>
+@endpush
