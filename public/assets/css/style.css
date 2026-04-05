@@ -7,10 +7,10 @@
     --color-default-rgb: 33, 37, 41;
     --color-bg: #ffffff;
     --color-background-rgb: 255, 255, 255;
-    --color-primary: #00662f;
+    --color-primary: #9be9f7;
     --color-alternate-bg: var(--color-primary)47;
     --color-primary-rgb: 232, 69, 69;
-    --color-secondary: #006241;
+    --color-secondary: #feb234;
     --color-bg-secondary: #dc35451a;
     --color-text: #212529;
     --color-dark-blue: #084596;
@@ -59,6 +59,27 @@
     --color-nav-dropdown-hover: #e84545;
     --color-nav-dropdown-background: #ffffff;
     --color-nav-mobile-background: #ffffff;
+}
+
+/* Universal Brand Color Overrides (Solving Tailwind/Bootstrap Conflicts) */
+.text-primary {
+    color: var(--color-primary) !important;
+}
+
+.text-secondary {
+    color: var(--color-secondary) !important;
+}
+
+.text-white {
+    color: #f9f5fd !important;
+}
+
+.bg-primary {
+    background-color: var(--color-primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--color-secondary) !important;
 }
 
 /* Smooth scroll */
@@ -188,7 +209,7 @@ img {
 
 .back-to-top i {
     font-size: 28px;
-    color: #fff;
+    color: #000000;
     line-height: 0;
 }
 
@@ -210,6 +231,16 @@ img {
 .myModal .modal-content {
     /* width: 10rem; */
 }
+
+.transition-colors {
+    color: #fff !important;
+}
+
+.transition-colors:hover {
+    color: var(--color-primary) !important;
+    border-color: var(--color-secondary) !important;
+}
+
 
 .myModal .modal-grid {
     display: grid;
@@ -1854,6 +1885,7 @@ ul.story-list {
     text-align: center;
     border-radius: 10px;
 }
+
 .service-wrappper {
     background: #ff00000f;
     /* box-shadow: 0 0 30px rgb(0 0 0 / 8%); */
@@ -2012,7 +2044,8 @@ ul.story-list {
     }
 
     .service-card {
-        margin-bottom: 0.99rem; /* Decreased gap by 1% */
+        margin-bottom: 0.99rem;
+        /* Decreased gap by 1% */
     }
 
     .service-image {
@@ -2120,8 +2153,7 @@ ul.story-list {
 }
 
 /* High DPI/Retina Displays */
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-resolution: 192dpi) {
     .service-image img {
         /* Higher quality images for retina displays */
@@ -6627,7 +6659,290 @@ img.hero-img {
     transform: translateX(-20px);
 }
 
+/* Blog Card Hover Effects */
+.blog-card {
+    transition: all 0.5s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.blog-card:hover {
+    border-color: var(--color-secondary) !important;
+}
+
+.blog-card .tag-span {
+    background-color: var(--color-secondary) !important;
+    color: #000 !important;
+    transition: all 0.3s ease;
+}
+
+.blog-card:hover .tag-span {
+    background-color: var(--color-secondary) !important;
+    box-shadow: 0 0 10px rgba(254, 178, 52, 0.5);
+}
+
 [data-aos="fade-left"] {
     transform: translateX(20px);
 }
 
+/* Advanced Booking Search Widget - Dark Glass Theme */
+.booking-search-container {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 50px;
+    min-height: auto;
+}
+
+.booking-widget-wrapper {
+    background: transparent;
+    overflow: visible;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.booking-tabs {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    /* Slightly separate the inactive tab */
+}
+
+.tab-btn {
+    padding: 10px 25px;
+    font-family: var(--font-headline);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    border-radius: 12px 12px 0 0;
+    transition: all 0.3s ease;
+}
+
+/* Active tab (Dark Glass) - Merges with the form */
+.tab-btn.active {
+    background: rgba(25, 25, 25, 0.6);
+    backdrop-filter: blur(20px);
+    color: #ffffff;
+    border: none;
+    z-index: 2;
+}
+
+/* Inactive tab (Transparent Glass) */
+.tab-btn:not(.active) {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn:not(.active):hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.booking-form-content {
+    background: rgba(25, 25, 25, 0.6);
+    /* Slightly lighter and more transparent */
+    backdrop-filter: blur(20px);
+    /* Glass blur effect */
+    padding: 30px 40px;
+    color: #ffffff;
+    border-radius: 0 16px 16px 16px;
+    /* L-shape logic */
+    /* Sharp box-shadow but no top border */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.03);
+    position: relative;
+    z-index: 10;
+}
+
+.booking-title {
+    font-family: var(--font-headline);
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-left: 3px solid var(--color-primary);
+    padding-left: 15px;
+}
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.booking-field-group {
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    /* White dashed border on black glass */
+    border-radius: 8px;
+    padding: 10px 15px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    /* Subtle backdrop for input area */
+    transition: all 0.3s ease;
+}
+
+.booking-field-group:focus-within {
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(155, 233, 247, 0.1);
+}
+
+.booking-label {
+    display: block;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    /* Dimmed white label */
+    margin-bottom: 4px;
+}
+
+.booking-label .required {
+    color: var(--color-secondary);
+}
+
+.booking-input {
+    width: 100%;
+    border: none;
+    background: transparent !important;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 4px 0;
+    outline: none;
+    font-family: var(--font-body);
+    color-scheme: dark;
+    /* CRITICAL for date inputs on dark backgrounds */
+}
+
+/* Force transparency on browser-internal date picker elements */
+.booking-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    /* Ensure calendar icon is white */
+    cursor: pointer;
+}
+
+.booking-input::-webkit-datetime-edit-fields-wrapper {
+    background: transparent;
+}
+
+.booking-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.booking-input option {
+    background: #1a1a1a;
+    /* Needed for dropdown visibility on dark themes */
+    color: #fff;
+}
+
+.search-submit-btn {
+    background: var(--color-secondary);
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-family: var(--font-headline);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(254, 178, 52, 0.2);
+}
+
+.search-submit-btn:hover {
+    background: #e59f2a;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(254, 178, 52, 0.3);
+}
+
+@media (max-width: 1200px) {
+    .booking-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-search-container {
+        padding-top: 100px;
+        padding-bottom: 30px;
+        justify-content: flex-start;
+    }
+
+    .booking-form-content {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .booking-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Article Page Specifics (Journal Aesthetic) */
+.article-details-body {
+    font-family: var(--font-body);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Hide all images in the article body per user request */
+.article-details-body img, 
+.article-details-body figure {
+    display: none !important;
+}
+
+.article-details-body p {
+    margin-bottom: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    text-align: justify;
+}
+
+.article-details-body h2, 
+.article-details-body h3 {
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-headline);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.article-details-body blockquote {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid var(--color-secondary);
+    padding: 2.5rem 3rem;
+    margin: 3.5rem 0;
+    border-radius: 0 1rem 1rem 0;
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--color-secondary);
+    line-height: 1.4;
+}
+
+/* Amber Glow for Icons */
+.amber-glow {
+    color: var(--color-secondary) !important;
+    filter: drop-shadow(0 0 10px rgba(254, 178, 52, 0.4));
+    transition: all 0.5s ease;
+}
+
+.group:hover .amber-glow {
+    filter: drop-shadow(0 0 20px rgba(254, 178, 52, 0.8));
+    transform: scale(1.1);
+}
