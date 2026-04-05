@@ -35,13 +35,13 @@
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->routeIs('about') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
                     href="{{ route('about') }}">About</a>
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->routeIs('services') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
-                    href="{{ route('services') }}">Services</a>
+                    href="{{ route('services') }}">Rides</a>
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->routeIs('gallery') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
                     href="{{ route('gallery') }}">Gallery</a>
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->routeIs('articles') || request()->routeIs('article-details') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
-                    href="{{ route('articles') }}">News</a>
+                    href="{{ route('articles') }}">Stories</a>
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->routeIs('contact') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
-                    href="{{ route('contact') }}">Contact</a>
+                    href="{{ route('contact') }}">Support</a>
             </div>
             <div class="flex items-center space-x-4">
                 <button
