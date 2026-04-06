@@ -62,9 +62,9 @@
 
         <form action="{{ route('booking.extras.store') }}" method="POST">
             @csrf
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mt-0">
                 <!-- Left Panel: Your Reservation -->
-                <aside class="lg:col-span-3 space-y-6">
+                <aside data-aos="fade-right" data-aos-delay="100" class="lg:col-span-3 space-y-6">
                     <div class="glass-panel rounded-2xl p-8 border border-white/5 shadow-2xl">
                         <h3 class="font-headline font-black text-xl tracking-tightest mb-8 text-[#9be9f7] uppercase italic">
                             YOUR RESERVATION</h3>
@@ -115,11 +115,11 @@
                 </aside>
 
                 <!-- Center Content: Ride Accessories -->
-                <!-- Center Content: Ride Accessories -->
-                <section class="lg:col-span-6">
-                    <div class="flex flex-col gap-8">
+                <section data-aos="fade-up" data-aos-delay="200" class="lg:col-span-6 items-start -mt-4">
+                    <div class="flex flex-col gap-8 -mt-8">
                         <!-- Hero/Bike Profile -->
-                        <div class="relative rounded-2xl overflow-hidden glass-panel aspect-[16/9] border border-white/5">
+                        <div
+                            class="relative rounded-2xl overflow-hidden glass-panel h-[420px] w-full border border-white/5">
                             <img class="absolute inset-0 w-full h-full object-cover opacity-60" alt="{{ $vehicle->title }}"
                                 src="{{ $vehicle->getImage() }}" />
                             <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent">
@@ -146,7 +146,7 @@
                         <!-- Extras Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Extra Item 1: Roadside Assistance -->
-                            <div onclick="toggleExtra(event, this)"
+                            <div onclick="toggleExtra(event, this)" data-aos="fade-up" data-aos-delay="300"
                                 class="glass-panel p-6 rounded-xl border border-white/5 group hover:border-primary/30 transition-all cursor-pointer relative">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="p-3 bg-white/5 rounded-lg group-hover:scale-110 duration-300">
@@ -162,7 +162,7 @@
                                         class="text-xs text-white/40 font-normal">/ day</span></p>
                             </div>
                             <!-- Extra Item 2: Side Panniers -->
-                            <div onclick="toggleExtra(event, this)"
+                            <div onclick="toggleExtra(event, this)" data-aos="fade-up" data-aos-delay="400"
                                 class="glass-panel p-6 rounded-xl border border-white/5 group hover:border-primary/30 transition-all cursor-pointer relative">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="p-3 bg-white/5 rounded-lg group-hover:scale-110 duration-300">
@@ -179,11 +179,11 @@
                                         class="text-xs text-white/40 font-normal">/ day</span></p>
                             </div>
                             <!-- Extra Item 3: Full Gear Kit -->
-                            <div onclick="toggleExtra(event, this)"
+                            <div onclick="toggleExtra(event, this)" data-aos="fade-up" data-aos-delay="500"
                                 class="glass-panel p-6 rounded-xl border border-white/5 group hover:border-primary/30 transition-all cursor-pointer relative">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="p-3 bg-white/5 rounded-lg group-hover:scale-110 duration-300">
-                                        <span class="material-symbols-outlined text-primary">shield_health</span>
+                                        <span class="material-symbols-outlined text-primary">shield</span>
                                     </div>
                                     <input type="checkbox" name="extras[]" value="gear" onchange="updateTotal()"
                                         class="w-5 h-5 rounded border-white/10 bg-white/5 text-primary focus:ring-primary ring-offset-background extra-checkbox"
@@ -195,7 +195,7 @@
                                         class="text-xs text-white/40 font-normal">/ day</span></p>
                             </div>
                             <!-- Extra Item 4: Satellite Messenger -->
-                            <div onclick="toggleExtra(event, this)"
+                            <div onclick="toggleExtra(event, this)" data-aos="fade-up" data-aos-delay="600"
                                 class="glass-panel p-6 rounded-xl border border-white/5 group hover:border-primary/30 transition-all cursor-pointer relative">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="p-3 bg-white/5 rounded-lg group-hover:scale-110 duration-300">
@@ -216,7 +216,7 @@
                 </section>
 
                 <!-- Right Panel: Price Details -->
-                <aside class="lg:col-span-3">
+                <aside data-aos="fade-left" data-aos-delay="100" class="lg:col-span-3">
                     <div class="glass-panel rounded-xl border border-white/5 sticky top-32 overflow-hidden shadow-2xl">
                         <div class="bg-primary/10 px-8 py-6 border-b border-white/5">
                             <h3 class="font-headline font-black text-xl tracking-tight text-primary uppercase italic">PRICE
@@ -241,14 +241,14 @@
                             </div>
                             <div class="pt-6 border-t border-white/10 mt-6">
                                 <div class="flex justify-between items-end">
-                                    <span class="font-label text-xs uppercase tracking-[0.2em] text-white/40">TOTAL
+                                    <span class="font-label text-xs uppercase tracking-[0.2em] text-white/40">TOTAL <br>
                                         Daily</span>
-                                    <span class="font-headline font-black text-4xl text-secondary" id="total-per-day">Nrs.
-                                        {{ number_format($vehicle->rate_per_day) }}</span>
+                                    <span class="font-headline font-black text-2xl text-white"
+                                        id="total-per-day">Nrs.{{ number_format($vehicle->rate_per_day) }}</span>
                                 </div>
                             </div>
                             <button type="submit"
-                                class="w-full bg-secondary text-on-secondary py-5 rounded-lg font-headline font-black tracking-widest text-lg hover:scale-[1.02] active:scale-95 duration-200 amber-glow mt-8 uppercase">
+                                class="w-full bg-secondary text-slate-900 py-4 rounded-xl font-headline font-black tracking-widest text-base hover:scale-[1.02] active:scale-95 transition-all duration-300 amber-glow mt-8 uppercase">
                                 NEXT STEP
                             </button>
                         </div>
@@ -279,11 +279,11 @@
                 const name = container.querySelector('h5').innerText;
                 extrasTotal += price;
                 breakdownHtml += `
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="italic text-white/40">+ ${name}</span>
-                            <span class="font-bold text-white">Nrs. ${price.toLocaleString()}</span>
-                        </div>
-                    `;
+                                                                    <div class="flex justify-between items-center text-sm">
+                                                                        <span class="italic text-white/40">+ ${name}</span>
+                                                                        <span class="font-bold text-white">Nrs. ${price.toLocaleString()}</span>
+                                                                    </div>
+                                                                `;
             });
 
             if (checkboxes.length > 0) {
@@ -311,4 +311,3 @@
         document.addEventListener('DOMContentLoaded', updateTotal);
     </script>
 @endpush
-sh
