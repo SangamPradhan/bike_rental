@@ -146,13 +146,13 @@
                         <!-- Extras Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Extra Item 1: Roadside Assistance -->
-                            <div
+                            <div onclick="toggleExtra(event, this)"
                                 class="glass-panel p-6 rounded-xl border border-white/5 group hover:border-primary/30 transition-all cursor-pointer relative">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="p-3 bg-white/5 rounded-lg group-hover:scale-110 duration-300">
                                         <span class="material-symbols-outlined text-primary">support</span>
                                     </div>
-                                    <input type="checkbox" name="extras[]" value="roadside" onchange="updateTotal()" checked
+                                    <input type="checkbox" name="extras[]" value="roadside" onchange="updateTotal()"
                                         class="w-5 h-5 rounded border-white/10 bg-white/5 text-primary focus:ring-primary ring-offset-background extra-checkbox"
                                         data-price="150">
                                 </div>
@@ -162,7 +162,7 @@
                                         class="text-xs text-white/40 font-normal">/ day</span></p>
                             </div>
                             <!-- Extra Item 2: Side Panniers -->
-                            <div
+                            <div onclick="toggleExtra(event, this)"
                                 class="glass-panel p-6 rounded-xl border border-white/5 group hover:border-primary/30 transition-all cursor-pointer relative">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="p-3 bg-white/5 rounded-lg group-hover:scale-110 duration-300">
@@ -179,13 +179,13 @@
                                         class="text-xs text-white/40 font-normal">/ day</span></p>
                             </div>
                             <!-- Extra Item 3: Full Gear Kit -->
-                            <div
+                            <div onclick="toggleExtra(event, this)"
                                 class="glass-panel p-6 rounded-xl border border-white/5 group hover:border-primary/30 transition-all cursor-pointer relative">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="p-3 bg-white/5 rounded-lg group-hover:scale-110 duration-300">
                                         <span class="material-symbols-outlined text-primary">shield_health</span>
                                     </div>
-                                    <input type="checkbox" name="extras[]" value="gear" onchange="updateTotal()" checked
+                                    <input type="checkbox" name="extras[]" value="gear" onchange="updateTotal()"
                                         class="w-5 h-5 rounded border-white/10 bg-white/5 text-primary focus:ring-primary ring-offset-background extra-checkbox"
                                         data-price="250">
                                 </div>
@@ -195,7 +195,7 @@
                                         class="text-xs text-white/40 font-normal">/ day</span></p>
                             </div>
                             <!-- Extra Item 4: Satellite Messenger -->
-                            <div
+                            <div onclick="toggleExtra(event, this)"
                                 class="glass-panel p-6 rounded-xl border border-white/5 group hover:border-primary/30 transition-all cursor-pointer relative">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="p-3 bg-white/5 rounded-lg group-hover:scale-110 duration-300">
@@ -265,9 +265,7 @@
 
 @push('js')
     <script>
-        const basePrice = {{ $vehicle->rate_per_day }};
-
-        function updateTotal() {
+        const basePrice = {{ $vehicle->rate_per_day }}; function updateTotal() {
             const checkboxes = document.querySelectorAll('.extra-checkbox:checked');
             const breakdown = document.getElementById('extras-breakdown');
             const totalDisplay = document.getElementById('total-per-day');
@@ -277,15 +275,15 @@
 
             checkboxes.forEach(cb => {
                 const price = parseInt(cb.dataset.price);
-                const container = cb.closest('div');
+                const container = cb.closest('div[onclick]');
                 const name = container.querySelector('h5').innerText;
                 extrasTotal += price;
                 breakdownHtml += `
-                                                                                                                <div class="flex justify-between items-center text-sm">
-                                                                                                                    <span class="italic text-white/40">+ ${name}</span>
-                                                                                                                    <span class="font-bold text-white">Nrs. ${price.toLocaleString()}</span>
-                                                                                                                </div>
-                                                                                                            `;
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="italic text-white/40">+ ${name}</span>
+                            <span class="font-bold text-white">Nrs. ${price.toLocaleString()}</span>
+                        </div>
+                    `;
             });
 
             if (checkboxes.length > 0) {
@@ -300,7 +298,17 @@
             totalDisplay.innerText = 'Nrs. ' + grandTotal.toLocaleString();
         }
 
+        function toggleExtra(event, element) {
+            // Don't toggle if we clicked the checkbox itself (to avoid double toggle)
+            if (event.target.type === 'checkbox') return;
+
+            const cb = element.querySelector('input[type="checkbox"]');
+            cb.checked = !cb.checked;
+            updateTotal();
+        }
+
         // Initialize total on load
         document.addEventListener('DOMContentLoaded', updateTotal);
     </script>
 @endpush
+sh
