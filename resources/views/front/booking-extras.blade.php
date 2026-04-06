@@ -62,7 +62,7 @@
 
         <form action="{{ route('booking.extras.store') }}" method="POST">
             @csrf
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mt-0">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start -mt-6">
                 <!-- Left Panel: Your Reservation -->
                 <aside data-aos="fade-right" data-aos-delay="100" class="lg:col-span-3 space-y-6">
                     <div class="glass-panel rounded-2xl p-8 border border-white/5 shadow-2xl">
@@ -94,6 +94,11 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class="mt-8 pt-6 border-t border-white/5">
+                                <p class="font-headline italic font-bold text-sm text-amber-400/80">"Ride with Passion, Ride
+                                    with Pride!"
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -115,8 +120,8 @@
                 </aside>
 
                 <!-- Center Content: Ride Accessories -->
-                <section data-aos="fade-up" data-aos-delay="200" class="lg:col-span-6 items-start -mt-4">
-                    <div class="flex flex-col gap-8 -mt-8">
+                <section data-aos="fade-up" data-aos-delay="200" class="lg:col-span-6 -mt-12">
+                    <div class="flex flex-col gap-8">
                         <!-- Hero/Bike Profile -->
                         <div
                             class="relative rounded-2xl overflow-hidden glass-panel h-[420px] w-full border border-white/5">
@@ -130,19 +135,54 @@
                                         <h2 class="font-headline font-black text-3xl tracking-tighter text-white uppercase">
                                             RIDE ACCESSORIES AND
                                             SERVICES</h2>
-                                        <div class="mt-2 flex items-center gap-4">
+                                        <!-- <div class="mt-2 flex items-center gap-4">
+                                                    <span
+                                                        class="text-white/40 text-xs font-label uppercase">{{ $vehicle->brand->name }}
+                                                        {{ $vehicle->title }}</span>
+                                                </div> -->
+                                    </div>
+
+                                    <!-- Vehicle Quick Specs Overlay -->
+                                    <div class="hidden md:flex items-center gap-2">
+                                        <div
+                                            class="glass-panel px-4 py-2 border border-white/10 rounded-xl flex flex-col items-center min-w-[80px]">
                                             <span
-                                                class="bg-primary/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border border-primary/20 uppercase">RIDER:
-                                                {{ Auth::user()->name ?? 'GUEST' }}</span>
-                                            <span class="text-white/40 text-xs">•</span>
+                                                class="material-symbols-outlined text-primary text-sm mb-1">settings_input_component</span>
+                                            <span class="text-white font-bold text-xs">{{ $vehicle->engine_cc }}cc</span>
+                                            <span class="text-[8px] text-white/40 uppercase tracking-widest">Engine</span>
+                                        </div>
+                                        <div
+                                            class="glass-panel px-4 py-2 border border-white/10 rounded-xl flex flex-col items-center min-w-[80px]">
+                                            <span class="material-symbols-outlined text-secondary text-sm mb-1">speed</span>
+                                            <span class="text-white font-bold text-xs">{{ $vehicle->kmpl }}kmpl</span>
+                                            <span class="text-[8px] text-white/40 uppercase tracking-widest">Mileage</span>
+                                        </div>
+                                        <div
+                                            class="glass-panel px-4 py-2 border border-white/10 rounded-xl flex flex-col items-center min-w-[80px]">
                                             <span
-                                                class="text-white/40 text-xs font-label uppercase">{{ $vehicle->brand->name }}
-                                                {{ $vehicle->title }}</span>
+                                                class="material-symbols-outlined text-primary text-sm mb-1">local_gas_station</span>
+                                            <span
+                                                class="text-white font-bold text-xs">{{ $vehicle->fuel_tank_capacity }}L</span>
+                                            <span class="text-[8px] text-white/40 uppercase tracking-widest">Tank</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Vehicle Description Section -->
+                        <div class="glass-panel p-8 rounded-2xl border border-white/5 bg-white/5 shadow-xl">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span
+                                    class="w-1 h-6 bg-primary rounded-full shadow-[0_0_10px_rgba(155,233,247,0.5)]"></span>
+                                <h4 class="font-headline font-bold text-base text-white uppercase tracking-widest italic">
+                                    Machine Overview</h4>
+                            </div>
+                            <p class="text-white/60 text-sm leading-relaxed italic border-l border-white/10 pl-6 py-1">
+                                {!! nl2br(e($vehicle->description)) !!}
+                            </p>
+                        </div>
+
                         <!-- Extras Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Extra Item 1: Roadside Assistance -->
@@ -224,15 +264,18 @@
                         </div>
                         <div class="p-8 space-y-6">
                             <div class="space-y-4">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <p class="font-bold text-white tracking-tight">{{ $vehicle->title }}</p>
-                                        <p class="text-xs text-white/40">Nrs. {{ number_format($vehicle->rate_per_day) }} x
-                                            1
-                                            day</p>
+                                <div class="flex justify-between gap-4 items-start">
+                                    <div class="flex-1">
+                                        <p class="font-bold text-white tracking-tight leading-tight">{{ $vehicle->title }}
+                                        </p>
+                                        <p class="text-[10px] uppercase tracking-widest text-white/40 mt-1">Nrs.
+                                            {{ number_format($vehicle->rate_per_day) }} x 1 day
+                                        </p>
                                     </div>
-                                    <span class="font-label font-bold text-white">Nrs.
-                                        {{ number_format($vehicle->rate_per_day) }}</span>
+                                    <div class="flex-shrink-0 text-right">
+                                        <span class="font-headline font-black text-white">Nrs.
+                                            {{ number_format($vehicle->rate_per_day) }}</span>
+                                    </div>
                                 </div>
                                 <div id="extras-breakdown"
                                     class="space-y-2 text-sm text-white/60 border-t border-white/5 pt-4">
@@ -243,21 +286,21 @@
                                 <div class="flex justify-between items-end">
                                     <span class="font-label text-xs uppercase tracking-[0.2em] text-white/40">TOTAL <br>
                                         Daily</span>
-                                    <span class="font-headline font-black text-2xl text-white"
+                                    <span class="font-headline font-black text-2xl text-secondary"
                                         id="total-per-day">Nrs.{{ number_format($vehicle->rate_per_day) }}</span>
                                 </div>
                             </div>
                             <button type="submit"
-                                class="w-full bg-secondary text-slate-900 py-4 rounded-xl font-headline font-black tracking-widest text-base hover:scale-[1.02] active:scale-95 transition-all duration-300 amber-glow mt-8 uppercase">
+                                class="w-full bg-secondary text-[#1a1a1a] py-4 rounded-xl font-headline font-black tracking-widest text-base hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-[0_10px_20px_rgba(254,178,52,0.3)] mt-8 uppercase">
                                 NEXT STEP
                             </button>
                         </div>
                     </div>
-                    <div
-                        class="mt-6 flex items-center justify-center gap-3 text-white/40 text-[10px] tracking-widest uppercase">
-                        <span class="material-symbols-outlined text-xs">verified_user</span>
-                        SECURE CHECKOUT BY SUMMIT
-                    </div>
+                    <!-- <div
+                            class="mt-6 flex items-center justify-center gap-3 text-white/40 text-[10px] tracking-widest uppercase">
+                            <span class="material-symbols-outlined text-xs">verified_user</span>
+                            SECURE CHECKOUT BY SUMMIT
+                        </div> -->
                 </aside>
         </form>
     </main>
@@ -279,11 +322,11 @@
                 const name = container.querySelector('h5').innerText;
                 extrasTotal += price;
                 breakdownHtml += `
-                                                                    <div class="flex justify-between items-center text-sm">
-                                                                        <span class="italic text-white/40">+ ${name}</span>
-                                                                        <span class="font-bold text-white">Nrs. ${price.toLocaleString()}</span>
-                                                                    </div>
-                                                                `;
+                                        <div class="flex justify-between items-center text-sm">
+                                            <span class="italic text-white/40">+ ${name}</span>
+                                            <span class="font-bold text-white">Nrs. ${price.toLocaleString()}</span>
+                                        </div>
+                                    `;
             });
 
             if (checkboxes.length > 0) {
