@@ -15,65 +15,85 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        // Reset cached roles and permissions
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
         // permissions for each menu item
         $permissions = [
             'adminservices',
             'testimonials',
             'galleries',
             'bookings',
-            // 'womans_day_bookings',
             'news',
             'staffs',
             'faqs',
-            // 'teej_bookings',
             'popups',
             'careers',
             'payments',
             'international_bookings',
             'notices',
             'users',
-            // 'reset_passwords',
-            // 'profile'
-
+            'brands',   // New fleet permission
+            'vehicles', // New fleet permission
         ];
 
-        //  permissions for each menu item
+        // Create permissions using firstOrCreate for idempotency
         foreach ($permissions as $permission) {
             $this->createAutoAllPermissions($permission);
         }
 
-        //  permissions to roles
-        $adminPermissions = $permissions; // admin permissions
-        $staffPermissions = ['news']; // staff permission
-
+        // Assign permissions to roles
         $admin = Role::findByName('admin');
-        foreach ($permissions as $permission) {
-            $this->giveAutoAllPermissions($admin, $permission);
-        }
-        $staff = Role::findByName('staff');
-        foreach ($staffPermissions as $permission) {
-            $this->giveAutoAllPermissions($staff, $permission);
+        if ($admin) {
+            foreach ($permissions as $permission) {
+                $this->giveAutoAllPermissions($admin, $permission);
+            }
         }
 
+        $staffPermissions = ['news']; // staff permission
+        $staff = Role::findByName('staff');
+        if ($staff) {
+            foreach ($staffPermissions as $permission) {
+                $this->giveAutoAllPermissions($staff, $permission);
+            }
+        }
     }
 
+    /**
+     * Create base and common sub-permissions if they don't exist.
+     */
     function createAutoAllPermissions($permission)
     {
-        Permission::create(['name' => $permission]);
-        Permission::create(['name' => $permission . '.create']);
-        Permission::create(['name' => $permission . '.edit']);
-        Permission::create(['name' => $permission . '.show']);
-        Permission::create(['name' => $permission . '.delete']);
+        $perms = [
+            $permission,
+            $permission . '.create',
+            $permission . '.edit',
+            $permission . '.show',
+            $permission . '.delete',
+        ];
+
+        foreach ($perms as $p) {
+            Permission::firstOrCreate(['name' => $p, 'guard_name' => 'web']);
+        }
     }
 
+    /**
+     * Safely assign a permission and its common CRUD sub-permissions to a role.
+     */
     function giveAutoAllPermissions($role, $permission)
     {
-        $role->givePermissionTo($permission);
-        $role->givePermissionTo($permission . '.show');
-        $role->givePermissionTo($permission . '.create');
-        $role->givePermissionTo($permission . '.edit');
-        $role->givePermissionTo($permission . '.delete');
+        $perms = [
+            $permission,
+            $permission . '.show',
+            $permission . '.create',
+            $permission . '.edit',
+            $permission . '.delete',
+        ];
+
+        foreach ($perms as $p) {
+            if (!$role->hasPermissionTo($p)) {
+                $role->givePermissionTo($p);
+            }
+        }
     }
 }
-
-

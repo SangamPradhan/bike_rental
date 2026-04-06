@@ -337,6 +337,19 @@ return [
             'icon' => 'fas fa-fw fa-plus',
             'can' => 'bookings'
         ],
+        ['header' => 'FLEET MANAGEMENT'],
+        [
+            'text' => 'Brands',
+            'url' => 'admin/brands',
+            'icon' => 'fas fa-fw fa-tags',
+            'can' => 'brands'
+        ],
+        [
+            'text' => 'Vehicles',
+            'url' => 'admin/vehicles',
+            'icon' => 'fas fa-fw fa-motorcycle',
+            'can' => 'vehicles'
+        ],
         [
             'text' => 'Payments',
             'url' => 'admin/payments',
