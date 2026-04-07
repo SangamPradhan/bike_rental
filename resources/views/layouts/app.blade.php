@@ -130,6 +130,9 @@
                       "DEFAULT": "0.25rem",
                       "lg": "0.5rem",
                       "xl": "0.75rem",
+                      "2xl": "1rem",
+                      "3xl": "1.5rem",
+                      "4xl": "2rem",
                       "full": "9999px"
                   },
                   "fontFamily": {
@@ -173,6 +176,45 @@
       .no-scrollbar {
           -ms-overflow-style: none;
           scrollbar-width: none;
+      }
+
+      /* Cinematic 3D Reveal Effects */
+      .reveal-3d {
+          perspective: 1500px;
+          transform-style: preserve-3d;
+      }
+
+      [data-aos="cinematic-up"] {
+          opacity: 0;
+          transform: translateY(100px) translateZ(-200px) rotateX(15deg);
+          transition-property: transform, opacity;
+      }
+
+      [data-aos="cinematic-up"].aos-animate {
+          opacity: 1;
+          transform: translateY(0) translateZ(0) rotateX(0);
+      }
+
+      [data-aos="cinematic-right"] {
+          opacity: 0;
+          transform: translateX(-100px) translateZ(-200px) rotateY(-15deg);
+          transition-property: transform, opacity;
+      }
+
+      [data-aos="cinematic-right"].aos-animate {
+          opacity: 1;
+          transform: translateX(0) translateZ(0) rotateY(0);
+      }
+
+      [data-aos="cinematic-left"] {
+          opacity: 0;
+          transform: translateX(100px) translateZ(-200px) rotateY(15deg);
+          transition-property: transform, opacity;
+      }
+
+      [data-aos="cinematic-left"].aos-animate {
+          opacity: 1;
+          transform: translateX(0) translateZ(0) rotateY(0);
       }
 
       /* Custom Cursor Styles */
@@ -221,6 +263,7 @@
   @yield('content')
 
   @include('layouts.partials.footer')
+  @include('front.packages.msg')
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!--  JS Files -->
@@ -249,6 +292,19 @@
 
   <!-- For adding js from other pages -->
   @stack('js')
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          AOS.init({
+              duration: 1000,
+              easing: 'ease-out-quint',
+              once: true,
+              mirror: false,
+              // Trigger when element is about 35-40% into the viewport
+              offset: Math.floor(window.innerHeight * 0.35),
+          });
+      });
+  </script>
 
   <!-- slider open on page load -->
   <script>

@@ -17,18 +17,23 @@
     @if (Session::has('success'))
         <script>
             Swal.fire({
-                title: "Gratifying Spa",
-                html: `<p style="text-align: center; margin: 0; padding: 0;">Booking Successful. Reservations confirmed.</p>
-                       <p style="text-align: center; margin: 0; padding: 0;">Pay Here</p>
-                       <img src="{{ asset('assets/img/fonepay.png') }}" alt="Scanner"
-                            style="width: 150px; height: auto; display: block; margin: 0 auto;">
-                       <p style="text-align: center; margin: 0; padding: 0; font-style: italic; color: skyblue;">
-                           For payment confirmation, please send a screenshot of the payment to our WhatsApp number.
-                           <a href="https://wa.me/9843237842" style="color: #00662f; text-decoration: underline;">Click here</a>
-                       </p>`,
+                title: "Bike & Scooty Rent Pokhara",
+                html: `<div style="text-align: center;">
+                           <p style="margin-bottom: 15px; font-weight: bold;">Booking Successful! Your adventure starts soon.</p>
+                           <p style="margin-bottom: 10px; font-size: 0.9em; color: #666;">Scan below for advance payment or contact us.</p>
+                           <img src="{{ asset('assets/img/fonepay.png') }}" alt="Payment QR" 
+                                style="width: 200px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 10px auto;">
+                           <p style="margin-top: 15px; font-style: italic; color: #008080;">
+                               Please send the payment screenshot to our WhatsApp.
+                               <br>
+                               <a href="https://wa.me/9843237842" style="color: #25D366; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; margin-top: 5px;">
+                                  <span class="material-symbols-outlined" style="font-size: 18px;">chat</span> Message on WhatsApp
+                               </a>
+                           </p>
+                       </div>`,
                 icon: "success",
-                confirmButtonText: "OK",
-                confirmButtonColor: "#00662f",
+                confirmButtonText: "GOT IT",
+                confirmButtonColor: "#f7941d",
                 customClass: {
                     popup: 'custom-swal-popup'
                 }

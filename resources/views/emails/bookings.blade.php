@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Appointment Confirmation</title>
+    <title>Ride Booking Confirmation</title>
 </head>
+
 <body>
-    <h2>Thank you for booking with Gratifying Spa</h2>
+    <h2>Thank you for booking with Bike Rental</h2>
     <p>Dear {{ $details['name'] }},</p>
     <p>
-        We are pleased to confirm your appointment at Gratifying Spa. Here are the details:
+        We are pleased to confirm your ride booking. Here are the details:
     </p>
     <ul>
-        <li><strong>Appointment Date:</strong> {{ $details['preferred_date'] }}</li>
-        <li><strong>Appointment Time:</strong> {{ $details['preferred_time'] }}</li>
-        <li><strong>Type of Appointment:</strong> {{ $details['appointment_type'] }}</li>
+        <li><strong>Selected Vehicle:</strong> {{ $details['vehicle'] }}</li>
+        <li><strong>Selected Extras:</strong> {{ $details['extras'] }}</li>
+        <li><strong>Brand:</strong> {{ $details['brand'] }}</li>
+        <li><strong>Booking Date:</strong> {{ $details['preferred_date'] }}</li>
+        <li><strong>Duration:</strong> {{ $details['days'] }} Days</li>
+        <li><strong>Total Amount:</strong> {{ $details['total_amount'] }}</li>
     </ul>
     <p>
         If you have any questions or need to reschedule, please contact us.
     </p>
     <p>Thank you,</p>
-    <p><strong> Gratifying Spa Team</strong></p>
+    <p><strong>Bike & Scooty Rent Pokhara</strong></p>
 </body>
-</html>
 
+</html>
