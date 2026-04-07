@@ -33,9 +33,9 @@
     </section>
 
     <main class="relative z-20 pb-24 px-8 max-w-screen-2xl mx-auto -mt-12 md:-mt-24">
-        <!-- Enhanced Progress Bar -->
+
         <!-- Progress Bar Section -->
-        <div class="flex justify-between items-center mb-16 max-w-4xl mx-auto relative px-12">
+        <div class="flex justify-between items-center mb-16 max-w-4xl mx-auto relative px-12 mt-24">
             <div class="absolute top-1/2 left-0 w-full h-[1px] bg-white/5 -z-10 -translate-y-1/2"></div>
             <!-- Step 1 Done -->
             <div class="flex flex-col items-center gap-3">
@@ -63,118 +63,141 @@
             </div>
         </div>
 
-        <form action="{{ route('ride-booking') }}" method="POST">
+        <form action="{{ route('ride-booking.store') }}" method="POST">
             @csrf
-            <div data-aos="cinematic-up" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <!-- Left Side: Booking & User Details -->
-            <div data-aos="cinematic-right" class="lg:col-span-8 flex flex-col gap-6">
-                <!-- Trip Summary Header -->
-                <div class="glass-panel p-10 rounded-3xl border border-white/5 relative overflow-hidden group">
-                        <h3 class="font-headline font-black text-xl tracking-tightest mb-8 text-[#9be9f7] uppercase italic">
-                            RESERVATION</h3>
-                        <div class="space-y-8">
-                            <div class="space-y-2">
-                                <label class="font-headline text-[9px] uppercase tracking-[0.3em] text-white/40">Adventure
-                                    Machine</label>
-                                <p class="text-sm font-bold text-white tracking-wide uppercase">{{ $vehicle->brand->name }}
-                                    {{ $vehicle->title }}
-                                </p>
+            <input type="hidden" name="brand" value="{{ $vehicle->brand->name }}">
+            <input type="hidden" name="vehicle" value="{{ $vehicle->title }}">
+            <input type="hidden" name="extras" value="{{ json_encode($booking['extras'] ?? []) }}">
+            <div data-aos="cinematic-up" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Left Sidebar: Machine & Reservation -->
+                <aside data-aos="cinematic-right" class="lg:col-span-3 space-y-6 lg:sticky lg:top-32">
+                    <!-- Machine Profile -->
+                    <div class="glass-panel overflow-hidden rounded-3xl border border-white/5 bg-white/2 shadow-2xl">
+                        <div class="relative h-48 w-full group">
+                            <img src="{{ $vehicle->getImage() }}" alt="{{ $vehicle->title }}"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent">
                             </div>
+                            <div class="absolute bottom-4 left-6">
+                                <p class="text-[8px] font-headline tracking-[0.3em] uppercase text-primary/80 mb-1">SELECTED
+                                    MACHINE</p>
+                                <h4 class="font-headline font-black text-lg text-white uppercase italic tracking-tightest">
+                                    {{ $vehicle->title }}
+                                </h4>
+                            </div>
+                        </div>
+
+                        <!-- Technical Specs -->
+                        <div class="p-6 grid grid-cols-3 gap-2 border-t border-white/5 bg-white/2">
+                            <div class="flex flex-col items-center gap-1">
+                                <span
+                                    class="material-symbols-outlined text-primary text-sm opacity-60">settings_input_component</span>
+                                <span class="text-[10px] font-bold text-white">{{ $vehicle->engine_cc }}cc</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1">
+                                <span class="material-symbols-outlined text-secondary text-sm opacity-60">speed</span>
+                                <span class="text-[10px] font-bold text-white">{{ $vehicle->kmpl }}kmpl</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1">
+                                <span
+                                    class="material-symbols-outlined text-primary text-sm opacity-60">local_gas_station</span>
+                                <span class="text-[10px] font-bold text-white">{{ $vehicle->fuel_tank_capacity }}L</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reservation Summary -->
+                    <div class="glass-panel p-8 rounded-3xl border border-white/5 relative overflow-hidden bg-white/[0.03]">
+                        <h3 class="font-headline font-black text-sm tracking-widest mb-6 text-[#9be9f7] uppercase italic">
+                            Selected Extras</h3>
+                        <div class="space-y-6">
                             <div class="space-y-2">
-                                <label class="font-headline text-[9px] uppercase tracking-[0.3em] text-white/40">Selected
-                                    Extras</label>
                                 @if(!empty($booking['extras']))
                                     <ul class="space-y-2">
                                         @foreach($booking['extras'] as $extra)
-                                            <li class="flex items-center gap-2 text-xs text-secondary font-bold">
-                                                <span class="material-symbols-outlined text-sm">done_all</span>
+                                            <li class="flex items-center gap-2 text-[10px] text-secondary font-bold italic">
+                                                <span class="material-symbols-outlined text-xs">done_all</span>
                                                 {{ ucfirst($extra) }}
                                             </li>
                                         @endforeach
                                     </ul>
                                 @else
-                                    <p class="text-xs text-white/20 italic">No extras selected</p>
+                                    <p class="text-[10px] text-white/10 italic">No extras selected</p>
                                 @endif
-                            </div>
-                            <div class="pt-6 border-t border-white/5">
-                                <p
-                                    class="font-headline italic font-bold text-[10px] text-secondary tracking-widest uppercase">
-                                    "Forged in the Himalayas"</p>
                             </div>
                         </div>
                     </div>
+                </aside>
 
-                    <div class="space-y-8">
-                        <h3 class="font-headline font-black text-4xl tracking-tightest uppercase italic text-[#9be9f7]">
-                            RIDER DOSSIER</h3>
+                <!-- Center Part: Rider Dossier -->
+                <div data-aos="cinematic-up" class="lg:col-span-6 flex flex-col gap-8">
+                    <h3 class="font-headline font-black text-4xl tracking-tightest uppercase italic text-[#9be9f7]">
+                        RIDER DOSSIER</h3>
 
-                        @include('front.packages.msg')
+                    @include('front.packages.msg')
 
-                        <div class="grid grid-cols-2 gap-8">
-                            <div class="col-span-2 md:col-span-1 space-y-3">
-                                <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">FULL
-                                    NAME</label>
-                                <input
-                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
-                                    placeholder="COMMANDER JOHN DOE" type="text" name="name" required
-                                    value="{{ old('name') }}" />
-                            </div>
-                            <div class="col-span-2 md:col-span-1 space-y-3">
-                                <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">EMAIL
-                                    ADDRESS</label>
-                                <input
-                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
-                                    placeholder="DOE@SUMMIT.ADVENTURE" type="email" name="email" required
-                                    value="{{ old('email') }}" />
-                            </div>
-                            <div class="col-span-2 md:col-span-1 space-y-3">
-                                <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">MOBILE
-                                    CONTACT</label>
-                                <input
-                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
-                                    placeholder="+977-98XXXXXXXX" type="tel" name="phone" required
-                                    value="{{ old('phone') }}" />
-                            </div>
-                            <div class="col-span-2 md:col-span-1 space-y-3">
-                                <label
-                                    class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">IDENTIFICATION
-                                    NO. (Passport / License)</label>
-                                <input
-                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
-                                    placeholder="X-90887-NP" type="text" name="id_no" required value="{{ old('id_no') }}" />
-                            </div>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="col-span-2 md:col-span-1 space-y-3">
+                            <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">FULL
+                                NAME</label>
+                            <input
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
+                                placeholder="COMMANDER JOHN DOE" type="text" name="name" required
+                                value="{{ old('name') }}" />
+                        </div>
+                        <div class="col-span-2 md:col-span-1 space-y-3">
+                            <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">EMAIL
+                                ADDRESS</label>
+                            <input
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
+                                placeholder="DOE@SUMMIT.ADVENTURE" type="email" name="email" required
+                                value="{{ old('email') }}" />
+                        </div>
+                        <div class="col-span-2 md:col-span-1 space-y-3">
+                            <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">MOBILE
+                                CONTACT</label>
+                            <input
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
+                                placeholder="+977-98XXXXXXXX" type="tel" name="phone" required value="{{ old('phone') }}" />
+                        </div>
+                        <div class="col-span-2 md:col-span-1 space-y-3">
+                            <label
+                                class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">IDENTIFICATION
+                                NO. (Passport / License)</label>
+                            <input
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
+                                placeholder="X-90887-NP" type="text" name="id_no" required value="{{ old('id_no') }}" />
+                        </div>
 
-                            <div class="col-span-2 md:col-span-1 space-y-3">
-                                <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">PICKUP
-                                    DATE</label>
-                                <input
-                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
-                                    type="date" name="preferred_date" required min="{{ date('Y-m-d') }}"
-                                    value="{{ old('preferred_date') }}" />
-                            </div>
+                        <div class="col-span-2 md:col-span-1 space-y-3">
+                            <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">PICKUP
+                                DATE</label>
+                            <input
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
+                                type="date" name="preferred_date" required min="{{ date('Y-m-d') }}"
+                                value="{{ old('preferred_date') }}" />
+                        </div>
 
-                            <div class="col-span-2 md:col-span-1 space-y-3">
-                                <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">RENTAL
-                                    DURATION (DAYS)</label>
-                                <select name="days" id="duration-select"
-                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all font-bold text-sm tracking-wide"
-                                    onchange="calculateFinal()">
-                                    @for($i = 1; $i <= 30; $i++)
-                                        <option value="{{ $i }}" class="bg-surface">{{ $i }} {{ $i == 1 ? 'Day' : 'Days' }}
-                                        </option>
-                                    @endfor
-                                </select>
-                            </div>
+                        <div class="col-span-2 md:col-span-1 space-y-3">
+                            <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">RENTAL
+                                DURATION (DAYS)</label>
+                            <select name="days" id="duration-select"
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all font-bold text-sm tracking-wide"
+                                onchange="calculateFinal()">
+                                @for($i = 1; $i <= 30; $i++)
+                                    <option value="{{ $i }}" class="bg-surface">{{ $i }} {{ $i == 1 ? 'Day' : 'Days' }}
+                                    </option>
+                                @endfor
+                            </select>
+                        </div>
 
-                            <div class="col-span-2 space-y-3">
-                                <label
-                                    class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">STRATEGIC
-                                    REQUIREMENTS</label>
-                                <textarea
-                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
-                                    placeholder="DIETARY RESTRICTIONS, EQUIPMENT SPECIFICATIONS, ETC." rows="4"
-                                    name="requirements">{{ old('requirements') }}</textarea>
-                            </div>
+                        <div class="col-span-2 space-y-3">
+                            <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">STRATEGIC
+                                REQUIREMENTS</label>
+                            <textarea
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
+                                placeholder="DIETARY RESTRICTIONS, EQUIPMENT SPECIFICATIONS, ETC." rows="4"
+                                name="requirements">{{ old('requirements') }}</textarea>
                         </div>
                     </div>
 
@@ -204,9 +227,10 @@
                     </div>
                 </div>
 
-                <!-- Right Side: Sticky Price Details -->
-            <aside data-aos="cinematic-left" class="lg:col-span-4 lg:sticky lg:top-32 space-y-6">
-                <div class="glass-panel p-10 rounded-3xl border border-primary/20 bg-primary/5 shadow-2xl relative overflow-hidden">
+                <!-- Right Side: Price Details -->
+                <aside data-aos="cinematic-left" class="lg:col-span-3 lg:sticky lg:top-32 space-y-6">
+                    <div
+                        class="glass-panel p-10 rounded-3xl border border-primary/20 bg-primary/5 shadow-2xl relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/10 blur-[60px] -mr-16 -mt-16"></div>
                         <h3
                             class="font-headline font-black text-xl mb-10 tracking-widest text-center border-b border-white/5 pb-6 text-white uppercase italic">
@@ -234,7 +258,7 @@
                                     <span
                                         class="font-headline text-[9px] tracking-[0.3em] font-bold text-white/30 uppercase">Total
                                         Payable</span>
-                                    <span class="text-5xl font-accent text-secondary tracking-tighter leading-none"
+                                    <span class="text-4xl font-accent text-secondary tracking-tighter leading-none"
                                         id="grand-total-display">Nrs. 0</span>
                                     <input type="hidden" name="total_price" id="final-total-input">
                                 </div>
