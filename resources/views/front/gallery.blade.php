@@ -84,27 +84,29 @@
     </section>
 
     <main class="py-24 px-6 md:px-12 max-w-screen-2xl mx-auto">
-        <div class="gallery-grid">
-            @foreach($galleries as $gallery)
-                <a href="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png') }}" 
-                   class="gallery-item group fancybox" 
-                   data-fancybox="bikerental-gallery"
-                   data-caption="Photo Series Alpha • Himalayan Peak">
-                    
-                    <img class="gallery-image grayscale group-hover:grayscale-0" 
-                         src="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png') }}" 
-                         alt="BikeRental Gallery Image" />
-                    
-                    <div class="gallery-overlay glass-panel m-4 rounded-lg border border-white/5">
-                        <div class="flex justify-between items-end">
-                            <div>
-                                <h3 class="font-headline text-lg font-bold text-white uppercase tracking-tight">Himalayan Peak</h3>
-                                <p class="font-label text-[10px] tracking-widest text-primary uppercase font-bold">Series Alpha • 2024</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($galleries as $index => $gallery)
+                <div data-aos="cinematic-up" data-aos-delay="{{ ($index % 3) * 100 }}" class="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/5 shadow-2xl">
+                    <a href="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png') }}" 
+                       data-fancybox="bikerental-gallery"
+                       data-caption="Photo Series Alpha • Himalayan Peak"
+                       class="block w-full h-full">
+                        
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                             src="{{ $gallery->getImage() ?? asset('assets/img/gallery/ClinicStore.png') }}" 
+                             alt="BikeRental Gallery Image" />
+                        
+                        <div class="gallery-overlay glass-panel m-4 rounded-lg border border-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <h3 class="font-headline text-lg font-bold text-white uppercase tracking-tight">Himalayan Peak</h3>
+                                    <p class="font-label text-[10px] tracking-widest text-primary uppercase font-bold">Series Alpha • 2024</p>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-2xl amber-glow" style="font-variation-settings: 'FILL' 1;">zoom_in</span>
                             </div>
-                            <span class="material-symbols-outlined text-secondary text-2xl amber-glow" style="font-variation-settings: 'FILL' 1;">zoom_in</span>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             @endforeach
         </div>
 

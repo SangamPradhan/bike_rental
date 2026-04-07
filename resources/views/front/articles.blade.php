@@ -44,10 +44,10 @@
         <div class="flex flex-col lg:flex-row gap-12">
             <!-- Left Column: Blog Grid -->
             <div class="flex-1">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     @if ($articles->count() > 0)
-                        @foreach ($articles as $article)
-                            <article
+                        @foreach ($articles as $index => $article)
+                            <article data-aos="cinematic-up" data-aos-delay="{{ ($index % 3) * 100 }}"
                                 class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl border border-white/5">
                                 <div class="relative h-64 overflow-hidden">
                                     <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -72,62 +72,8 @@
                                 </div>
                             </article>
                         @endforeach
-                    @else
-                        <!-- Static Fallback if no articles exist -->
-                        <article
-                            class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl border border-white/5">
-                            <div class="relative h-64 overflow-hidden">
-                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd4WjvqkXu4IGa8ZgJZiPzbOh0PqtXVVjo11iCK2ljrqADeMsHgHc8Xw7B8tyTrt22DhPm2Ywc4zagm5j_Sq6g5UvizEvAXmGABx5hQZHsVjAey8Obx5aLwy0frbu6t9HPmLEnUnlENISm6XK1fMRyqpAu0i4eIU_piFtP964kkDtZCMnm3lwrH2o1fOv07MZ06nzV1jmQp4g0wiWe99wIDi5-Tviafs-wadMc-oaGya5NoSoKiPlhsh209ihoiVMraG6FxmmlhEY"
-                                    alt="Crossing the Rohtang">
-                                <div
-                                    class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label text-xs font-bold tracking-wider uppercase">
-                                    Oct 24, 2024
-                                </div>
-                            </div>
-                            <div class="p-8">
-                                <h3
-                                    class="font-headline text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors uppercase tracking-tight">
-                                    Crossing the Rohtang: A Solo Rider's Odyssey</h3>
-                                <p class="text-on-surface-variant font-body mb-6 line-clamp-3 text-sm leading-relaxed">
-                                    Navigating the treacherous mud slides and high altitude winds of the Rohtang Pass
-                                    requires more than just a bike; it requires a certain kind of madness and a lot of
-                                    heart.
-                                </p>
-                                <a class="inline-flex items-center text-secondary font-label font-bold tracking-wider uppercase text-xs hover:translate-x-2 transition-transform"
-                                    href="#">
-                                    Read More <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
-                                </a>
-                            </div>
-                        </article>
-                        <article
-                            class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl border border-white/5">
-                            <div class="relative h-64 overflow-hidden">
-                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5PMD7Ie_Ey86PjmgDPlxAD1dny3_bw_35FrZtS5QfH0EkAm509rwqdku1mUWfA8UunQy6B7g3xN5KQDfUviTE6nfEWSW8xT7t7p3LbmVUt0XfAMViHGz4ZEqC3hlHHReqZyf_xOWrYhKTYOCBdMn_7ImGIAJ-8imTZdYU_b99Dz69Y5OiLULvAIwHzmcAzaJ7ONzRtQJhyHDIjPfF-WBfvp12OXglyMBMfXy7yM2EQQq9iWhFYhfMgHle06owC4ClDW2jC1RfQRk"
-                                    alt="Under the Stars">
-                                <div
-                                    class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label text-xs font-bold tracking-wider uppercase">
-                                    Oct 20, 2024
-                                </div>
-                            </div>
-                            <div class="p-8">
-                                <h3
-                                    class="font-headline text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors uppercase tracking-tight">
-                                    Under the Stars: Best Camping Spots in Spiti</h3>
-                                <p class="text-on-surface-variant font-body mb-6 line-clamp-3 text-sm leading-relaxed">
-                                    Where to pitch your tent when the world ends. We explore the high-altitude desert
-                                    plateaus of Spiti Valley for the ultimate wild camping experience.
-                                </p>
-                                <a class="inline-flex items-center text-secondary font-label font-bold tracking-wider uppercase text-xs hover:translate-x-2 transition-transform"
-                                    href="#">
-                                    Read More <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
-                                </a>
-                            </div>
-                        </article>
                     @endif
                 </div>
-
                 <!-- Pagination -->
                 @if ($articles->count() > 0)
                     <div class="mt-16 flex justify-center items-center">
@@ -160,7 +106,7 @@
                 </div>
 
                 <!-- Categories -->
-                <div class="glass-panel p-8 rounded-2xl shadow-xl border border-white/5">
+                <div data-aos="cinematic-left" data-aos-delay="100" class="glass-panel p-8 rounded-2xl shadow-xl border border-white/5">
                     <h4 class="font-headline text-xl font-bold text-white mb-6 uppercase tracking-tight">Categories</h4>
                     <ul class="space-y-3">
                         <li class="flex justify-between items-center text-on-surface-variant hover:text-secondary transition-colors group cursor-pointer">
@@ -179,7 +125,7 @@
                 </div>
 
                 <!-- Plan Your Trip CTA -->
-                <div class="relative overflow-hidden rounded-2xl p-8 bg-surface-container-high border border-white/5 shadow-2xl">
+                <div data-aos="cinematic-left" data-aos-delay="200" class="relative overflow-hidden rounded-2xl p-8 bg-surface-container-high border border-white/5 shadow-2xl">
                     <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/10 blur-3xl rounded-full"></div>
                     <h4 class="font-headline text-2xl font-bold text-white mb-4 relative z-10 uppercase">Start Your Own Adventure</h4>
                     <p class="text-on-surface-variant text-sm mb-6 relative z-10">Stop reading and start riding. Book your Himalayan bike today.</p>

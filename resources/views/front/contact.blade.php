@@ -38,9 +38,9 @@
     <main class="pb-24 px-6 md:px-12 max-w-7xl mx-auto text-white">
 
         <!-- Main Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div data-aos="cinematic-up" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <!-- Left Column: Contact Form -->
-            <div class="lg:col-span-7 glass-panel p-8 md:p-12 rounded-2xl border border-white/5 shadow-2xl relative overflow-hidden">
+            <div data-aos="cinematic-right" class="lg:col-span-7 glass-panel p-8 md:p-12 rounded-2xl border border-white/5 shadow-2xl relative overflow-hidden">
                 <div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-[100px]"></div>
                 
                 @if (session('success'))
@@ -95,7 +95,7 @@
             </div>
 
             <!-- Right Column: Contact Info & Map -->
-            <div class="lg:col-span-5 space-y-8">
+            <div data-aos="cinematic-left" class="lg:col-span-5 space-y-8">
                 <!-- Info Card -->
                 <div class="bg-surface-container-high p-8 rounded-2xl border border-white/5 shadow-2xl space-y-10 relative overflow-hidden">
                     <div class="absolute -right-24 -bottom-24 w-64 h-64 bg-secondary/5 rounded-full blur-[100px]"></div>
@@ -174,8 +174,8 @@
                         ['BikeRental.com', 'building.png', 5],
                     ];
                 @endphp
-                @foreach($steps as $step)
-                    <div class="glass-panel p-8 rounded-2xl border border-white/5 text-center group hover:border-primary/50 transition-all duration-500 shadow-xl">
+                @foreach($steps as $index => $step)
+                    <div data-aos="zoom-in" data-aos-delay="{{ $index * 100 }}" class="glass-panel p-8 rounded-2xl border border-white/5 text-center group hover:border-primary/50 transition-all duration-500 shadow-xl">
                         <div class="w-16 h-16 mx-auto mb-6 relative">
                            <div class="absolute -top-3 -right-3 w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-on-secondary font-headline font-black text-xs">{{ $step[2] }}</div>
                            <img src="{{ asset('assets/img/navigation/' . $step[1]) }}" class="w-full h-full object-contain filter group-hover:brightness-125 transition-all" alt="{{ $step[0] }}">
