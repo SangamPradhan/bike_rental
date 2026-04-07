@@ -27,44 +27,9 @@ class BookingMail extends Mailable
     }
 
 
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: $this->subject,
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            // markdown: 'emails.bookings',
-            // with:[
-            //     'data' => $this->bookings,
-            //     'booking_link' => URL::route('bookings.show', $this->bookings->id)
-            // ]
-            view: 'emails.bookings',
-        );
-    }
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    // public function build()
-    // {
-    //     return $this->markdown('emails.bookings');
-    // }
-    // public function build()
-    // {
-    //     return $this->subject('Appointment Confirmation - Golden Spa')
-    //                 ->markdown('emails.bookings', ['details' => $this->details]);
-    // }
     public function build()
     {
-        return $this->subject('Appointment Confirmation - Gratifying Spa')
+        return $this->subject('Booking Confirmation - Bike Rental')
                     ->view('emails.bookings')
                     ->with('details', $this->details);
     }

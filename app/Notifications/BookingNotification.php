@@ -45,7 +45,6 @@ class BookingNotification extends Notification
     public function toMail($notifiable)
     {
         $genderOptions = ['male' => 'Male', 'female' => 'Female', 'other' => 'Other'];
-        $appointmentTypeOptions = ['type1' => 'Hair', 'type2' => 'Skin', 'type3' => 'Specify Service'];
 
         return (new MailMessage)
                     ->from(config('mail.from.address'), config('mail.from.name'))
@@ -60,8 +59,8 @@ class BookingNotification extends Notification
                     ->line('Gender: ' . $genderOptions[$this->booking->gender])
                     ->line('Preferred Date: ' . $this->booking->preferred_date)
                     ->line('Preferred Time: ' . $this->booking->preferred_time)
-                    ->line('Appointment Type: ' . $this->booking->appointment_type)
-                    ->line('Preferred Doctor: ' . $this->booking->preferred_doctor)
+                    ->line('Vehicle: ' . ($this->booking->vehicle ? ($this->booking->vehicle->brand->name . ' ' . $this->booking->vehicle->title) : 'Adventure Machine'))
+                    ->line('Duration: ' . ($this->booking->days ?? 1) . ' Days')
                     ->action('View Booking', route('bookings.show', $this->booking->id))
                     ->line('Thank you for using our application!');
     }

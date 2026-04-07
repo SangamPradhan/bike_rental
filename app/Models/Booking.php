@@ -9,4 +9,9 @@ class Booking extends BaseModel
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
+    }
 }
