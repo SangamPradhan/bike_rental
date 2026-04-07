@@ -26,6 +26,9 @@ use App\Mail\InternationalBookingMail;
 use App\Events\InternationalBookingEvent;
 use App\Models\Popup;
 use App\Models\Services;
+use App\Models\Brand;
+use App\Models\Vehicle;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -110,10 +113,85 @@ class FrontController extends Controller
         return view('front.success-stories');
     }
 
-    public function appointment()
+    public function rideBooking()
     {
         $services = Services::all();
-        return view('front.appointment', compact('services'));
+        $booking = Session::get('booking', []);
+
+        if (empty($booking['vehicle_id'])) {
+            return redirect()->route('rides')->with('error', 'Please select a vehicle first.');
+        }
+
+        $vehicle = Vehicle::with('brand')->findOrFail($booking['vehicle_id']);
+        return view('front.ride-booking', compact('services', 'vehicle', 'booking'));
+    }
+
+    public function rides(Request $request)
+    {
+        $query = Vehicle::with('brand')->where('is_active', true);
+
+        if ($request->has('type') && $request->type != 'all') {
+            $query->where('type', $request->type);
+        }
+
+        if ($request->has('brand') && $request->brand != 'all') {
+            $query->where('brand_id', $request->brand);
+        }
+
+        $vehicles = $query->orderBy('order', 'ASC')->get();
+        $brands = Brand::orderBy('order', 'ASC')->get();
+
+        return view('front.rides', compact('vehicles', 'brands'));
+    }
+
+    public function selectVehicle($id)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        $booking = Session::get('booking', []);
+        $booking['vehicle_id'] = $id;
+        $booking['base_price'] = $vehicle->rate_per_day;
+        // Default duration 1 day for now, can be updated in Step 3
+        $booking['days'] = 1;
+
+        Session::put('booking', $booking);
+        return redirect()->route('booking.extras');
+    }
+
+    public function bookingExtras()
+    {
+        $booking = Session::get('booking', []);
+        if (empty($booking['vehicle_id'])) {
+            return redirect()->route('rides')->with('error', 'Please select a vehicle first.');
+        }
+
+        $vehicle = Vehicle::with('brand')->findOrFail($booking['vehicle_id']);
+        return view('front.booking-extras', compact('vehicle', 'booking'));
+    }
+
+    public function storeExtras(Request $request)
+    {
+        $booking = Session::get('booking', []);
+        $booking['extras'] = $request->input('extras', []); // array of extra names or keys
+
+        // Calculate extras total (static prices)
+        $extra_total = 0;
+        $prices = [
+            'roadside' => 150,
+            'panniers' => 120,
+            'gear' => 250,
+            'satellite' => 80
+        ];
+
+        foreach ($booking['extras'] as $extra) {
+            if (isset($prices[$extra])) {
+                $extra_total += $prices[$extra];
+            }
+        }
+
+        $booking['extra_total_per_day'] = $extra_total;
+        Session::put('booking', $booking);
+
+        return redirect()->route('ride-booking');
     }
 
     public function offerForm()
@@ -166,75 +244,59 @@ class FrontController extends Controller
         }
     }
 
-    // Static Pages for Packages
-    public function aesthetic()
-    {
-        return view('front.packages.aesthetic');
-    }
-
-    public function allergyTest()
-    {
-        return view('front.packages.allergy-test');
-    }
-
-    public function dermatology()
-    {
-        return view('front.packages.dermatology');
-    }
-
-    public function generalSurgery()
-    {
-        return view('front.packages.general-surgery');
-    }
-
-    public function hairTreatment()
-    {
-        return view('front.packages.hair-treatment');
-    }
-
-    public function laser()
-    {
-        return view('front.packages.laser');
-    }
-
-    public function plasticSurgery()
-    {
-        return view('front.packages.plastic-surgery');
-    }
-
-    public function specialPackage()
-    {
-        return view('front.packages.special-package');
-    }
 
     //For appointment booking
-    public function appointmentBooking(Request $request)
+    public function vehicleBooking(Request $request)
     {
         try {
             $request->validate([
                 'name' => 'required',
                 'phone' => 'required',
+                'email' => 'required|email',
+                'preferred_date' => 'required',
+                'days' => 'required',
+                'total_price' => 'required',
+                'id_no' => 'required',
             ]);
 
             $data = $request->all();
+
+            // Merge with session data if not provided in request
+            $bookingSession = Session::get('booking', []);
+            $data['vehicle_id'] = $bookingSession['vehicle_id'] ?? null;
+            
+            // Ensure extras is properly handled as JSON
+            if ($request->has('extras')) {
+                $data['extras'] = $request->extras;
+            } else {
+                $data['extras'] = json_encode($bookingSession['extras'] ?? []);
+            }
+
             $booking = new Booking($data);
             $booking->save();
 
-            $name= $data['name'];
+            // Clear session after successful save
+            Session::forget('booking');
+
             $emailDetails = [
-                'name' => $data['name'],
-                'preferred_date' => $data['preferred_date'],
-                'preferred_time' => $data['preferred_time'],
-                'appointment_type' => $data['appointment_type'],
+                'name' => $booking->name,
+                'preferred_date' => $booking->preferred_date ?? 'N/A',
+                'vehicle' => ($booking->vehicle && $booking->vehicle->brand) ? $booking->vehicle->brand->name . ' ' . $booking->vehicle->title : 'Adventure Machine',
+                'days' => $booking->days ?? 1,
+                'brand' => ($booking->vehicle && $booking->vehicle->brand) ? $booking->vehicle->brand->name : 'N/A',
+                'total_amount' => $booking->total_price ?? 'N/A', // Changed to match template variable expectation
+                'extras' => implode(', ', array_map('ucfirst', json_decode($booking->extras, true) ?? [])) ?: 'None',
             ];
 
-            Mail::to($data['email'])->send(new BookingMail($emailDetails, $name));
+            if ($request->has('email')) {
+                Mail::to($data['email'])->send(new BookingMail($emailDetails));
+            }
 
-            //event(new BookingEvent($booking));
-            $message = "Your reservation has been confirmed.";
-            return back()->with('success', $message);
+            $message = "Your adventure has been booked! We will contact you soon.";
+            return redirect()->route('rides')->with('success', $message);
         } catch (\Exception $e) {
-            $message = 'Please try again later.';
+            \Log::error('Booking Error: ' . $e->getMessage());
+            $message = 'Please try again later. ' . $e->getMessage();
             return back()->with('error', $message);
         }
     }
@@ -288,9 +350,9 @@ class FrontController extends Controller
     {
         $service = Services::findOrFail($id);
         $relatedServices = Services::where('category', $service->category)
-                                ->where('id', '!=', $service->id)
-                                ->limit(5)
-                                ->get();
+            ->where('id', '!=', $service->id)
+            ->limit(5)
+            ->get();
         return view('front.service-details', compact('service', 'relatedServices'));
     }
 

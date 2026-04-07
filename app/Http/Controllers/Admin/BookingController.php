@@ -22,7 +22,8 @@ class BookingController extends BaseController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\View\View
      */
     public function index(Request $request)
     {
@@ -36,11 +37,11 @@ class BookingController extends BaseController
         $title = "Bookings";
 
         if ($request->ajax()) {
-            $data = Booking::orderBy('id', 'DESC')->get();
+            $data = Booking::with('vehicle.brand')->orderBy('id', 'DESC')->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('name', function ($row) {
-                    return '#' . $row->id . ' ' . $row->name;
+                    return '#' . $row->id . ' ' . $row->name . ($row->vehicle ? ' (' . $row->vehicle->title . ')' : '');
                 })
                 ->editColumn('email', function ($row) {
                     return $row->email;
@@ -73,7 +74,7 @@ class BookingController extends BaseController
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -94,8 +95,8 @@ class BookingController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Booking  $booking
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return \Illuminate\View\View
      */
     public function show($id)
     {
@@ -104,7 +105,7 @@ class BookingController extends BaseController
         }
 
         $info = $this->crudInfo();
-        $info['item'] = Booking::findOrFail($id);
+        $info['item'] = Booking::with('vehicle.brand')->findOrFail($id);
         return view($this->showResource(), $info);
     }
 
@@ -112,7 +113,7 @@ class BookingController extends BaseController
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Booking  $booking
-     *@return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function edit(Booking $booking)
     {
@@ -135,7 +136,7 @@ class BookingController extends BaseController
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Booking  $booking
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Booking $booking)
     {
