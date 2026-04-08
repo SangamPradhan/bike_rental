@@ -180,40 +180,4 @@
             </div>
         </section>
     </main>
-@endsection
-
-@push('js')
-    <script>
-        function setFilter(key, value) {
-            document.getElementById('filter-' + key).value = value;
-
-            if (key === 'type') {
-                // Soft filter brands in sidebar UI
-                const brandItems = document.querySelectorAll('.brand-item');
-                brandItems.forEach(item => {
-                    if (item.dataset.type === value) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-                // Reset brand radio to "all" when switching type to avoid empty results
-                document.querySelector('input[name="brand"][value="all"]').checked = true;
-            }
-
-            // Toggle button classes
-            const btns = document.querySelectorAll('.filter-btn-' + key);
-            btns.forEach(btn => {
-                btn.classList.remove('bg-secondary', 'text-on-secondary', 'shadow-[0_0_15px_rgba(254,178,52,0.3)]');
-                btn.classList.add('bg-white/5', 'text-white/40');
-                if (btn.innerText.toLowerCase() === value.toLowerCase()) {
-                    btn.classList.add('bg-secondary', 'text-on-secondary', 'shadow-[0_0_15px_rgba(254,178,52,0.3)]');
-                    btn.classList.remove('bg-white/5', 'text-white/40');
-                }
-            });
-
-            // Submit form
-            document.getElementById('filter-form').submit();
-        }
-    </script>
-@endpush
+    @endsection
