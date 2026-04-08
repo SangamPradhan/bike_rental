@@ -15,10 +15,13 @@
             </div>
             <div class="flex items-center space-x-4 text-white/40">
                 <a href="{{ route('contact') }}" class="flex items-center">
-                    <span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary transition-colors">location_on</span>
+                    <span
+                        class="material-symbols-outlined text-sm cursor-pointer hover:text-primary transition-colors">location_on</span>
                 </a>
                 <!-- Theme Toggle Button -->
-                <button onclick="toggleTheme()" class="flex items-center justify-center hover:text-primary transition-colors focus:outline-none" title="Toggle Theme">
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center hover:text-primary transition-colors focus:outline-none"
+                    title="Toggle Theme">
                     <span class="material-symbols-outlined text-sm hidden dark:block">light_mode</span>
                     <span class="material-symbols-outlined text-sm block dark:hidden">dark_mode</span>
                 </button>
@@ -28,7 +31,8 @@
     <!-- Main Nav -->
     <div class="bg-surface/40 backdrop-blur-lg border-b border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
         <div class="flex justify-between items-center px-12 py-6 max-w-screen-2xl mx-auto">
-            <a href="{{ route('welcome') }}" class="text-2xl font-black text-[#9be9f7] tracking-tightest font-headline">BikeRental.com</a>
+            <a href="{{ route('welcome') }}"
+                class="text-2xl font-black text-[#9be9f7] tracking-tightest font-headline">BikeRental.com</a>
             <div class="hidden md:flex items-center space-x-10">
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->is('/') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
                     href="{{ route('welcome') }}">Fleet</a>
@@ -45,9 +49,103 @@
             </div>
             <div class="flex items-center space-x-4">
                 <button
-                    class="px-8 py-3 liquid-gradient text-on-primary font-headline uppercase text-xs font-black tracking-widest rounded-lg hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_15px_rgba(155,233,247,0.3)]">Book
+                    class="hidden md:block px-8 py-3 liquid-gradient text-on-primary font-headline uppercase text-xs font-black tracking-widest rounded-lg hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_15px_rgba(155,233,247,0.3)]">Book
                     Now</button>
+                <button onclick="openSideMenu()" class="hamburger-btn md:hidden">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
             </div>
         </div>
-    </div>
 </nav>
+
+<!-- Sidebar Overlay -->
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSideMenu()"></div>
+
+<!-- Mobile Sidebar -->
+<aside id="mobileSidebar" class="mobile-sidebar">
+    <div class="flex flex-col h-full">
+        <!-- Sidebar Header -->
+        <div class="p-8 pb-2">
+            <div class="flex justify-between items-start mb-8">
+                <div class="relative">
+                    <div
+                        class="w-20 h-20 rounded-full border-2 border-secondary p-1 shadow-[0_0_20px_rgba(155,233,247,0.3)]">
+                        <div
+                            class="w-full h-full rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+                            <!-- <span class="material-symbols-outlined text-4xl text-primary">directions_bike</span> -->
+                            <img src="{{ asset('assets/img/meta/bike_rental.webp')}}" alt="Bike&ScootyRentalPokhara">
+                        </div>
+                    </div>
+                </div>
+                <button onclick="closeSideMenu()" class="text-white/60 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-3xl">close</span>
+                </button>
+            </div>
+            <h2 class="text-2xl font-black text-[#9be9f7] tracking-tightest font-headline mb-1">Bike & Scooter Rent in
+                Pokhara</h2>
+            <p class="text-[10px] text-white/40 uppercase tracking-[0.2em] font-bold mb-6">Premium Fleet & Service</p>
+
+            <!-- Social Icons -->
+            <div class="flex space-x-3 mb-8">
+                <a href="#" class="social-icon-btn"><i class='bx bxl-facebook'></i></a>
+                <a href="#" class="social-icon-btn"><i class='bx bxl-instagram'></i></a>
+                <a href="#" class="social-icon-btn"><i class='bx bxl-twitter'></i></a>
+                <a href="#" class="social-icon-btn"><i class='bx bxl-whatsapp'></i></a>
+            </div>
+        </div>
+
+        <!-- Sidebar Navigation -->
+        <nav class="flex-1 px-4 py-2 overflow-y-auto no-scrollbar flex flex-col gap-2">
+            <a class="sidebar-link {{ request()->routeIs('welcome') ? 'active' : '' }}" href="{{ route('welcome') }}"
+                style="--i:1">
+                <span class="material-symbols-outlined">home</span>
+                <span>Fleet</span>
+            </a>
+            <a class="sidebar-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}"
+                style="--i:2">
+                <span class="material-symbols-outlined">info</span>
+                <span>About</span>
+            </a>
+            <a class="sidebar-link {{ request()->routeIs('rides') || request()->routeIs('select-vehicle') ? 'active' : '' }}"
+                href="{{ route('rides') }}" style="--i:3">
+                <span class="material-symbols-outlined">motorcycle</span>
+                <span>Rides</span>
+            </a>
+            <a class="sidebar-link {{ request()->routeIs('gallery') ? 'active' : '' }}" href="{{ route('gallery') }}"
+                style="--i:4">
+                <span class="material-symbols-outlined">gallery_thumbnail</span>
+                <span>Gallery</span>
+            </a>
+            <a class="sidebar-link {{ request()->routeIs('articles*') ? 'active' : '' }}" href="{{ route('articles') }}"
+                style="--i:5">
+                <span class="material-symbols-outlined">book_4</span>
+                <span>Stories</span>
+            </a>
+            <a class="sidebar-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}"
+                style="--i:6">
+                <span class="material-symbols-outlined">support_agent</span>
+                <span>Support</span>
+            </a>
+            <div
+                class="mt-2 ml-3 flex items-center justify-between bg-surface-container-highest/40 p-2 rounded-xl border border-white/5">
+                <span class="text-xs font-bold uppercase tracking-widest text-white/60">Switch Theme</span>
+                <button onclick="toggleTheme()"
+                    class="w-10 h-10 flex items-center justify-center rounded-lg bg-surface hover:bg-primary/20 transition-all">
+                    <span class="material-symbols-outlined text-lg dark:block hidden">light_mode</span>
+                    <span class="material-symbols-outlined text-lg block dark:hidden">dark_mode</span>
+                </button>
+            </div>
+    </div>
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="p-8 pt-4 border-t border-white/5">
+        <p class="text-[10px] text-white/40 leading-relaxed">
+            &copy; {{ date('Y') }} BikeRental.com. All rights reserved.<br>
+            <span class="mt-2 block">Designed for premium experiences.</span>
+            <a href="https://pradhansangam.com.np" target="_blank"
+                class="mt-2 block text-primary/60 hover:text-primary transition-colors">by dev-sangam</a>
+        </p>
+    </div>
+    </div>
+</aside>
