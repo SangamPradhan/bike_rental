@@ -79,8 +79,8 @@
                                     </ul>
                                 </div>
                                 <div class="button-container">
-                                    <button type="button" onclick="window.location.href='{{ route('appointment') }}';"
-                                        class="btn btn-primary">Get Appointment</button>
+                                    <button type="button" onclick="window.location.href='{{ route('ride-booking') }}';"
+                                        class="btn btn-primary">Book Now</button>
                                     <a href="{{ route('services') }}"
                                         class="btn btn-secondary animated fadeInUp scrollto">Back to
                                         Services<!-- <i class="bi bi-chevron-double-right"></i> -->

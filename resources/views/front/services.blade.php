@@ -73,7 +73,7 @@
                                                 <a href="{{ route('service-details', $service->id) }}"
                                                     class="btn btn-secondary">See Details</a>
                                                 <button type="button"
-                                                    onclick="window.location.href='{{ route('appointment') }}';"
+                                                    onclick="window.location.href='{{ route('ride-booking') }}';"
                                                     class="btn btn-primary">Book Now</button>
                                             </div>
                                         </div>
@@ -88,7 +88,7 @@
         <!-- what we do section end -->
 
         <!-- Book an appointment banner section Start  -->
-        <section id="appointment" class="appointment intl-patient">
+        <section id="ride-booking" class="appointment intl-patient">
             <div class="container p-0">
                 <div class="appointment-banner intl-patient-banner">
                     <div class="row">
@@ -233,7 +233,7 @@
             addLoadingSpinner();
 
             // Handle appointment button clicks
-            $('.btn-primary[href*="appointment"]').click(function(e) {
+            $('.btn-primary[href*="ride-booking"]').click(function(e) {
                 showLoading();
                 // Hide spinner after navigation or after 3 seconds (failsafe)
                 setTimeout(hideLoading, 3000);
