@@ -19,11 +19,19 @@
 
     <div class="col-md-6 mt-4">
         <label for="order">Order *</label>
-        <input type="number" required class="form-control" id="order" name="order" value="{{ old('order', $item->order) }}" placeholder="Enter order position" min="0">
+        <input type="number" required class="form-control" id="order" name="order"
+            value="{{ old('order', $item->order) }}" placeholder="Enter order position" min="0">
+    </div>
+
+    <div class="col-md-6 mt-4">
+        <label for="tag">Tag *</label>
+        <input type="text" required class="form-control" id="tag" name="tag" value="{{ old('tag', $item->tag) }}"
+            placeholder="Enter tag">
     </div>
 
     <div class="col-12 mt-4">
         <label for="">Description *</label>
-        <textarea name="description" id="summernote" class="form-control" style="width: 100%; height: 200px;">{!! old('description', $item->description) !!}</textarea>
+        <textarea name="description" id="summernote" class="form-control"
+            style="width: 100%; height: 200px;">{!! old('description', $item->description) !!}</textarea>
     </div>
 </div>

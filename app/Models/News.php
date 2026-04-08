@@ -13,7 +13,7 @@ class News extends BaseModel
 
     protected $guarded = ['id', 'user_id'];
     protected $appends = ['image_url', 'thumb_url'];
-    protected $fillable = ['title', 'description', 'order'];
+    protected $fillable = ['title', 'description', 'order', 'tag'];
 
 
     public function getSlugOptions(): SlugOptions
