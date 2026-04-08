@@ -18,9 +18,11 @@ use App\Http\Controllers\Admin\InternationalBookingController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\ResetPasswordController;
-use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\VehicleController;
+
 
 use Illuminate\Support\Facades\Auth;
 
@@ -39,7 +41,11 @@ Route::get('/', [FrontController::class, 'index'])->name('welcome');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/services', [FrontController::class, 'services'])->name('services');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
-Route::get('/appointment', [FrontController::class, 'appointment'])->name('appointment');
+Route::get('/ride-booking', [FrontController::class, 'rideBooking'])->name('ride-booking');
+Route::get('/rides', [FrontController::class, 'rides'])->name('rides');
+Route::get('/select-vehicle/{id}', [FrontController::class, 'selectVehicle'])->name('select-vehicle');
+Route::get('/booking/extras', [FrontController::class, 'bookingExtras'])->name('booking.extras');
+Route::post('/booking/extras', [FrontController::class, 'storeExtras'])->name('booking.extras.store');
 Route::get('/offer-form', [FrontController::class, 'offerForm'])->name('offer-form');
 Route::post('/womans-day-form', [FrontController::class, 'womansDayForm'])->name('womans-day-form');
 // Route::get('/packages', [FrontController::class, 'package'])->name('packages');
@@ -61,7 +67,7 @@ Route::get('/hair-treatment', [FrontController::class, 'hairTreatment'])->name('
 Route::get('/laser', [FrontController::class, 'laser'])->name('laser');
 Route::get('/plastic-surgery', [FrontController::class, 'plasticSurgery'])->name('plastic-surgery');
 Route::get('/special-package', [FrontController::class, 'specialPackage'])->name('special-package');
-Route::post('/appointment-booking', [FrontController::class, 'appointmentBooking'])->name('appointment-booking');
+Route::post('/ride-booking', [FrontController::class, 'vehicleBooking'])->name('ride-booking.store');
 Route::get('/careers', [FrontController::class, 'careers'])->name('careers');
 Route::post('/contact-submit', [FrontController::class, 'sendEmail'])->name('contact-submit');
 // Route::get('/popups', [FrontController::class, 'popup'])->name('popups');
@@ -81,7 +87,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('teej-bookings', TeejBookingController::class);
     Route::resource('news', NewsController::class);
     Route::resource('staffs', StaffController::class);
-    Route::resource('adminservices', ServiceController::class);
+    Route::resource('services', ServiceController::class, ['as' => 'admin']);
+    Route::resource('brands', BrandController::class);
+    Route::resource('vehicles', VehicleController::class);
     Route::resource('popups', PopupController::class);
     Route::resource('careers', CareerController::class);
     Route::resource('users', UserController::class);
