@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Gratify Spa',
+    'title' => 'Bike & Scooter Renta in Pokhara',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Gratify</b>Spa',
-    'logo_img' => 'assets/img/gratify.png',
+    'logo' => '<b>Bike & Scooter </b>Rental in Pokhara',
+    'logo_img' => 'assets/img/meta/bikerental_logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Gratify Spa',
+    'logo_img_alt' => 'Bike & Scooter Rental in Pokhara',
 
     /*
     |--------------------------------------------------------------------------
@@ -86,8 +86,8 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'assets/img/logo.png',
-            'alt' => 'Gratify Spa',
+            'path' => 'assets/img/meta/bikerental_logo.png',
+            'alt' => 'Bike & Scooter Rental in Pokhara',
             'class' => '',
             'width' => 50,
             'height' => 50,
@@ -109,8 +109,8 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'assets/img/logo.png',
-            'alt' => 'Gratify Spa',
+            'path' => 'assets/img/meta/bikerental_logo.png',
+            'alt' => 'Bike & Scooter Rental in Pokhara',
             'effect' => 'animation__shake',
             'width' => 100,
             'height' => 90,
