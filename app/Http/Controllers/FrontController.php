@@ -40,6 +40,7 @@ class FrontController extends Controller
         $data['testimonials'] = Testimonial::orderBy('order', 'ASC')->get();
         $data['faqs'] = FAQ::orderBy('created_at', 'desc')->limit(5)->get();
         $data['popups'] = Popup::latest()->first();
+        $data['brands'] = Brand::orderBy('order', 'ASC')->get();
         return view('welcome', $data);
     }
 
@@ -48,8 +49,6 @@ class FrontController extends Controller
         $data['staffs'] = Staff::whereIn('designation', ['Doctor', 'Head Nurse', 'Head Pharmacist'])->get();
         return view('front.about', $data);
     }
-
-
 
 
     public function gallery()
@@ -264,7 +263,7 @@ class FrontController extends Controller
             // Merge with session data if not provided in request
             $bookingSession = Session::get('booking', []);
             $data['vehicle_id'] = $bookingSession['vehicle_id'] ?? null;
-            
+
             // Ensure extras is properly handled as JSON
             if ($request->has('extras')) {
                 $data['extras'] = $request->extras;

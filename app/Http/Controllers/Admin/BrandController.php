@@ -73,6 +73,13 @@ class BrandController extends BaseController
         return redirect()->route($this->indexRoute());
     }
 
+    public function show($id)
+    {
+        $info = $this->crudInfo();
+        $info['item'] = Brand::findOrFail($id);
+        return view($this->showResource(), $info);
+    }
+
     public function edit($id)
     {
         $info = $this->crudInfo();
