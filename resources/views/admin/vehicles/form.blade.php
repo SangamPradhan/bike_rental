@@ -36,8 +36,14 @@
 
     <!-- Rate Per Day -->
     <div class="col-md-6 mt-4">
-        <label for="rate_per_day">Rate Per Day (Nrs.) *</label>
-        <input type="number" required class="form-control" id="rate_per_day" name="rate_per_day" value="{{ old('rate_per_day', $item->rate_per_day) }}" placeholder="8500" min="0" step="0.01">
+        <label for="rate_per_day">Rate Per Day Inside Valley (Nrs.) *</label>
+        <input type="number" required class="form-control" id="rate_per_day" name="rate_per_day" value="{{ old('rate_per_day', $item->rate_per_day) }}" placeholder="e.g. 1500" min="0" step="0.01">
+    </div>
+
+    <!-- Rate Per Day Outside Valley -->
+    <div class="col-md-6 mt-4">
+        <label for="rate_per_day_outside_valley">Rate Per Day Outside Valley (Nrs.) *</label>
+        <input type="number" required class="form-control" id="rate_per_day_outside_valley" name="rate_per_day_outside_valley" value="{{ old('rate_per_day_outside_valley', $item->rate_per_day_outside_valley) }}" placeholder="e.g. 2500" min="0" step="0.01">
     </div>
 
     <!-- Order Field -->

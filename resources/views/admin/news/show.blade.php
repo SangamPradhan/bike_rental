@@ -48,6 +48,15 @@
                     {{ $item->order }}
                 </div>
             </div>
+
+            <div class="row form-group">
+                <div class="col-md-3">
+                    <label for=""><span class="show-text">Tag:</span> </label><br>
+                </div>
+                <div class="col-md-8">
+                    {{ $item->tag }}
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
             @if ($item->getImage())
@@ -57,6 +66,6 @@
     </div>
 
     {{-- @if(auth()->user()->is_staff && auth()->user()->id == $item->user_id)
-        <a href="{{ route('edit.news', $item->id) }}" class="btn btn-primary">Edit</a>
+    <a href="{{ route('edit.news', $item->id) }}" class="btn btn-primary">Edit</a>
     @endif --}}
 @endsection
