@@ -14,4 +14,9 @@ class Booking extends BaseModel
     {
         return $this->belongsTo(Vehicle::class);
     }
+
+    public function getLicenseAttachmentUrlAttribute()
+    {
+        return $this->license_attachment ? asset('storage/license_attachments/' . $this->license_attachment) : null;
+    }
 }

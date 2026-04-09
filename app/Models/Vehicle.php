@@ -15,6 +15,7 @@ class Vehicle extends BaseModel
         'kmpl',
         'fuel_tank_capacity',
         'rate_per_day',
+        'rate_per_day_outside_valley',
         'order',
         'type',
         'is_promoted',

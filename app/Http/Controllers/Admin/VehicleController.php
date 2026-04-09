@@ -60,6 +60,7 @@ class VehicleController extends BaseController
             'kmpl' => 'required|string',
             'fuel_tank_capacity' => 'required|string',
             'rate_per_day' => 'required|numeric',
+            'rate_per_day_outside_valley' => 'required|numeric',
             'type' => 'required|in:bike,scooter',
             'order' => 'nullable|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
@@ -104,6 +105,7 @@ class VehicleController extends BaseController
             'kmpl' => 'required|string',
             'fuel_tank_capacity' => 'required|string',
             'rate_per_day' => 'required|numeric',
+            'rate_per_day_outside_valley' => 'required|numeric',
             'type' => 'required|in:bike,scooter',
             'order' => 'nullable|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
