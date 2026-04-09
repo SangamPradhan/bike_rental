@@ -198,6 +198,11 @@ class FrontController extends Controller
         return view('front.offer-form');
     }
 
+    public function safetyGuides()
+    {
+        return view('front.safety_guides');
+    }
+
     public function contact()
     {
         return view('front.contact');
@@ -250,15 +255,26 @@ class FrontController extends Controller
         try {
             $request->validate([
                 'name' => 'required',
-                'phone' => 'required',
+                'phone' => 'required|numeric',
                 'email' => 'required|email',
                 'preferred_date' => 'required',
                 'days' => 'required',
                 'total_price' => 'required',
                 'id_no' => 'required',
+                'exploring_region' => 'required',
+                'license_attachment' => 'required|file|mimes:jpg,jpeg,png,pdf|max:5120',
             ]);
 
-            $data = $request->all();
+            $data = $request->except('license_attachment');
+
+            // Handle file upload
+            if ($request->hasFile('license_attachment')) {
+                $file = $request->file('license_attachment');
+                $filename = time() . '_' . $request->name . '_' . $file->getClientOriginalName();
+                $filename = preg_replace('/\s+/', '_', $filename); // sanitize spaces
+                $file->move(storage_path('app/public/license_attachments'), $filename);
+                $data['license_attachment'] = $filename;
+            }
 
             // Merge with session data if not provided in request
             $bookingSession = Session::get('booking', []);
@@ -279,17 +295,23 @@ class FrontController extends Controller
 
             $emailDetails = [
                 'name' => $booking->name,
+                'phone' => $booking->phone,
                 'preferred_date' => $booking->preferred_date ?? 'N/A',
                 'vehicle' => ($booking->vehicle && $booking->vehicle->brand) ? $booking->vehicle->brand->name . ' ' . $booking->vehicle->title : 'Adventure Machine',
                 'days' => $booking->days ?? 1,
                 'brand' => ($booking->vehicle && $booking->vehicle->brand) ? $booking->vehicle->brand->name : 'N/A',
-                'total_amount' => $booking->total_price ?? 'N/A', // Changed to match template variable expectation
+                'total_amount' => $booking->total_price ?? 'N/A',
                 'extras' => implode(', ', array_map('ucfirst', json_decode($booking->extras, true) ?? [])) ?: 'None',
+                'exploring_region' => $booking->exploring_region ?? 'N/A',
             ];
 
             if ($request->has('email')) {
                 Mail::to($data['email'])->send(new BookingMail($emailDetails));
             }
+
+            // Send notification to Owner
+            $ownerEmail = env('MAIL_FROM_ADDRESS', 'pradhansangam169@gmail.com');
+            Mail::to($ownerEmail)->send(new \App\Mail\BookingNotifyingMail($emailDetails));
 
             $message = "Your adventure has been booked! We will contact you soon.";
             return redirect()->route('rides')->with('success', $message);
