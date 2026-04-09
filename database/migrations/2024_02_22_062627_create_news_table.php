@@ -18,6 +18,7 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->text("description")->nullable();
             $table->integer('order')->default(0);
+            $table->string('tag', 15)->nullable();
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ class CreateVehiclesTable extends Migration
             $table->string('kmpl');
             $table->string('fuel_tank_capacity');
             $table->decimal('rate_per_day', 10, 2); // Nrs
+            $table->decimal('rate_per_day_outside_valley', 10, 2)->nullable();
             $table->integer('order')->default(0);
             $table->string('type')->default('bike'); // bike or scooter
             $table->boolean('is_promoted')->default(false);
