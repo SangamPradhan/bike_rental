@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <form action="{{ route('ride-booking.store') }}" method="POST">
+        <form action="{{ route('ride-booking.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="brand" value="{{ $vehicle->brand->name }}">
             <input type="hidden" name="vehicle" value="{{ $vehicle->title }}">
@@ -102,6 +102,18 @@
                                 <span
                                     class="material-symbols-outlined text-primary text-sm opacity-60">local_gas_station</span>
                                 <span class="text-[10px] font-bold text-white">{{ $vehicle->fuel_tank_capacity }}L</span>
+                            </div>
+                        </div>
+
+                        <!-- Rates -->
+                        <div class="p-6 border-t border-white/5 bg-white/2 space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-white/50 uppercase tracking-widest"><span class="material-symbols-outlined text-[10px] mr-1 align-middle text-primary">map</span>Inside Valley</span>
+                                <span class="text-[12px] font-bold text-white">Nrs. {{ number_format($vehicle->rate_per_day) }} <span class="text-[10px] text-white/40 font-normal">/ day</span></span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-white/50 uppercase tracking-widest"><span class="material-symbols-outlined text-[10px] mr-1 align-middle text-secondary">explore</span>Outside Valley</span>
+                                <span class="text-[12px] font-bold text-secondary">Nrs. {{ number_format($vehicle->rate_per_day_outside_valley ?? $vehicle->rate_per_day) }} <span class="text-[10px] text-white/40 font-normal">/ day</span></span>
                             </div>
                         </div>
                     </div>
@@ -163,7 +175,7 @@
                         <div class="col-span-2 md:col-span-1 space-y-3">
                             <label
                                 class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">IDENTIFICATION
-                                NO. (Passport / License)</label>
+                                NO. (Passport / Citizenship)</label>
                             <input
                                 class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
                                 placeholder="X-90887-NP" type="text" name="id_no" required value="{{ old('id_no') }}" />
@@ -178,6 +190,7 @@
                                 value="{{ old('preferred_date') }}" />
                         </div>
 
+
                         <div class="col-span-2 md:col-span-1 space-y-3">
                             <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">RENTAL
                                 DURATION (DAYS)</label>
@@ -191,6 +204,29 @@
                             </select>
                         </div>
 
+                        <div class="col-span-2 md:col-span-1 space-y-3">
+                            <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">Exploring
+                                Region</label>
+                            <select
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
+                                name="exploring_region" required onchange="calculateFinal()">
+                                <option value="" class="bg-surface">Select Region</option>
+                                <option value="inside_valley" class="bg-surface">Inside the Valley</option>
+                                <option value="outside_valley" class="bg-surface">Outside the Valley</option>
+                            </select>
+                        </div>
+
+                        <div class="col-span-2 md:col-span-1 space-y-3">
+                            <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase"> License
+                                Attachment
+                            </label>
+                            <input type="file" name="license_attachment" accept="image/*,.pdf"
+                                onchange="validateFileSize(this)"
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-white/10 font-bold text-sm tracking-wide"
+                                required />
+                            <span id="file-error" class="hidden text-secondary text-[10px] font-bold uppercase mt-2 block">Error: File size must be under 5MB</span>
+                        </div>
+
                         <div class="col-span-2 space-y-3">
                             <label class="font-headline text-[9px] tracking-[0.3em] text-white/40 ml-1 uppercase">STRATEGIC
                                 REQUIREMENTS</label>
@@ -202,17 +238,22 @@
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6 pt-6">
-                        <div
-                            class="p-8 border border-white/5 rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] transition-all">
-                            <div class="flex items-center gap-4 mb-4 text-primary">
-                                <span class="material-symbols-outlined text-xl">shield</span>
-                                <h4 class="font-headline text-[10px] font-bold tracking-[0.2em] uppercase text-white">Safety
-                                    Protocols
-                                </h4>
+                        <a href="{{ route('safety-guides') }}" target="_blank"
+                            class="block p-8 border border-white/5 rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] transition-all cursor-pointer group">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-4 text-primary">
+                                    <span class="material-symbols-outlined text-xl">shield</span>
+                                    <h4 class="font-headline text-[10px] font-bold tracking-[0.2em] uppercase text-white">
+                                        Safety
+                                        Protocols
+                                    </h4>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-white/20 group-hover:text-primary transition-colors text-sm">open_in_new</span>
                             </div>
                             <p class="text-[10px] leading-relaxed text-white/40 font-medium">All riders undergo mandatory
                                 safety briefings. Protective gear is inspected daily before departure.</p>
-                        </div>
+                        </a>
                         <div
                             class="p-8 border border-white/5 rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] transition-all">
                             <div class="flex items-center gap-4 mb-4 text-secondary">
@@ -304,11 +345,20 @@
 
 @push('js')
     <script>
-        const baseDaily = {{ $booking['base_price'] }};
+        const insideValleyDaily = {{ $vehicle->rate_per_day ?? 0 }};
+        const outsideValleyDaily = {{ $vehicle->rate_per_day_outside_valley ?? ($vehicle->rate_per_day ?? 0) }};
         const extrasDaily = {{ $booking['extra_total_per_day'] ?? 0 }};
 
         function calculateFinal() {
-            const days = parseInt(document.getElementById('duration-select').value);
+            const region = document.querySelector('select[name="exploring_region"]').value;
+            let baseDaily = insideValleyDaily;
+            if (region === 'outside_valley') {
+                baseDaily = outsideValleyDaily;
+            }
+
+            document.getElementById('summary-base').innerText = 'Nrs. ' + baseDaily.toLocaleString();
+
+            const days = parseInt(document.getElementById('duration-select').value) || 1;
             let dailyTotal = baseDaily + extrasDaily;
             let subtotal = dailyTotal * days;
 
@@ -339,5 +389,17 @@
 
         // Initial calculation
         document.addEventListener('DOMContentLoaded', calculateFinal);
+
+
+        function validateFileSize(input) {
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            const error = document.getElementById('file-error');
+            if (input.files[0] && input.files[0].size > maxSize) {
+                error.classList.remove('hidden');
+                input.value = ''; // clear the input
+            } else {
+                error.classList.add('hidden');
+            }
+        }
     </script>
 @endpush
