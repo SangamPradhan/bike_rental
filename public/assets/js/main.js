@@ -74,21 +74,7 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
-
-  /**
-   * Mobile nav dropdowns activate
-   */
-  on('click', '.navbar .dropdown > a', function(e) {
-    if (select('#navbar').classList.contains('navbar-mobile')) {
-      e.preventDefault()
-      this.nextElementSibling.classList.toggle('dropdown-active')
-    }
-  }, true)
+  /* Legacy Mobile Nav Removed as it conflicts with the new modern responsive header */
 
   /**
    * Hero carousel indicators
@@ -108,6 +94,136 @@
    const galleryLightbox = GLightbox({
     selector: '.gallery-lightbox'
   });
+
+  /*--------------------------------------------------------------
+  # Premium BikeRental Global Scripts
+  --------------------------------------------------------------*/
+  document.addEventListener("DOMContentLoaded", function() {
+    // Header Scroll Transform
+    const header = document.getElementById('main-header');
+    if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.style.transform = 'translateY(-40px)';
+          } else {
+            header.style.transform = 'translateY(0)';
+          }
+        });
+    }
+
+    // AOS Custom Initialization
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-quint',
+            once: true,
+            mirror: false,
+            offset: Math.floor(window.innerHeight * 0.35),
+        });
+    }
+  });
+
+  // Custom Cursor Logic
+  const cursor = document.querySelector('.custom-cursor');
+  if (cursor) {
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    document.addEventListener('mousedown', () => cursor.style.transform = 'translate(-50%, -50%) scale(0.8)');
+    document.addEventListener('mouseup', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+
+    const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '40px';
+        cursor.style.height = '40px';
+        cursor.style.backgroundColor = 'transparent';
+        cursor.style.border = '2px solid #feb234';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '12px';
+        cursor.style.height = '12px';
+        cursor.style.backgroundColor = '#feb234';
+        cursor.style.border = 'none';
+      });
+    });
+  }
+
+  /* Page-Specific Scripts */
+  
+  // Rides Filter Logic
+  window.setFilter = function(key, value) {
+    const filterInput = document.getElementById('filter-' + key);
+    if (!filterInput) return;
+    filterInput.value = value;
+
+    if (key === 'type') {
+      const brandItems = document.querySelectorAll('.brand-item');
+      brandItems.forEach(item => {
+        if (item.dataset.type === value) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+      const allBrandRadio = document.querySelector('input[name="brand"][value="all"]');
+      if (allBrandRadio) allBrandRadio.checked = true;
+    }
+
+    const btns = document.querySelectorAll('.filter-btn-' + key);
+    btns.forEach(btn => {
+      btn.classList.remove('bg-secondary', 'text-on-secondary', 'shadow-[0_0_15px_rgba(254,178,52,0.3)]');
+      btn.classList.add('bg-white/5', 'text-white/40');
+      if (btn.innerText.toLowerCase() === value.toLowerCase()) {
+        btn.classList.add('bg-secondary', 'text-on-secondary', 'shadow-[0_0_15px_rgba(254,178,52,0.3)]');
+        btn.classList.remove('bg-white/5', 'text-white/40');
+      }
+    });
+
+    const filterForm = document.getElementById('filter-form');
+    if (filterForm) filterForm.submit();
+  }
+
+  // Sidebar Toggles
+  window.openSideMenu = function() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (sidebar && overlay) {
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      sidebar.classList.add('nav-active');
+    }
+  }
+
+  window.closeSideMenu = function() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (sidebar && overlay) {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      sidebar.classList.remove('nav-active');
+    }
+  }
+
+  window.toggleTheme = function() {
+    const html = document.documentElement;
+    const isDark = html.classList.contains('dark');
+    const sidebarIcon = document.getElementById('sidebar-theme-icon');
+    
+    if (isDark) {
+      html.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      if (sidebarIcon) sidebarIcon.innerText = 'dark_mode';
+    } else {
+      html.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      if (sidebarIcon) sidebarIcon.innerText = 'light_mode';
+    }
+  }
 
  /**
    * Porfolio isotope and filter
@@ -242,14 +358,7 @@ var swiper = new Swiper(".mySwiper", {
   /**
    * Animation on scroll
    */
-  window.addEventListener('load', () => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    })
-  });
+  /* Redundant AOS Init Removed (Initialized in DOMContentLoaded) */
 
   
 
