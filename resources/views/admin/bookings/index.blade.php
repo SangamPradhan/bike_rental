@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content_header')
-    <h1>{{ $title }}</h1>
+<h1>{{ $title }}</h1>
 @stop
 
 @push('styles')
@@ -14,18 +14,14 @@
     <div class="table-responsive">
         <table class="table" id="data-table">
             <thead>
-            <tr class="text-left text-capitalize">
-                <th>id</th>
-                <th>name</th>
-                <th>phone</th>
-              
-                <th>email</th>
-            
-                <th>gender</th>
-             
-          
-                <th>action</th>
-            </tr>
+                <tr class="text-left text-capitalize">
+                    <th>id</th>
+                    <th>name</th>
+                    <th>phone</th>
+                    <th>email</th>
+                    <th>Booked date</th>
+                    <th>action</th>
+                </tr>
             </thead>
 
         </table>
@@ -40,14 +36,14 @@
                 serverSide: true,
                 ajax: "{{ route('bookings.index') }}",
                 columns: [
-                    {data: 'id', name: 'DT_RowIndex'},
-                    {data: 'name', name: 'name'},
-                    {data: 'phone', name: 'phone'},
+                    { data: 'id', name: 'DT_RowIndex' },
+                    { data: 'name', name: 'name' },
+                    { data: 'phone', name: 'phone' },
 
-                    {data: 'email', name: 'email'},
-                    {data: 'gender', name: 'gender'},
-                  
-                    {data: 'action', name: 'action'},
+                    { data: 'email', name: 'email' },
+                    { data: 'preferred_date', name: 'preferred_date' },
+
+                    { data: 'action', name: 'action' },
                 ],
             });
         });
