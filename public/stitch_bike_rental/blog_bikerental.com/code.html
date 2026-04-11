@@ -1,317 +1,391 @@
-<html class="dark"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&amp;family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<html class="dark">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&amp;family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
       theme: {
         extend: {
           "colors": {
-                  "secondary-dim": "#eea526",
-                  "primary": "#9be9f7",
-                  "on-surface": "#f9f5fd",
-                  "inverse-primary": "#006975",
-                  "secondary": "#feb234",
-                  "on-primary-container": "#00272d",
-                  "on-primary-fixed": "#00434b",
-                  "on-error-container": "#ffa8a3",
-                  "error-container": "#9f0519",
-                  "on-background": "#f9f5fd",
-                  "secondary-fixed-dim": "#ffb63e",
-                  "outline-variant": "#48474d",
-                  "on-tertiary-container": "#553900",
-                  "on-secondary-container": "#fff6ef",
-                  "error": "#ff716c",
-                  "inverse-on-surface": "#55545b",
-                  "surface-variant": "#25252d",
-                  "surface-container": "#19191f",
-                  "surface-dim": "#0e0e13",
-                  "on-primary-fixed-variant": "#00616c",
-                  "primary-fixed-dim": "#8ddbe8",
-                  "tertiary-dim": "#eea91f",
-                  "on-primary": "#005761",
-                  "on-tertiary-fixed": "#3a2600",
-                  "tertiary": "#ffc970",
-                  "on-secondary": "#543600",
-                  "tertiary-fixed": "#feb72f",
-                  "on-secondary-fixed-variant": "#6f4900",
-                  "surface-container-highest": "#25252d",
-                  "secondary-container": "#815500",
-                  "surface-container-low": "#131319",
-                  "surface-container-high": "#1f1f26",
-                  "secondary-fixed": "#ffc87a",
-                  "primary-container": "#5dacb9",
-                  "outline": "#76747b",
-                  "background": "#0e0e13",
-                  "tertiary-fixed-dim": "#eea91f",
-                  "error-dim": "#d7383b",
-                  "surface-bright": "#2c2b33",
-                  "on-tertiary-fixed-variant": "#604100",
-                  "on-tertiary": "#614100",
-                  "on-surface-variant": "#acaab1",
-                  "tertiary-container": "#feb72f",
-                  "surface-container-lowest": "#000000",
-                  "primary-fixed": "#9be9f7",
-                  "on-secondary-fixed": "#492f00",
-                  "surface-tint": "#9be9f7",
-                  "on-error": "#490006",
-                  "primary-dim": "#8ddbe8",
-                  "surface": "#0e0e13",
-                  "inverse-surface": "#fcf8ff"
+            "secondary-dim": "#eea526",
+            "primary": "#9be9f7",
+            "on-surface": "#f9f5fd",
+            "inverse-primary": "#006975",
+            "secondary": "#feb234",
+            "on-primary-container": "#00272d",
+            "on-primary-fixed": "#00434b",
+            "on-error-container": "#ffa8a3",
+            "error-container": "#9f0519",
+            "on-background": "#f9f5fd",
+            "secondary-fixed-dim": "#ffb63e",
+            "outline-variant": "#48474d",
+            "on-tertiary-container": "#553900",
+            "on-secondary-container": "#fff6ef",
+            "error": "#ff716c",
+            "inverse-on-surface": "#55545b",
+            "surface-variant": "#25252d",
+            "surface-container": "#19191f",
+            "surface-dim": "#0e0e13",
+            "on-primary-fixed-variant": "#00616c",
+            "primary-fixed-dim": "#8ddbe8",
+            "tertiary-dim": "#eea91f",
+            "on-primary": "#005761",
+            "on-tertiary-fixed": "#3a2600",
+            "tertiary": "#ffc970",
+            "on-secondary": "#543600",
+            "tertiary-fixed": "#feb72f",
+            "on-secondary-fixed-variant": "#6f4900",
+            "surface-container-highest": "#25252d",
+            "secondary-container": "#815500",
+            "surface-container-low": "#131319",
+            "surface-container-high": "#1f1f26",
+            "secondary-fixed": "#ffc87a",
+            "primary-container": "#5dacb9",
+            "outline": "#76747b",
+            "background": "#0e0e13",
+            "tertiary-fixed-dim": "#eea91f",
+            "error-dim": "#d7383b",
+            "surface-bright": "#2c2b33",
+            "on-tertiary-fixed-variant": "#604100",
+            "on-tertiary": "#614100",
+            "on-surface-variant": "#acaab1",
+            "tertiary-container": "#feb72f",
+            "surface-container-lowest": "#000000",
+            "primary-fixed": "#9be9f7",
+            "on-secondary-fixed": "#492f00",
+            "surface-tint": "#9be9f7",
+            "on-error": "#490006",
+            "primary-dim": "#8ddbe8",
+            "surface": "#0e0e13",
+            "inverse-surface": "#fcf8ff"
           },
           "borderRadius": {
-                  "DEFAULT": "0.25rem",
-                  "lg": "0.5rem",
-                  "xl": "0.75rem",
-                  "full": "9999px"
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
           },
           "fontFamily": {
-                  "headline": ["Epilogue"],
-                  "body": ["Inter"],
-                  "label": ["Plus Jakarta Sans"]
+            "headline": ["Epilogue"],
+            "body": ["Inter"],
+            "label": ["Plus Jakarta Sans"]
           }
         },
       },
     }
   </script>
-<style>
+  <style>
     .glass-panel {
       background: rgba(255, 255, 255, 0.07);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
+
     .liquid-gradient {
       background: linear-gradient(135deg, #9be9f7 0%, #5dacb9 100%);
     }
+
     .text-shadow-xl {
-      text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     }
   </style>
 </head>
+
 <body class="bg-surface font-body text-on-surface selection:bg-secondary selection:text-on-secondary">
-<!-- TopNavBar -->
-<nav class="docked full-width top-0 sticky z-50 bg-white/10 dark:bg-[#0e0e13]/10 backdrop-blur-xl transition-all duration-300">
-<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
-<div class="text-xl font-bold italic tracking-tighter text-[#9be9f7]">BikeRental.com</div>
-<div class="hidden md:flex items-center space-x-8 font-label tracking-wider uppercase text-xs">
-<a class="text-white/70 hover:scale-105 hover:text-[#feb234] transition-all duration-300" href="#">Fleet</a>
-<a class="text-[#feb234] border-b-2 border-[#feb234] pb-1 hover:scale-105 transition-all duration-300" href="#">Adventures</a>
-<a class="text-white/70 hover:scale-105 hover:text-[#feb234] transition-all duration-300" href="#">Gear</a>
-<a class="text-white/70 hover:scale-105 hover:text-[#feb234] transition-all duration-300" href="#">About</a>
-</div>
-<button class="liquid-gradient text-on-primary-container px-6 py-2 rounded-xl font-bold font-label text-sm hover:scale-105 transition-all duration-300 active:scale-95 shadow-[0_10px_30px_rgba(155,233,247,0.3)]">
+  <!-- TopNavBar -->
+  <nav
+    class="docked full-width top-0 sticky z-50 bg-white/10 dark:bg-[#0e0e13]/10 backdrop-blur-xl transition-all duration-300">
+    <div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+      <div class="text-xl font-bold italic tracking-tighter text-[#9be9f7]">BikeRental.com</div>
+      <div class="hidden md:flex items-center space-x-8 font-label tracking-wider uppercase text-xs">
+        <a class="text-white/70 hover:scale-105 hover:text-[#feb234] transition-all duration-300" href="#">Fleet</a>
+        <a class="text-[#feb234] border-b-2 border-[#feb234] pb-1 hover:scale-105 transition-all duration-300"
+          href="#">Adventures</a>
+        <a class="text-white/70 hover:scale-105 hover:text-[#feb234] transition-all duration-300" href="#">Gear</a>
+        <a class="text-white/70 hover:scale-105 hover:text-[#feb234] transition-all duration-300" href="#">About</a>
+      </div>
+      <button
+        class="liquid-gradient text-on-primary-container px-6 py-2 rounded-xl font-bold font-label text-sm hover:scale-105 transition-all duration-300 active:scale-95 shadow-[0_10px_30px_rgba(155,233,247,0.3)]">
         Book Now
       </button>
-</div>
-</nav>
-<!-- Hero Section -->
-<section class="relative w-full h-[716px] flex items-center justify-center overflow-hidden">
-<div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover" data-alt="Cinematic wide shot of a rugged black adventure motorcycle parked on a high mountain pass with snow-capped Himalayan peaks under a dark dramatic sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJxhMb_6VM7daR1Q29QpRVco4colTFAkwS8yWHSBj2swFTR7dtHNuLv6CIJupM5wsvMBd0Res4UwAt24IfTgR5heU6mN_m0_klhfelHCMBcFkfJMaRVWYhtRfmUgG3bbir2Xh9BUrF6L0n_1oucwcxXWkS03xTWXmzzSQd32oxjDYzrbTgU7_IPfKptGKqirdami8-_zT7yBC38RLU2w7cpo9icZepogDJlVSjsm2f8j6nsMQz780RSow_sR37y_8SleaNLMM7r3Y"/>
-<div class="absolute inset-0 bg-gradient-to-b from-surface/40 via-surface/60 to-surface"></div>
-</div>
-<div class="relative z-10 text-center px-4">
-<h1 class="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter text-white leading-tight uppercase text-shadow-xl">
-        The Mountain <br/><span class="text-primary">Journal</span>
-</h1>
-<p class="mt-6 text-xl font-label tracking-widest text-secondary-fixed max-w-2xl mx-auto uppercase">
+    </div>
+  </nav>
+  <!-- Hero Section -->
+  <section class="relative w-full h-[716px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img class="w-full h-full object-cover"
+        data-alt="Cinematic wide shot of a rugged black adventure motorcycle parked on a high mountain pass with snow-capped Himalayan peaks under a dark dramatic sky"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJxhMb_6VM7daR1Q29QpRVco4colTFAkwS8yWHSBj2swFTR7dtHNuLv6CIJupM5wsvMBd0Res4UwAt24IfTgR5heU6mN_m0_klhfelHCMBcFkfJMaRVWYhtRfmUgG3bbir2Xh9BUrF6L0n_1oucwcxXWkS03xTWXmzzSQd32oxjDYzrbTgU7_IPfKptGKqirdami8-_zT7yBC38RLU2w7cpo9icZepogDJlVSjsm2f8j6nsMQz780RSow_sR37y_8SleaNLMM7r3Y" />
+      <div class="absolute inset-0 bg-gradient-to-b from-surface/40 via-surface/60 to-surface"></div>
+    </div>
+    <div class="relative z-10 text-center px-4">
+      <h1
+        class="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter text-white leading-tight uppercase text-shadow-xl">
+        The Mountain <br /><span class="text-primary">Journal</span>
+      </h1>
+      <p class="mt-6 text-xl font-label tracking-widest text-secondary-fixed max-w-2xl mx-auto uppercase">
         Stories from the Thin Air
       </p>
-</div>
-</section>
-<!-- Main Content Layout -->
-<main class="max-w-screen-2xl mx-auto px-8 -mt-24 relative z-20 pb-24">
-<div class="flex flex-col lg:flex-row gap-12">
-<!-- Left Column: Blog Grid -->
-<div class="flex-1">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- Blog Card 1 -->
-<article class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl">
-<div class="relative h-64 overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Close up of a mud-splattered royal enfield engine detail with golden sunlight hitting the chrome elements in a dusty mountain environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd4WjvqkXu4IGa8ZgJZiPzbOh0PqtXVVjo11iCK2ljrqADeMsHgHc8Xw7B8tyTrt22DhPm2Ywc4zagm5j_Sq6g5UvizEvAXmGABx5hQZHsVjAey8Obx5aLwy0frbu6t9HPmLEnUnlENISm6XK1fMRyqpAu0i4eIU_piFtP964kkDtZCMnm3lwrH2o1fOv07MZ06nzV1jmQp4g0wiWe99wIDi5-Tviafs-wadMc-oaGya5NoSoKiPlhsh209ihoiVMraG6FxmmlhEY"/>
-<div class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label text-xs font-bold tracking-wider uppercase">
+    </div>
+  </section>
+  <!-- Main Content Layout -->
+  <main class="max-w-screen-2xl mx-auto px-8 -mt-24 relative z-20 pb-24">
+    <div class="flex flex-col lg:flex-row gap-12">
+      <!-- Left Column: Blog Grid -->
+      <div class="flex-1">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Blog Card 1 -->
+          <article
+            class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl">
+            <div class="relative h-64 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="Close up of a mud-splattered royal enfield engine detail with golden sunlight hitting the chrome elements in a dusty mountain environment"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd4WjvqkXu4IGa8ZgJZiPzbOh0PqtXVVjo11iCK2ljrqADeMsHgHc8Xw7B8tyTrt22DhPm2Ywc4zagm5j_Sq6g5UvizEvAXmGABx5hQZHsVjAey8Obx5aLwy0frbu6t9HPmLEnUnlENISm6XK1fMRyqpAu0i4eIU_piFtP964kkDtZCMnm3lwrH2o1fOv07MZ06nzV1jmQp4g0wiWe99wIDi5-Tviafs-wadMc-oaGya5NoSoKiPlhsh209ihoiVMraG6FxmmlhEY" />
+              <div
+                class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label text-xs font-bold tracking-wider uppercase">
                 Oct 24, 2024
               </div>
-</div>
-<div class="p-8">
-<h3 class="font-headline text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors">Crossing the Rohtang: A Solo Rider's Odyssey</h3>
-<p class="text-on-surface-variant font-body mb-6 line-clamp-3">Navigating the treacherous mud slides and high altitude winds of the Rohtang Pass requires more than just a bike; it requires a certain kind of madness and a lot of heart.</p>
-<a class="inline-flex items-center text-secondary font-label font-bold tracking-wider hover:translate-x-2 transition-transform" href="#">
+            </div>
+            <div class="p-8">
+              <h3
+                class="font-headline text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors">
+                Crossing the Rohtang: A Solo Rider's Odyssey</h3>
+              <p class="text-on-surface-variant font-body mb-6 line-clamp-3">Navigating the treacherous mud slides and
+                high altitude winds of the Rohtang Pass requires more than just a bike; it requires a certain kind of
+                madness and a lot of heart.</p>
+              <a class="inline-flex items-center text-secondary font-label font-bold tracking-wider hover:translate-x-2 transition-transform"
+                href="#">
                 Read More <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
-</a>
-</div>
-</article>
-<!-- Blog Card 2 -->
-<article class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl">
-<div class="relative h-64 overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A group of adventure motorcyclists gathered around a small campfire at night with the milky way galaxy visible in the dark mountain sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5PMD7Ie_Ey86PjmgDPlxAD1dny3_bw_35FrZtS5QfH0EkAm509rwqdku1mUWfA8UunQy6B7g3xN5KQDfUviTE6nfEWSW8xT7t7p3LbmVUt0XfAMViHGz4ZEqC3hlHHReqZyf_xOWrYhKTYOCBdMn_7ImGIAJ-8imTZdYU_b99Dz69Y5OiLULvAIwHzmcAzaJ7ONzRtQJhyHDIjPfF-WBfvp12OXglyMBMfXy7yM2EQQq9iWhFYhfMgHle06owC4ClDW2jC1RfQRk"/>
-<div class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label text-xs font-bold tracking-wider uppercase">
+              </a>
+            </div>
+          </article>
+          <!-- Blog Card 2 -->
+          <article
+            class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl">
+            <div class="relative h-64 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="A group of adventure motorcyclists gathered around a small campfire at night with the milky way galaxy visible in the dark mountain sky"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5PMD7Ie_Ey86PjmgDPlxAD1dny3_bw_35FrZtS5QfH0EkAm509rwqdku1mUWfA8UunQy6B7g3xN5KQDfUviTE6nfEWSW8xT7t7p3LbmVUt0XfAMViHGz4ZEqC3hlHHReqZyf_xOWrYhKTYOCBdMn_7ImGIAJ-8imTZdYU_b99Dz69Y5OiLULvAIwHzmcAzaJ7ONzRtQJhyHDIjPfF-WBfvp12OXglyMBMfXy7yM2EQQq9iWhFYhfMgHle06owC4ClDW2jC1RfQRk" />
+              <div
+                class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label text-xs font-bold tracking-wider uppercase">
                 Oct 20, 2024
               </div>
-</div>
-<div class="p-8">
-<h3 class="font-headline text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors">Under the Stars: Best Camping Spots in Spiti</h3>
-<p class="text-on-surface-variant font-body mb-6 line-clamp-3">Where to pitch your tent when the world ends. We explore the high-altitude desert plateaus of Spiti Valley for the ultimate wild camping experience.</p>
-<a class="inline-flex items-center text-secondary font-label font-bold tracking-wider hover:translate-x-2 transition-transform" href="#">
+            </div>
+            <div class="p-8">
+              <h3
+                class="font-headline text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors">
+                Under the Stars: Best Camping Spots in Spiti</h3>
+              <p class="text-on-surface-variant font-body mb-6 line-clamp-3">Where to pitch your tent when the world
+                ends. We explore the high-altitude desert plateaus of Spiti Valley for the ultimate wild camping
+                experience.</p>
+              <a class="inline-flex items-center text-secondary font-label font-bold tracking-wider hover:translate-x-2 transition-transform"
+                href="#">
                 Read More <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
-</a>
-</div>
-</article>
-<!-- Blog Card 3 -->
-<article class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl">
-<div class="relative h-64 overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Technical flat lay of motorcycle gear including a rugged helmet, leather gloves, and a compass on a dark weathered wooden surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjB9wQmS4214gAVw7VMGGoU9P_vV2HzuXgmZMEzlIeuimdxpMDGBehnKZvMcrwRgRViNi-dFbhemLxx1iFYooY1zK4csh4m94vZj6stTfTCsynzAHfhHeD_Q1NCpzk6XfnkaauowndoYx7cwuzRikzcLZfod2awL0BVee8JDnJVOEMFGpeWesgso8ky3Xn_3uXODb39fPWZLtuPFiT8UONuO4cVVk1QsTtba_GCFuuOqCLG1x9Isvzv5nRickLAJMl3mdCnkmtCK8"/>
-<div class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label text-xs font-bold tracking-wider uppercase">
+              </a>
+            </div>
+          </article>
+          <!-- Blog Card 3 -->
+          <article
+            class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl">
+            <div class="relative h-64 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="Technical flat lay of motorcycle gear including a rugged helmet, leather gloves, and a compass on a dark weathered wooden surface"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjB9wQmS4214gAVw7VMGGoU9P_vV2HzuXgmZMEzlIeuimdxpMDGBehnKZvMcrwRgRViNi-dFbhemLxx1iFYooY1zK4csh4m94vZj6stTfTCsynzAHfhHeD_Q1NCpzk6XfnkaauowndoYx7cwuzRikzcLZfod2awL0BVee8JDnJVOEMFGpeWesgso8ky3Xn_3uXODb39fPWZLtuPFiT8UONuO4cVVk1QsTtba_GCFuuOqCLG1x9Isvzv5nRickLAJMl3mdCnkmtCK8" />
+              <div
+                class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label text-xs font-bold tracking-wider uppercase">
                 Oct 15, 2024
               </div>
-</div>
-<div class="p-8">
-<h3 class="font-headline text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors">Essential Gear for Himalayan Monsoon Rides</h3>
-<p class="text-on-surface-variant font-body mb-6 line-clamp-3">Don't let the rain stop the adventure. Our comprehensive guide to the best waterproof gear and tire choices for the wet season.</p>
-<a class="inline-flex items-center text-secondary font-label font-bold tracking-wider hover:translate-x-2 transition-transform" href="#">
+            </div>
+            <div class="p-8">
+              <h3
+                class="font-headline text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors">
+                Essential Gear for Himalayan Monsoon Rides</h3>
+              <p class="text-on-surface-variant font-body mb-6 line-clamp-3">Don't let the rain stop the adventure. Our
+                comprehensive guide to the best waterproof gear and tire choices for the wet season.</p>
+              <a class="inline-flex items-center text-secondary font-label font-bold tracking-wider hover:translate-x-2 transition-transform"
+                href="#">
                 Read More <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
-</a>
-</div>
-</article>
-<!-- Blog Card 4 -->
-<article class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl">
-<div class="relative h-64 overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Point of view shot from a motorcycle handlebar looking out over a winding mountain road that disappears into morning mist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiAMqsRqZCMU8xurKbs5lTGYXZ_vBie-EfInzhYTP_MjNeKzpdmodS20F0ts2HSLhbgffX81nSDTiPGJ6RNzkYuqwvKUnjnRYYOTBWODjwirDsjmiIutjVcMAkEaoKgjoeg8dI2qJ3eSayr3IM11pdyb--ueKxqM70ghphpZAkH11MwyuX33anrWTpH9HmakwtF0j45oqEeaMYYKYng9F08jUMIK0Wlbu4ypV7WIoo0Xoi4MnFwisBHZrRWPTG9kT82IkZHuTvnAQ"/>
-<div class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label text-xs font-bold tracking-wider uppercase">
+              </a>
+            </div>
+          </article>
+          <!-- Blog Card 4 -->
+          <article
+            class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-all duration-500 shadow-2xl">
+            <div class="relative h-64 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="Point of view shot from a motorcycle handlebar looking out over a winding mountain road that disappears into morning mist"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiAMqsRqZCMU8xurKbs5lTGYXZ_vBie-EfInzhYTP_MjNeKzpdmodS20F0ts2HSLhbgffX81nSDTiPGJ6RNzkYuqwvKUnjnRYYOTBWODjwirDsjmiIutjVcMAkEaoKgjoeg8dI2qJ3eSayr3IM11pdyb--ueKxqM70ghphpZAkH11MwyuX33anrWTpH9HmakwtF0j45oqEeaMYYKYng9F08jUMIK0Wlbu4ypV7WIoo0Xoi4MnFwisBHZrRWPTG9kT82IkZHuTvnAQ" />
+              <div
+                class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label text-xs font-bold tracking-wider uppercase">
                 Oct 08, 2024
               </div>
-</div>
-<div class="p-8">
-<h3 class="font-headline text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors">Mastering the Hairpins of Zuluk</h3>
-<p class="text-on-surface-variant font-body mb-6 line-clamp-3">32 hairpin turns that will test your clutch control and your nerves. Here is how to navigate the Silk Route like a pro.</p>
-<a class="inline-flex items-center text-secondary font-label font-bold tracking-wider hover:translate-x-2 transition-transform" href="#">
+            </div>
+            <div class="p-8">
+              <h3
+                class="font-headline text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors">
+                Mastering the Hairpins of Zuluk</h3>
+              <p class="text-on-surface-variant font-body mb-6 line-clamp-3">32 hairpin turns that will test your clutch
+                control and your nerves. Here is how to navigate the Silk Route like a pro.</p>
+              <a class="inline-flex items-center text-secondary font-label font-bold tracking-wider hover:translate-x-2 transition-transform"
+                href="#">
                 Read More <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
-</a>
-</div>
-</article>
-</div>
-<!-- Pagination -->
-<div class="mt-16 flex justify-center items-center space-x-4">
-<button class="w-12 h-12 glass-panel rounded-xl flex items-center justify-center text-on-surface-variant hover:text-secondary hover:scale-110 transition-all">
-<span class="material-symbols-outlined">chevron_left</span>
-</button>
-<button class="w-12 h-12 bg-secondary text-on-secondary rounded-xl font-bold flex items-center justify-center scale-110 shadow-[0_5px_15px_rgba(254,178,52,0.4)]">1</button>
-<button class="w-12 h-12 glass-panel rounded-xl font-bold flex items-center justify-center text-on-surface-variant hover:text-secondary hover:scale-110 transition-all">2</button>
-<button class="w-12 h-12 glass-panel rounded-xl font-bold flex items-center justify-center text-on-surface-variant hover:text-secondary hover:scale-110 transition-all">3</button>
-<button class="w-12 h-12 glass-panel rounded-xl flex items-center justify-center text-on-surface-variant hover:text-secondary hover:scale-110 transition-all">
-<span class="material-symbols-outlined">chevron_right</span>
-</button>
-</div>
-</div>
-<!-- Right Column: Sidebar -->
-<aside class="w-full lg:w-96 space-y-8">
-<!-- Recent Posts -->
-<div class="glass-panel p-8 rounded-2xl shadow-xl">
-<h4 class="font-headline text-xl font-bold text-white mb-6 uppercase tracking-tight">Recent Posts</h4>
-<div class="space-y-6">
-<div class="flex gap-4 group cursor-pointer">
-<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover" data-alt="Small thumbnail of a motorcycle rider silhouetted against a vibrant orange sunset in the desert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFYIsetBE8BFgbdRklj_k_jkMjqZcqAkiv0FotrLpPAdojdLNVJRLJB-r_SiYe6mWapIIoMA2s_JNjiR-TQTPaStZwgx7R_EZuSKI3765gBK_RHQKnPmSop-rRpj5Lu7h5xLeveGprsWSEuhjpOOZXHaA9_ceXUzKgPU7bjN2PT_B_SPxFW1abdrYXHhPjh6imD9KMZ-CVDYh7ZOOuYt_nmgN-9nxBYxjt9KiQn0uPIjEBDqqGGzgArkVAO7CjbDoJt_UMP4ZXUFA"/>
-</div>
-<div>
-<h5 class="text-white font-medium text-sm leading-snug group-hover:text-primary transition-colors">The Golden Hour in Ladakh</h5>
-<span class="text-on-surface-variant text-xs font-label">Oct 12, 2024</span>
-</div>
-</div>
-<div class="flex gap-4 group cursor-pointer">
-<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover" data-alt="Small thumbnail of a winding mountain road through a deep green pine forest with misty mountains in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9mHAYw7LhmLwokpQYNw497OLWUOn-Racains1ejsb3himENMP2mdlHPLbQMiv02wpoj158jYMQ8DgeEoMaqvRBKu5Qzhwhz4Qwdf7qWyF-aSZ0FESGMBQcBzBnGoDikDLywegZuYS9UUOqyAcaRKpPrOGl0EO9e0ktmKBukfadyELp3igWtDOIbEGr8AaqTxFgirFa8bkRlZOU729DvMSM6yhs24pQYj9SvoS5mfPHVj-OmaUsIFkKtRzKT6Ckv4NKgkv31hHnf8"/>
-</div>
-<div>
-<h5 class="text-white font-medium text-sm leading-snug group-hover:text-primary transition-colors">Forest Trails of Manali</h5>
-<span class="text-on-surface-variant text-xs font-label">Oct 05, 2024</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Categories -->
-<div class="glass-panel p-8 rounded-2xl shadow-xl">
-<h4 class="font-headline text-xl font-bold text-white mb-6 uppercase tracking-tight">Categories</h4>
-<ul class="space-y-3">
-<li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-secondary transition-colors group" href="#">
-<span class="font-label tracking-wide uppercase text-sm">Road Trips</span>
-<span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">12</span>
-</a>
-</li>
-<li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-secondary transition-colors group" href="#">
-<span class="font-label tracking-wide uppercase text-sm">Gear Reviews</span>
-<span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">08</span>
-</a>
-</li>
-<li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-secondary transition-colors group" href="#">
-<span class="font-label tracking-wide uppercase text-sm">Safety Tips</span>
-<span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">05</span>
-</a>
-</li>
-<li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-secondary transition-colors group" href="#">
-<span class="font-label tracking-wide uppercase text-sm">Photography</span>
-<span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">14</span>
-</a>
-</li>
-</ul>
-</div>
-<!-- Plan Your Trip CTA -->
-<div class="relative overflow-hidden rounded-2xl p-8 bg-surface-container-high border border-white/5 shadow-2xl">
-<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/10 blur-3xl rounded-full"></div>
-<h4 class="font-headline text-2xl font-bold text-white mb-4 relative z-10">Start Your Own Adventure</h4>
-<p class="text-on-surface-variant text-sm mb-6 relative z-10">Stop reading and start riding. Book your Himalayan bike today.</p>
-<button class="w-full bg-secondary text-on-secondary font-headline font-bold py-4 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_15px_30px_rgba(254,178,52,0.3)] relative z-10">
+              </a>
+            </div>
+          </article>
+        </div>
+        <!-- Pagination -->
+        <div class="mt-16 flex justify-center items-center space-x-4">
+          <button
+            class="w-12 h-12 glass-panel rounded-xl flex items-center justify-center text-on-surface-variant hover:text-secondary hover:scale-110 transition-all">
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <button
+            class="w-12 h-12 bg-secondary text-on-secondary rounded-xl font-bold flex items-center justify-center scale-110 shadow-[0_5px_15px_rgba(254,178,52,0.4)]">1</button>
+          <button
+            class="w-12 h-12 glass-panel rounded-xl font-bold flex items-center justify-center text-on-surface-variant hover:text-secondary hover:scale-110 transition-all">2</button>
+          <button
+            class="w-12 h-12 glass-panel rounded-xl font-bold flex items-center justify-center text-on-surface-variant hover:text-secondary hover:scale-110 transition-all">3</button>
+          <button
+            class="w-12 h-12 glass-panel rounded-xl flex items-center justify-center text-on-surface-variant hover:text-secondary hover:scale-110 transition-all">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+      </div>
+      <!-- Right Column: Sidebar -->
+      <aside class="w-full lg:w-96 space-y-8">
+        <!-- Recent Posts -->
+        <div class="glass-panel p-8 rounded-2xl shadow-xl">
+          <h4 class="font-headline text-xl font-bold text-white mb-6 uppercase tracking-tight">Recent Posts</h4>
+          <div class="space-y-6">
+            <div class="flex gap-4 group cursor-pointer">
+              <div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                <img class="w-full h-full object-cover"
+                  data-alt="Small thumbnail of a motorcycle rider silhouetted against a vibrant orange sunset in the desert"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFYIsetBE8BFgbdRklj_k_jkMjqZcqAkiv0FotrLpPAdojdLNVJRLJB-r_SiYe6mWapIIoMA2s_JNjiR-TQTPaStZwgx7R_EZuSKI3765gBK_RHQKnPmSop-rRpj5Lu7h5xLeveGprsWSEuhjpOOZXHaA9_ceXUzKgPU7bjN2PT_B_SPxFW1abdrYXHhPjh6imD9KMZ-CVDYh7ZOOuYt_nmgN-9nxBYxjt9KiQn0uPIjEBDqqGGzgArkVAO7CjbDoJt_UMP4ZXUFA" />
+              </div>
+              <div>
+                <h5 class="text-white font-medium text-sm leading-snug group-hover:text-primary transition-colors">The
+                  Golden Hour in Ladakh</h5>
+                <span class="text-on-surface-variant text-xs font-label">Oct 12, 2024</span>
+              </div>
+            </div>
+            <div class="flex gap-4 group cursor-pointer">
+              <div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                <img class="w-full h-full object-cover"
+                  data-alt="Small thumbnail of a winding mountain road through a deep green pine forest with misty mountains in the background"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9mHAYw7LhmLwokpQYNw497OLWUOn-Racains1ejsb3himENMP2mdlHPLbQMiv02wpoj158jYMQ8DgeEoMaqvRBKu5Qzhwhz4Qwdf7qWyF-aSZ0FESGMBQcBzBnGoDikDLywegZuYS9UUOqyAcaRKpPrOGl0EO9e0ktmKBukfadyELp3igWtDOIbEGr8AaqTxFgirFa8bkRlZOU729DvMSM6yhs24pQYj9SvoS5mfPHVj-OmaUsIFkKtRzKT6Ckv4NKgkv31hHnf8" />
+              </div>
+              <div>
+                <h5 class="text-white font-medium text-sm leading-snug group-hover:text-primary transition-colors">
+                  Forest Trails of Manali</h5>
+                <span class="text-on-surface-variant text-xs font-label">Oct 05, 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Categories -->
+        <div class="glass-panel p-8 rounded-2xl shadow-xl">
+          <h4 class="font-headline text-xl font-bold text-white mb-6 uppercase tracking-tight">Categories</h4>
+          <ul class="space-y-3">
+            <li>
+              <a class="flex justify-between items-center text-on-surface-variant hover:text-secondary transition-colors group"
+                href="#">
+                <span class="font-label tracking-wide uppercase text-sm">Road Trips</span>
+                <span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">12</span>
+              </a>
+            </li>
+            <li>
+              <a class="flex justify-between items-center text-on-surface-variant hover:text-secondary transition-colors group"
+                href="#">
+                <span class="font-label tracking-wide uppercase text-sm">Gear Reviews</span>
+                <span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">08</span>
+              </a>
+            </li>
+            <li>
+              <a class="flex justify-between items-center text-on-surface-variant hover:text-secondary transition-colors group"
+                href="#">
+                <span class="font-label tracking-wide uppercase text-sm">Safety Tips</span>
+                <span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">05</span>
+              </a>
+            </li>
+            <li>
+              <a class="flex justify-between items-center text-on-surface-variant hover:text-secondary transition-colors group"
+                href="#">
+                <span class="font-label tracking-wide uppercase text-sm">Photography</span>
+                <span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">14</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Plan Your Trip CTA -->
+        <div
+          class="relative overflow-hidden rounded-2xl p-8 bg-surface-container-high border border-white/5 shadow-2xl">
+          <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/10 blur-3xl rounded-full"></div>
+          <h4 class="font-headline text-2xl font-bold text-white mb-4 relative z-10">Start Your Own Adventure</h4>
+          <p class="text-on-surface-variant text-sm mb-6 relative z-10">Stop reading and start riding. Book your
+            Himalayan bike today.</p>
+          <button
+            class="w-full bg-secondary text-on-secondary font-headline font-bold py-4 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_15px_30px_rgba(254,178,52,0.3)] relative z-10">
             Rent a Bike
           </button>
-</div>
-</aside>
-</div>
-</main>
-<!-- Footer -->
-<footer class="w-full px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-12 bg-white/5 dark:bg-[#0e0e13]/80 backdrop-blur-lg rounded-t-[2rem] mt-24">
-<div class="col-span-1 md:col-span-1">
-<div class="text-2xl font-black text-[#9be9f7] mb-6">BikeRental.com</div>
-<p class="text-white/60 font-body text-sm leading-relaxed max-w-xs">
+        </div>
+      </aside>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer
+    class="w-full px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-12 bg-white/5 dark:bg-[#0e0e13]/80 backdrop-blur-lg rounded-t-[2rem] mt-24">
+    <div class="col-span-1 md:col-span-1">
+      <div class="text-2xl font-black text-[#9be9f7] mb-6">BikeRental.com</div>
+      <p class="text-white/60 font-body text-sm leading-relaxed max-w-xs">
         Forged in the Thin Air, we provide the ultimate machines for conquering the world's most challenging terrains.
       </p>
-</div>
-<div>
-<h6 class="text-[#feb234] font-bold font-headline mb-6 uppercase tracking-widest text-xs">Explore</h6>
-<ul class="space-y-4 font-label text-sm uppercase tracking-wider">
-<li><a class="text-white/60 hover:text-[#9be9f7] transition-colors duration-200" href="#">Fleet</a></li>
-<li><a class="text-[#feb234] font-medium transition-colors duration-200" href="#">Adventures</a></li>
-<li><a class="text-white/60 hover:text-[#9be9f7] transition-colors duration-200" href="#">Gear</a></li>
-</ul>
-</div>
-<div>
-<h6 class="text-[#feb234] font-bold font-headline mb-6 uppercase tracking-widest text-xs">Company</h6>
-<ul class="space-y-4 font-label text-sm uppercase tracking-wider">
-<li><a class="text-white/60 hover:text-[#9be9f7] transition-colors duration-200" href="#">Contact</a></li>
-<li><a class="text-white/60 hover:text-[#9be9f7] transition-colors duration-200" href="#">Privacy</a></li>
-<li><a class="text-white/60 hover:text-[#9be9f7] transition-colors duration-200" href="#">Terms</a></li>
-</ul>
-</div>
-<div>
-<h6 class="text-[#feb234] font-bold font-headline mb-6 uppercase tracking-widest text-xs">Stay Tuned</h6>
-<div class="flex gap-4 mb-6">
-<a class="w-10 h-10 glass-panel rounded-lg flex items-center justify-center text-white hover:text-primary transition-all" href="#">
-<span class="material-symbols-outlined text-xl">share</span>
-</a>
-<a class="w-10 h-10 glass-panel rounded-lg flex items-center justify-center text-white hover:text-primary transition-all" href="#">
-<span class="material-symbols-outlined text-xl">mail</span>
-</a>
-</div>
-<p class="text-white/40 text-xs font-label uppercase tracking-widest">
+    </div>
+    <div>
+      <h6 class="text-[#feb234] font-bold font-headline mb-6 uppercase tracking-widest text-xs">Explore</h6>
+      <ul class="space-y-4 font-label text-sm uppercase tracking-wider">
+        <li><a class="text-white/60 hover:text-[#9be9f7] transition-colors duration-200" href="#">Fleet</a></li>
+        <li><a class="text-[#feb234] font-medium transition-colors duration-200" href="#">Adventures</a></li>
+        <li><a class="text-white/60 hover:text-[#9be9f7] transition-colors duration-200" href="#">Gear</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6 class="text-[#feb234] font-bold font-headline mb-6 uppercase tracking-widest text-xs">Company</h6>
+      <ul class="space-y-4 font-label text-sm uppercase tracking-wider">
+        <li><a class="text-white/60 hover:text-[#9be9f7] transition-colors duration-200" href="#">Contact</a></li>
+        <li><a class="text-white/60 hover:text-[#9be9f7] transition-colors duration-200" href="#">Privacy</a></li>
+        <li><a class="text-white/60 hover:text-[#9be9f7] transition-colors duration-200" href="#">Terms</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6 class="text-[#feb234] font-bold font-headline mb-6 uppercase tracking-widest text-xs">Stay Tuned</h6>
+      <div class="flex gap-4 mb-6">
+        <a class="w-10 h-10 glass-panel rounded-lg flex items-center justify-center text-white hover:text-primary transition-all"
+          href="#">
+          <span class="material-symbols-outlined text-xl">share</span>
+        </a>
+        <a class="w-10 h-10 glass-panel rounded-lg flex items-center justify-center text-white hover:text-primary transition-all"
+          href="#">
+          <span class="material-symbols-outlined text-xl">mail</span>
+        </a>
+      </div>
+      <p class="text-white/40 text-xs font-label uppercase tracking-widest">
         © 2024 BikeRental.com. Forged in the Thin Air.
       </p>
-</div>
-</footer>
-</body></html>
+    </div>
+  </footer>
+</body>
+
+</html>

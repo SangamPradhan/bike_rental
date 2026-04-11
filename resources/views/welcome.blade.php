@@ -6,7 +6,7 @@
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
             <img class="w-full h-full object-cover brightness-[0.4]" alt="Adventure motorcycle in the Himalayas"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG51RImK1RojzTYfPf6jvi2VoKEPEfJIDLwC_XQfViaPnZaQBGcE22yiDO5rGAZbq_nLGWdYuEdgOjA5POUEe00lI4t0QSOi1n5ITTkiMAOD9lrnOkGNRIqRGERAE9-EjzOTEaGhs4i1fH8Iw9sGXNWs5BiOzHKvhoNxGOs-xnUCdDUoArJUI9Tv_ynzKcbmcte29XVwKvwjo6y6KAe9o3pnRAK_J6BT0g-lLF_l5sOnXwvEcFSohy2wKUq7GqyF1quR444VH1I3o" />
+                src="{{ asset('assets/img/meta/mountain_bike.png') }}" />
             <div class="absolute inset-0 bg-gradient-to-b from-surface/20 via-transparent to-surface"></div>
         </div>
 
@@ -20,7 +20,7 @@
                     </h1>
                 </div>
 
-                <!-- Advanced Booking Search Widget (Pushed to bottom by flex-end in CSS) -->
+                <!-- Advanced Booking Search Widget -->
                 <div class="booking-widget-wrapper">
                     <!-- Tabs -->
                     <div class="booking-tabs">
@@ -34,7 +34,7 @@
                     <div class="booking-form-content">
                         <h2 class="booking-title">Advanced Booking Search</h2>
 
-                        <form action="#" method="GET" id="booking-form">
+                        <form action="{{ route('rides') }}" method="GET" id="booking-form">
                             <input type="hidden" name="booking_type" id="booking_type" value="rent">
 
                             <div class="booking-grid">
@@ -176,7 +176,7 @@
         </div>
     </section>
 
-    <!-- Why Choose Us -->
+    <!-- Best Brands Section -->
     <section class="py-32 bg-surface-container-low border-y border-white/5 text-white">
         <div class="max-w-screen-2xl mx-auto px-12">
             <div data-aos="fade-up" class="text-center mb-8">
@@ -211,12 +211,62 @@
                         </div>
                     </div>
                 </div>
-                <!-- Center Image -->
-                <div data-aos="zoom-in" data-aos-delay="100" class="relative py-12">
+                <!-- Center Image (Dynamic Brand Carousel) -->
+                <div data-aos="zoom-in" data-aos-delay="100"
+                    class="relative py-12 flex flex-col items-center overflow-hidden">
                     <div class="absolute inset-0 bg-primary/20 blur-[120px] rounded-full scale-75 animate-pulse"></div>
-                    <img alt="Himalayan Adventure Motorcycle"
-                        class="relative z-10 w-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCku1n0_iAY48bZgVw0KmDtSEC87eZlrISAgo8maMLRmzohkd0IxDW7OxOUslSXg8Z6KWuAfhBc89_i5VnmjmmHdlTpVPCPKuuD6sW6gHyeiVmZrhWtWxj65M-VmBzBP4W4tjpVlsx-YV_BneK1_3CrIbEWaw2B0Ki5Zjrl6sE_3ONeJTwlE0FQ_k5AfBsG3zYX0_6dP6ksUn7ulj3JCzYfTJNqwtZ5rGZPjs-5Vh_6WL5jvo2xgrW-0HK83QXMUiGHykpvAh4HhN4" />
+
+                    <!-- Swiper Carousel -->
+                    <div class="swiper brandSwiper w-full relative z-10">
+                        <div class="swiper-wrapper">
+                            @if(isset($brands) && $brands->count() > 0)
+                                @foreach($brands as $brand)
+                                    <div class="swiper-slide text-center" data-brand-id="{{ $brand->id }}"
+                                        data-brand-type="{{ $brand->type }}">
+                                        @if($brand->getFirstMediaUrl())
+                                            <img alt="{{ $brand->name }}"
+                                                class="mx-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)] h-64 md:h-80 object-contain"
+                                                src="{{ $brand->getImage() ?? asset('assets/img/meta/himalayan.png') }}" />
+                                        @else
+                                            <div
+                                                class="mx-auto h-64 md:h-80 flex items-center justify-center bg-white/5 rounded-2xl w-3/4 border border-white/10">
+                                                <span
+                                                    class="text-3xl font-headline font-black text-white/50 uppercase">{{ $brand->name }}</span>
+                                            </div>
+                                        @endif
+                                        <h3 class="text-2xl font-headline font-black mt-6 text-white tracking-widest">
+                                            {{ strtoupper($brand->name) }}
+                                        </h3>
+                                    </div>
+                                @endforeach
+                            @else
+                                <!-- Fallback Static Slide -->
+                                <div class="swiper-slide text-center" data-brand-id="all">
+                                    <img alt="Himalayan Adventure Motorcycle"
+                                        class="mx-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)] h-64 md:h-80 object-contain"
+                                        src="{{ asset('assets/img/meta/himalayan.png') }}" />
+                                    <h3 class="text-2xl font-headline font-black mt-6 text-white tracking-widest">PREMIUM BRANDS
+                                    </h3>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <!-- Navigation and Select Model Button -->
+                    <div class="relative z-20 flex items-center justify-center gap-6 mt-10">
+                        <button
+                            class="brand-prev bg-white/5 hover:bg-primary hover:text-on-primary border border-white/10 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 relative z-30">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button id="selectModelBtn"
+                            class="px-8 py-3 outline-none border-none bg-secondary text-black font-headline font-black uppercase text-sm tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_20px_rgba(254,178,52,0.3)] relative z-30">
+                            Select Model
+                        </button>
+                        <button
+                            class="brand-next bg-white/5 hover:bg-primary hover:text-on-primary border border-white/10 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 relative z-30">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
                 </div>
                 <!-- Right Info Points -->
                 <div class="space-y-16">
@@ -384,9 +434,9 @@
                         @endif
                     </div>
                 </div>
-                <div data-aos="cinematic-left" class="relative hidden lg:block sticky top-32">
+                <div data-aos="cinematic-left" class="relative order-first lg:order-last mb-12 lg:mb-0 lg:sticky top-32">
                     <img alt="Support Vehicle in Mountains"
-                        class="rounded-2xl w-full h-[600px] object-cover brightness-75 shadow-2xl"
+                        class="rounded-2xl w-full h-[400px] lg:h-[600px] object-cover brightness-75 shadow-2xl"
                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJUFv0qlo-MrP7U1T_0vXTBxgPofs-e_qFwSRXwwrmrr0xCspUfVKyG-sOatDU2rnjOIUkuK-jaocln7l_grlxCS-dpICXbwLohrK9LCm8tnRBtlRjhuI1w03J8te5PaoAYeCGi0TSoQFBRsjcTJcfZ_RACZnrtnpXZUYLTihlUXND1FuRPC9eguqJgKWEukDFVUqnFHIvEpaY_CM11uBd1f0SW6Ows6nr8O7IChKHB7fS8PYLe7zp4iWn4I87KoHanbteyFdt8Uc" />
                     <div class="absolute inset-0 bg-gradient-to-l from-transparent to-surface-container-low/50"></div>
                 </div>
@@ -395,48 +445,66 @@
     </section>
 
     <!-- Popular Rides -->
-    <section class="py-32 bg-surface text-white">
-        <div class="max-w-screen-2xl mx-auto px-12 overflow-x-auto no-scrollbar">
-            <div class="flex gap-8 pb-12">
-                <!-- Slide 1 -->
-                <div data-aos="cinematic-up" data-aos-delay="0"
-                    class="min-w-[400px] h-[500px] relative rounded-2xl overflow-hidden group border-2 border-transparent hover:border-secondary transition-all duration-500 amber-glow">
-                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        alt="Dramatic side view of a Royal Enfield Interceptor in a dark warehouse with warm spotlight hitting the chrome details"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJUFv0qlo-MrP7U1T_0vXTBxgPofs-e_qFwSRXwwrmrr0xCspUfVKyG-sOatDU2rnjOIUkuK-jaocln7l_grlxCS-dpICXbwLohrK9LCm8tnRBtlRjhuI1w03J8te5PaoAYeCGi0TSoQFBRsjcTJcfZ_RACZnrtnpXZUYLTihlUXND1FuRPC9eguqJgKWEukDFVUqnFHIvEpaY_CM11uBd1f0SW6Ows6nr8O7IChKHB7fS8PYLe7zp4iWn4I87KoHanbteyFdt8Uc" />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-10">
-                        <h3 class="text-4xl font-headline font-black uppercase mb-2">Royal Enfield</h3>
-                        <p class="text-primary font-label text-sm uppercase tracking-widest font-bold">The Pure Motorcycling
-                            Legend</p>
-                    </div>
+    <section class="py-32 bg-surface text-white overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 md:px-12">
+            <div data-aos="fade-up" class="flex flex-col md:flex-row justify-between md:items-end mb-20 gap-8">
+                <div>
+                    <span class="text-secondary font-label text-sm font-bold uppercase tracking-[0.3em]">Featured</span>
+                    <h2 class="text-5xl md:text-6xl font-headline font-black mt-4 text-white">Popular Choices.</h2>
                 </div>
-                <!-- Slide 2 -->
-                <div data-aos="cinematic-up" data-aos-delay="150"
-                    class="min-w-[400px] h-[500px] relative rounded-2xl overflow-hidden group border-2 border-transparent hover:border-secondary transition-all duration-500">
-                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        alt="Action shot of an orange KTM adventure bike kicking up dust on a mountain trail at sunset"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkwXzC7FdcJb62S34SHqOeE9YC1iF-WBONWYmkExcAcNomKTEgKKhCtrcYo-XufZcwNiDXDJ7k5amsmf1imSl8dc_FW8wIoQBSM704oH7lhxhZT1T3IMFCWhojJ5ebTswwa5CqGpjWh2R8D0gm_imSUbAUn7kwgmxg-CmiEF2IxcWphwoNG0Z7-_iOirRHuma3fJExNYxP7t31wqhkM-bGNOyMWYOP6XGfNDxuII9XofXArV4kZtdJ-M7BNePfzGemOYO6KQtdEic" />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-10">
-                        <h3 class="text-4xl font-headline font-black uppercase mb-2">KTM Adventure</h3>
-                        <p class="text-primary font-label text-sm uppercase tracking-widest font-bold">Ready to Race
-                            Anywhere</p>
-                    </div>
-                </div>
-                <!-- Slide 3 -->
-                <div data-aos="cinematic-up" data-aos-delay="300"
-                    class="min-w-[400px] h-[500px] relative rounded-2xl overflow-hidden group border-2 border-transparent hover:border-secondary transition-all duration-500">
-                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        alt="Close up of a BMW GS adventure motorcycle's boxer engine and front beak design in a foggy mountain environment"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2EWg1_9x3bF87K39WlMpia9w-DjtJbCKgs8QcR82goONZMFnCSqNggjKfBbKl93-bRHpVfQ1Sns5MftI04u8PRE-utQ3SDzjsxgbo7pQNm0_8jlPgjmlEve6rqP3AOzbllolY0JiRbak4QDsYrNrMG6uYiDjeNyLWMqBZLboPdg6mjm-IDt-PChQGkj0LXSkomOX3DcVxZDBwoJDJvYV4nty5fjuM0xENi2E8n1nnRg729HUKbGK0ad95PGzvZQPLarcqdvZ2-Gs" />
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-10">
-                        <h3 class="text-4xl font-headline font-black uppercase mb-2">BMW GS Series</h3>
-                        <p class="text-primary font-label text-sm uppercase tracking-widest font-bold">The Ultimate Touring
-                            Machine</p>
-                    </div>
-                </div>
+                <a href="{{ route('rides') }}"
+                    class="w-fit px-8 py-4 border-2 border-primary/20 text-primary font-headline uppercase text-xs font-black tracking-widest rounded-lg hover:bg-primary hover:text-on-primary transition-all">
+                    More Models <span class="material-symbols-outlined align-middle ml-2 text-sm">arrow_forward</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                @if(isset($promoted_vehicles) && $promoted_vehicles->count() > 0)
+                    @foreach($promoted_vehicles as $index => $vehicle)
+                        <a href="{{ route('select-vehicle', $vehicle->id) }}" data-aos="cinematic-up"
+                            data-aos-delay="{{ $index * 100 }}"
+                            class="blog-card block group glass-panel rounded-2xl overflow-hidden border border-white/5 transition-all duration-500">
+                            <div class="h-64 overflow-hidden relative">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                    src="{{ $vehicle->getImage() ?? asset('assets/img/meta/himalayan.png') }}"
+                                    alt="{{ $vehicle->title }}" />
+                                <span
+                                    class="absolute top-4 left-4 bg-secondary text-black px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">
+                                    {{ $vehicle->brand->name ?? 'Brand' }}
+                                </span>
+                            </div>
+                            <div class="p-8">
+                                <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors">
+                                    {{ $vehicle->title }}
+                                </h4>
+                                
+                                <div class="flex flex-wrap gap-4 mb-6">
+                                    <div class="flex items-center gap-2 text-on-surface-variant/70">
+                                        <span class="material-symbols-outlined text-lg" style="color:#9be9f7;">settings_input_component</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider text-white/80">{{ $vehicle->engine_cc ?? '---' }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-on-surface-variant/70">
+                                        <span class="material-symbols-outlined text-lg" style="color:#9be9f7;">speed</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider text-white/80">{{ $vehicle->kmpl ?? '---' }} KMPL</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-on-surface-variant/70">
+                                        <span class="material-symbols-outlined text-lg" style="color:#9be9f7;">local_gas_station</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider text-white/80">{{ $vehicle->fuel_tank_capacity ?? '---' }} L</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs font-label uppercase tracking-widest">
+                                    <div class="text-white/40">From Rs. {{ number_format($vehicle->rate_per_day) }}</div>
+                                    <div class="flex items-center gap-2 text-primary font-black group-hover:gap-3 transition-all">
+                                        Book Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                @else
+                    <div class="col-span-3 text-center text-white/50 text-sm">Our popular choices are being updated. Check back soon!</div>
+                @endif
             </div>
         </div>
     </section>
@@ -501,73 +569,39 @@
                 </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Blog Card 1 -->
-                <div data-aos="cinematic-up" data-aos-delay="0"
-                    class="blog-card group glass-panel rounded-2xl overflow-hidden border border-white/5 transition-all duration-500">
-                    <div class="h-64 overflow-hidden relative">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                            alt="First person perspective from a motorcycle rider looking at a narrow winding road through a steep mountain gorge"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcl1vnQ6vT120ehZJIoZbTQlihJJrViGoI9VlELHeMyORu0n6VaFIgK4gNn1t9KBzckp1GGBNem4_r8ZQ08QUMd9lTnYLWM5huc-WsLEwSGObY6qKRpdBQtimghij1RTiqKk-4YcKZhaMhuThXQW_sZB4r3JS1td7-zNrmfFiw_glUEH6d7WoBmhXa3g1YFR8SxcGrGQDAaUUxhCnhUDYfs5EOx1g8L5Lc07FLoSWhUN5fE7HRxesHzFplCS9eiU_i79w8Nc4VGgs" />
-                        <span
-                            class="tag-span absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">Adventure</span>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors">
-                            Crossing the Khardung La Pass</h4>
-                        <p class="text-on-surface-variant font-body mb-6 text-sm leading-relaxed">Everything you need to
-                            know about the world's highest motorable road and how to prepare your bike for the climb.</p>
-                        <div class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-white/40">
-                            <span>Oct 12, 2024</span>
-                            <span class="w-1 h-1 bg-white/40 rounded-full"></span>
-                            <span>8 min read</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Blog Card 2 -->
-                <div data-aos="cinematic-up" data-aos-delay="150"
-                    class="blog-card group glass-panel rounded-2xl overflow-hidden border border-white/5 transition-all duration-500">
-                    <div class="h-64 overflow-hidden relative">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                            alt="Close up of essential motorcycle camping gear laid out on a topographical map, including gloves, multi-tool, and a helmet"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-U4flATo5I_gdHa2BF3IjsNeQJ9NySdHeOisr7ZxJXP0SXZ9spLM3DP7Nxc4IRRbTN8RHJajalkZ2Q0CdRV1JUtx_oZwVtz8MS44ZsskZmzUoLLxmZP24ObNOiUCXgwffoq_sV_Ab2ti5-4KRgzYoimlNRD-MIFRWUqAXx6OgEQwnmVZJkuVWW5zcE_cHgqXvLCTyZfGjMNBB6JTuY0MT6-eofhGTHJ3rhuMogrmA4rbAq_ZoVRrkk213Mqkf0fvZDBUk4nnKfao" />
-                        <span
-                            class="tag-span absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">Gear
-                            Guide</span>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors">
-                            Packing List for Spiti Valley</h4>
-                        <p class="text-on-surface-variant font-body mb-6 text-sm leading-relaxed">The essential gear guide
-                            for enduring the desert cold and rocky trails of Spiti. Don't leave without these items.</p>
-                        <div class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-white/40">
-                            <span>Sep 28, 2024</span>
-                            <span class="w-1 h-1 bg-white/40 rounded-full"></span>
-                            <span>12 min read</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Blog Card 3 -->
-                <div data-aos="cinematic-up" data-aos-delay="300"
-                    class="blog-card group glass-panel rounded-2xl overflow-hidden border border-white/5 transition-all duration-500">
-                    <div class="h-64 overflow-hidden relative">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                            alt="Beautiful landscape of a turquoise high-altitude lake surrounded by barren brown mountains under a deep blue sky"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk5NVZd5VQdhq0qPVZt7t8ghQ5qD6p8rWkzUBokXoRNXzWi2e3LRXhw_kpcgBLxO3HSo52o_CekrbnsVu21HIf4lFRH0kR0OrCYwlSHQhEXMkKJisgFfp0xL0-tudFHa6e3Lhmfe88-DWcX3nusGH4pg2n1TdTLGNtXu7ejTaHSbBBV_5q0SrDZiW4u3ZA4zOv7Gu8vyZ0PFzNsWuFm2UdwS2pjlLpJOMNzKaYLXlvernjpkxZ3v4_KC5eeLhi8--2kBCTcVqeDbM" />
-                        <span
-                            class="tag-span absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">Itinerary</span>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors">
-                            Ladakh: The 14-Day Circuit</h4>
-                        <p class="text-on-surface-variant font-body mb-6 text-sm leading-relaxed">A comprehensive daily
-                            breakdown of the classic Manali-Leh-Srinagar circuit for solo riders and groups.</p>
-                        <div class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-white/40">
-                            <span>Sep 15, 2024</span>
-                            <span class="w-1 h-1 bg-white/40 rounded-full"></span>
-                            <span>15 min read</span>
-                        </div>
-                    </div>
-                </div>
+                @if(isset($articles) && $articles->count() > 0)
+                    @foreach($articles as $index => $article)
+                        <a href="{{ route('article-details', $article->slug) }}" data-aos="cinematic-up"
+                            data-aos-delay="{{ $index * 150 }}"
+                            class="blog-card block group glass-panel rounded-2xl overflow-hidden border border-white/5 transition-all duration-500">
+                            <div class="h-64 overflow-hidden relative">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                    alt="{{ $article->title }}"
+                                    src="{{ $article->getImage() ?? 'https://lh3.googleusercontent.com/aida-public/AB6AXuBcl1vnQ6vT120ehZJIoZbTQlihJJrViGoI9VlELHeMyORu0n6VaFIgK4gNn1t9KBzckp1GGBNem4_r8ZQ08QUMd9lTnYLWM5huc-WsLEwSGObY6qKRpdBQtimghij1RTiqKk-4YcKZhaMhuThXQW_sZB4r3JS1td7-zNrmfFiw_glUEH6d7WoBmhXa3g1YFR8SxcGrGQDAaUUxhCnhUDYfs5EOx1g8L5Lc07FLoSWhUN5fE7HRxesHzFplCS9eiU_i79w8Nc4VGgs' }}" />
+                                @if($article->tag)
+                                    <span
+                                        class="absolute top-4 left-4 bg-secondary text-black px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">{{ $article->tag }}</span>
+                                @endif
+                            </div>
+                            <div class="p-8">
+                                <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors">
+                                    {{ Str::limit($article->title, 50) }}
+                                </h4>
+                                <p class="text-on-surface-variant font-body mb-6 text-sm leading-relaxed">
+                                    {{ Str::limit(strip_tags($article->description), 100) }}
+                                </p>
+                                <div class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-white/40">
+                                    <span>{{ $article->created_at->format('M d, Y') }}</span>
+                                    <span class="w-1 h-1 bg-white/40 rounded-full"></span>
+                                    <span>Read More</span>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                @else
+                    <!-- Fallback Static if no data -->
+                    <div class="col-span-3 text-center text-white/50 text-sm">No recent stories found.</div>
+                @endif
             </div>
         </div>
     </section>
@@ -620,7 +654,6 @@
     <script>
         /**
          * Toggles between "Rent a Bike" (Delivery) and "Pick Up" (Store) tabs.
-         * Updates the Pickup Location field accordingly.
          */
         function switchBookingTab(type) {
             const tabRent = document.getElementById('tab-rent');
@@ -685,6 +718,67 @@
             if (dropoffDateInput) {
                 dropoffDateInput.min = today;
             }
+
+            // Brand Carousel Configuration
+            if (typeof Swiper !== 'undefined' && document.querySelector('.brandSwiper')) {
+                const brandSwiper = new Swiper('.brandSwiper', {
+                    slidesPerView: 1,
+                    loop: true,
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.brand-next',
+                        prevEl: '.brand-prev',
+                    },
+                    on: {
+                        init: function () {
+                            setTimeout(updateSelectModelButton, 100);
+                        },
+                        slideChangeTransitionEnd: function () {
+                            updateSelectModelButton();
+                        }
+                    }
+                });
+
+                // function updateSelectModelButton() {
+                //     const activeSlide = document.querySelector('.brandSwiper .swiper-slide-active');
+                //     if(activeSlide) {
+                //         const brandId = activeSlide.getAttribute('data-brand-id');
+                //         const btn = document.getElementById('selectModelBtn');
+                //         if (btn) {
+                //             btn.onclick = function(e) {
+                //                 e.preventDefault();
+                //                 window.location.href = "{{ route('rides') }}" + (brandId && brandId !== 'all' ? "?brand=" + brandId : "");
+                //             };
+                //         }
+                //     }
+                // }
+
+                function updateSelectModelButton() {
+                    const activeSlide = document.querySelector('.brandSwiper .swiper-slide-active');
+                    if (activeSlide) {
+                        const brandId = activeSlide.getAttribute('data-brand-id');
+                        const brandType = activeSlide.getAttribute('data-brand-type');
+                        const btn = document.getElementById('selectModelBtn');
+                        if (btn) {
+                            btn.onclick = function (e) {
+                                e.preventDefault();
+                                let url = "{{ route('rides') }}";
+                                if (brandId && brandId !== 'all') {
+                                    url += "?brand=" + brandId;
+                                    if (brandType) {
+                                        url += "&type=" + brandType; // e.g. ?brand=2&type=scooter
+                                    }
+                                }
+                                window.location.href = url;
+                            };
+                        }
+                    }
+                }
+            }
+
         });
     </script>
 @endpush

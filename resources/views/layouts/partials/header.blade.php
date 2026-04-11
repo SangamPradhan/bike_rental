@@ -33,7 +33,8 @@
         <div class="flex justify-between items-center px-12 py-6 max-w-screen-2xl mx-auto">
             <a href="{{ route('welcome') }}"
                 class="text-2xl font-black text-[#9be9f7] tracking-tightest font-headline">BikeRental.com</a>
-            <div class="hidden md:flex items-center space-x-10">
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center xl:space-x-10 lg:space-x-6 space-x-4">
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->is('/') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
                     href="{{ route('welcome') }}">Fleet</a>
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->routeIs('about') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
@@ -47,15 +48,17 @@
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->routeIs('contact') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
                     href="{{ route('contact') }}">Support</a>
             </div>
+            <!-- CTA and Hamburger -->
             <div class="flex items-center space-x-4">
                 <button
-                    class="hidden md:block px-8 py-3 liquid-gradient text-on-primary font-headline uppercase text-xs font-black tracking-widest rounded-lg hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_15px_rgba(155,233,247,0.3)]">Book
+                    class="hidden lg:block px-8 py-3 liquid-gradient text-on-primary font-headline uppercase text-xs font-black tracking-widest rounded-lg hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_15px_rgba(155,233,247,0.3)]">Book
                     Now</button>
-                <button onclick="openSideMenu()" class="hamburger-btn md:hidden">
+                <button onclick="openSideMenu()" class="hamburger-btn lg:hidden">
                     <span class="material-symbols-outlined text-3xl">menu</span>
                 </button>
             </div>
         </div>
+    </div>
 </nav>
 
 <!-- Sidebar Overlay -->
@@ -135,17 +138,16 @@
                     <span class="material-symbols-outlined text-lg block dark:hidden">dark_mode</span>
                 </button>
             </div>
-    </div>
-    </nav>
 
-    <!-- Sidebar Footer -->
-    <div class="p-8 pt-4 border-t border-white/5">
-        <p class="text-[10px] text-white/40 leading-relaxed">
-            &copy; {{ date('Y') }} BikeRental.com. All rights reserved.<br>
-            <span class="mt-2 block">Designed for premium experiences.</span>
-            <a href="https://pradhansangam.com.np" target="_blank"
-                class="mt-2 block text-primary/60 hover:text-primary transition-colors">by dev-sangam</a>
-        </p>
-    </div>
+            <!-- Sidebar Footer moved inside scrollable nav -->
+            <div class="mt-8 p-4 border-t border-white/5">
+                <p class="text-[10px] text-white/40 leading-relaxed">
+                    &copy; {{ date('Y') }} BikeRental.com. All rights reserved.<br>
+                    <span class="mt-2 block">Designed for premium experiences.</span>
+                    <a href="https://pradhansangam.com.np" target="_blank"
+                        class="mt-2 block text-primary/60 hover:text-primary transition-colors">by dev-sangam</a>
+                </p>
+            </div>
+        </nav>
     </div>
 </aside>
