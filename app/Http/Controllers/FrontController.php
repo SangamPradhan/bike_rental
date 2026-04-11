@@ -36,11 +36,13 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $data['articles'] = News::orderBy('order', 'ASC')->limit(3)->get();
+        $data['articles'] = News::orderBy('created_at', 'DESC')->limit(3)->get();
         $data['testimonials'] = Testimonial::orderBy('order', 'ASC')->get();
         $data['faqs'] = FAQ::orderBy('created_at', 'desc')->limit(5)->get();
         $data['popups'] = Popup::latest()->first();
         $data['brands'] = Brand::orderBy('order', 'ASC')->get();
+        $data['promoted_vehicles'] = Vehicle::with('brand')->where('is_promoted', true)->where('is_active', true)->orderBy('order', 'ASC')->get();
+
         return view('welcome', $data);
     }
 
