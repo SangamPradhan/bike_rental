@@ -573,24 +573,23 @@
                     @foreach($articles as $index => $article)
                         <a href="{{ route('article-details', $article->slug) }}" data-aos="cinematic-up"
                             data-aos-delay="{{ $index * 150 }}"
-                            class="blog-card block group glass-panel rounded-2xl overflow-hidden border border-white/5 transition-all duration-500">
-                            <div class="h-64 overflow-hidden relative">
-                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            class="group glass-panel rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-500 flex flex-col h-[520px]">
+                            <div class="h-64 overflow-hidden relative shrink-0">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 relative z-0"
                                     alt="{{ $article->title }}"
                                     src="{{ $article->getImage() ?? 'https://lh3.googleusercontent.com/aida-public/AB6AXuBcl1vnQ6vT120ehZJIoZbTQlihJJrViGoI9VlELHeMyORu0n6VaFIgK4gNn1t9KBzckp1GGBNem4_r8ZQ08QUMd9lTnYLWM5huc-WsLEwSGObY6qKRpdBQtimghij1RTiqKk-4YcKZhaMhuThXQW_sZB4r3JS1td7-zNrmfFiw_glUEH6d7WoBmhXa3g1YFR8SxcGrGQDAaUUxhCnhUDYfs5EOx1g8L5Lc07FLoSWhUN5fE7HRxesHzFplCS9eiU_i79w8Nc4VGgs' }}" />
-                                @if($article->tag)
-                                    <span
-                                        class="absolute top-4 left-4 bg-secondary text-black px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded">{{ $article->tag }}</span>
-                                @endif
+                                <span class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded z-10">
+                                    {{ $article->tag ?? 'Adventure' }}
+                                </span>
                             </div>
-                            <div class="p-8">
-                                <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors">
-                                    {{ Str::limit($article->title, 50) }}
+                            <div class="p-8 flex flex-col flex-1">
+                                <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                                    {{ Str::limit($article->title, 45) }}
                                 </h4>
-                                <p class="text-on-surface-variant font-body mb-6 text-sm leading-relaxed">
-                                    {{ Str::limit(strip_tags($article->description), 100) }}
+                                <p class="text-on-surface-variant font-body mb-6 text-sm leading-relaxed line-clamp-3">
+                                    {{ Str::limit(strip_tags($article->description), 110) }}
                                 </p>
-                                <div class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-white/40">
+                                <div class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-white/40 mt-auto pt-4 border-t border-white/5">
                                     <span>{{ $article->created_at->format('M d, Y') }}</span>
                                     <span class="w-1 h-1 bg-white/40 rounded-full"></span>
                                     <span>Read More</span>
