@@ -82,9 +82,11 @@ class TestimonialController extends BaseController
         $request->validate([
             'name' => 'required',
             'message' => 'required',
-            'order' => 'nullable|numeric'
+            'order' => 'nullable|numeric',
+            'rating' => 'required|numeric|min:1|max:5',
+            'country' => 'nullable|string'
         ]);
-        $data = $request->only(['name', 'message', 'order']);
+        $data = $request->only(['name', 'message', 'order', 'rating', 'country']);
         $testimonial = new Testimonial($data);
         $testimonial->save();
         if ($request->image) {
@@ -140,9 +142,11 @@ class TestimonialController extends BaseController
         $request->validate([
             'name' => 'required',
             'message' => 'required',
-            'order' => 'nullable|numeric'
+            'order' => 'nullable|numeric',
+            'rating' => 'required|numeric|min:1|max:5',
+            'country' => 'nullable|string'
         ]);
-        $data = $request->only(['name', 'message', 'order']);
+        $data = $request->only(['name', 'message', 'order', 'rating', 'country']);
         $item = Testimonial::findOrFail($id);
         $item->update($data);
         if ($request->image) {
