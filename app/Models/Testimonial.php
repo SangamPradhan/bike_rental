@@ -11,7 +11,7 @@ class Testimonial extends BaseModel
 
     protected $guarded = ['id'];
 
-    protected $fillable = ['name', 'message', 'order'];
+    protected $fillable = ['name', 'message', 'order', 'rating', 'country'];
 
     protected $appends = ['image_url', 'thumb_url'];
 
