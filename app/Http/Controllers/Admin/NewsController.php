@@ -89,13 +89,15 @@ class NewsController extends BaseController
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'order' => 'nullable|numeric'
+            'order' => 'nullable|numeric',
+            'tag' => 'nullable|string'
         ]);
 
         $news = new News([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'order' => $request->input('order')
+            'order' => $request->input('order'),
+            'tag' => $request->input('tag')
         ]);
 
         $user = auth()->user();
@@ -199,6 +201,7 @@ class NewsController extends BaseController
             'title' => 'required',
             'description' => 'required',
             'order' => 'nullable|numeric',
+            'tag' => 'nullable|string'
         ]);
 
         $item = News::findOrFail($id);
@@ -208,7 +211,7 @@ class NewsController extends BaseController
             abort(403, 'Unauthorized');
         }
 
-        $item->update($request->only(['title', 'description', 'order']));
+        $item->update($request->only(['title', 'description', 'order', 'tag']));
 
         if ($request->hasFile('image')) {
             $item->clearMediaCollection();

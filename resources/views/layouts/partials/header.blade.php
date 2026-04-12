@@ -5,12 +5,12 @@
         <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-6">
                 <a class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors"
-                    href="mailto:ride@bikerental.com">
-                    <span class="material-symbols-outlined text-sm">mail</span> ride@bikerental.com
+                    href="mailto:pandeybikram140@gmail.com">
+                    <span class="material-symbols-outlined text-sm">mail</span> pandeybikram140@gmail.com
                 </a>
                 <a class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors"
-                    href="tel:+977123456789">
-                    <span class="material-symbols-outlined text-sm">phone</span> +977 1 2345678
+                    href="tel:9856080258">
+                    <span class="material-symbols-outlined text-sm">phone</span> +977 985-6080258
                 </a>
             </div>
             <div class="flex items-center space-x-4 text-white/40">

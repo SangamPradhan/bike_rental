@@ -19,8 +19,9 @@
         <div class="absolute inset-0 z-0">
             <img class="w-full h-full object-cover brightness-50"
                 alt="Cinematic wide shot of a rugged black adventure motorcycle parked on a high mountain pass"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJxhMb_6VM7daR1Q29QpRVco4colTFAkwS8yWHSBj2swFTR7dtHNuLv6CIJupM5wsvMBd0Res4UwAt24IfTgR5heU6mN_m0_klhfelHCMBcFkfJMaRVWYhtRfmUgG3bbir2Xh9BUrF6L0n_1oucwcxXWkS03xTWXmzzSQd32oxjDYzrbTgU7_IPfKptGKqirdami8-_zT7yBC38RLU2w7cpo9icZepogDJlVSjsm2f8j6nsMQz780RSow_sR37y_8SleaNLMM7r3Y" />
-            <div class="absolute inset-0 bg-gradient-to-b from-surface/40 via-surface/60 to-surface"></div>
+                src="{{ asset('assets/img/meta/ride_banner.png') }}" />
+            <div class=" absolute inset-0 bg-gradient-to-b from-surface/40 via-surface/60 to-surface">
+            </div>
         </div>
         <div class="relative z-10 text-center px-4">
             <h1

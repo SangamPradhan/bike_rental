@@ -555,6 +555,9 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    @include('layouts.partials.testimonials')
+
     <!-- Blogs Section -->
     <section class="py-32 bg-surface-container-low text-white">
         <div class="max-w-screen-2xl mx-auto px-12">
