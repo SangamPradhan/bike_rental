@@ -49,6 +49,7 @@ class FrontController extends Controller
     public function about()
     {
         $data['staffs'] = Staff::whereIn('designation', ['Doctor', 'Head Nurse', 'Head Pharmacist'])->get();
+        $data['testimonials'] = Testimonial::orderBy('order', 'ASC')->get();
         return view('front.about', $data);
     }
 
