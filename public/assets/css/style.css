@@ -83,7 +83,11 @@
 }
 
 .border-primary {
-    color: var(--color-primary) !important;
+    border-color: #9be9f7 !important;
+}
+
+.border-secondary {
+    border-color: #feb234 !important;
 }
 
 /* Smooth scroll */
@@ -6927,4 +6931,3 @@ body .mobile-sidebar.active {
         transform: translateX(0);
     }
 }
-
