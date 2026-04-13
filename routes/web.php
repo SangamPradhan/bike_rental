@@ -48,7 +48,6 @@ Route::get('/booking/extras', [FrontController::class, 'bookingExtras'])->name('
 Route::post('/booking/extras', [FrontController::class, 'storeExtras'])->name('booking.extras.store');
 Route::get('/offer-form', [FrontController::class, 'offerForm'])->name('offer-form');
 Route::get('/safety-guides', [FrontController::class, 'safetyGuides'])->name('safety-guides');
-Route::post('/womans-day-form', [FrontController::class, 'womansDayForm'])->name('womans-day-form');
 // Route::get('/packages', [FrontController::class, 'package'])->name('packages');
 // Route::get('/package-details', [FrontController::class, 'packageDetails'])->name('package-details');
 Route::get('/international-patient-services', [FrontController::class, 'internationalPatientServices'])->name('international-patient-services');
