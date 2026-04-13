@@ -132,6 +132,10 @@ class FrontController extends Controller
     {
         $query = Vehicle::with('brand')->where('is_active', true);
 
+        // Fetch dynamic bounds for ALL active vehicles for the slider range
+        $minPrice = Vehicle::where('is_active', true)->min('rate_per_day') ?? 1000;
+        $maxPrice = Vehicle::where('is_active', true)->max('rate_per_day') ?? 20000;
+
         if ($request->has('type') && $request->type != 'all') {
             $query->where('type', $request->type);
         }
@@ -140,10 +144,19 @@ class FrontController extends Controller
             $query->where('brand_id', $request->brand);
         }
 
+        if ($request->has('price')) {
+            $query->where('rate_per_day', '<=', $request->price);
+        }
+
         $vehicles = $query->orderBy('order', 'ASC')->get();
         $brands = Brand::orderBy('order', 'ASC')->get();
+        $selectedPrice = $request->get('price', $maxPrice);
 
-        return view('front.rides', compact('vehicles', 'brands'));
+        if ($request->ajax()) {
+            return view('layouts.partials.vehicle-grid', compact('vehicles'));
+        }
+
+        return view('front.rides', compact('vehicles', 'brands', 'minPrice', 'maxPrice', 'selectedPrice'));
     }
 
     public function selectVehicle($id)
