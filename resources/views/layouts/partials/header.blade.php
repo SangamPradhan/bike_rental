@@ -5,9 +5,9 @@
         <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-6">
                 <a class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors"
-                    href="mailto:pandeybikram140@gmail.com">
+                    href="mailto:Bikerentinpokhara@gmail.com">
                     <span class="material-symbols-outlined text-sm">mail</span>
-                    <span class="hidden md:inline">pandeybikram140@gmail.com</span>
+                    <span class="hidden md:inline">Bikerentinpokhara@gmail.com</span>
                 </a>
                 <a class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors"
                     href="tel:9856080258">

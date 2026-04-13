@@ -337,7 +337,7 @@ class FrontController extends Controller
             ]);
 
             // Send mail to email address
-            Mail::to('pandeybikram140@gmail.com')->send(new ContactFormMail($request->all()));
+            Mail::to('Bikerentinpokhara@gmail.com')->send(new ContactFormMail($request->all()));
 
             // Flash success message
             $request->session()->flash('success', 'Your message has been sent successfully!');

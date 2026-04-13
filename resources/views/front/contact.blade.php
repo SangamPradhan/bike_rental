@@ -100,8 +100,7 @@
                     </div>
                     <button
                         class="w-full md:w-auto bg-secondary font-headline font-black text-xs tracking-widest uppercase px-12 py-5 rounded-full hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-secondary/30 amber-glow"
-                        style="color: black !important;"
-                        type="submit">
+                        style="color: black !important;" type="submit">
                         Send Expedition Request
                     </button>
                 </form>
@@ -134,8 +133,9 @@
                         <div>
                             <h4
                                 class="font-label text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-1">
-                                Satellite Phone</h4>
-                            <p class="text-white font-headline font-bold text-lg">+977 9856023456</p>
+                                Contact Number</h4>
+                            <p class="font-headline font-bold text-white text-lg">+977 9856023456</p>
+                            <p class="font-headline font-bold text-white text-lg">+977 985-5080258</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-6 relative z-10">
@@ -147,7 +147,7 @@
                             <h4
                                 class="font-label text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-1">
                                 Expedition Support</h4>
-                            <p class="text-white font-headline font-bold text-lg">pandeybikram140@gmail.com</p>
+                            <p class="text-white font-headline font-bold text-lg">Bikerentinpokhara@gmail.com</p>
                         </div>
                     </div>
 

@@ -98,7 +98,8 @@
                 <a class="text-white/40 hover:text-secondary transition-colors" href="#">
                     <span class="material-symbols-outlined text-xl">share</span>
                 </a>
-                <a class="text-white/40 hover:text-secondary transition-colors" href="mailto:pandeybikram140@gmail.com">
+                <a class="text-white/40 hover:text-secondary transition-colors"
+                    href="mailto:Bikerentinpokhara@gmail.com">
                     <span class="material-symbols-outlined text-xl">mail</span>
                 </a>
             </div>
