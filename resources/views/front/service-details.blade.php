@@ -69,14 +69,8 @@
                                     </div>
                                 @endif
 
-                                <div class="card-text mb-4">
-                                    <ul>
-                                        {!! preg_replace(
-                                            '/<li>(.*?)<\/li>/',
-                                            '<li><i class="bi bi-check-circle" style="color: var(--color-primary)"></i> $1</li>',
-                                            $service->description,
-                                        ) !!}
-                                    </ul>
+                                <div class="card-text mb-4 rich-text-content">
+                                    {!! $service->description !!}
                                 </div>
                                 <div class="button-container">
                                     <button type="button" onclick="window.location.href='{{ route('ride-booking') }}';"

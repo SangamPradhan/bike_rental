@@ -9,6 +9,22 @@
 @section('og_url', route('article-details', $article->id))
 @section('og_image', $article->getImage())
 
+@push('css')
+    <style>
+        .article-details-body * {
+            font-family: inherit; /* Fallback to prose default */
+        }
+        /* Ensure specific inline styles from editor take precedence */
+        .article-details-body [style*="font-family"] {
+            font-family: attr(style) !important; /* This is not valid CSS, but just a thought */
+        }
+        /* Better approach: allow inline styles to win */
+        .article-details-body span, .article-details-body p, .article-details-body div {
+            font-family: revert;
+        }
+    </style>
+@endpush
+
 @section('content')
     <main id="main">
 

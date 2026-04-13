@@ -178,9 +178,9 @@
                                 <h4 class="font-headline font-bold text-base text-white uppercase tracking-widest italic">
                                     Machine Overview</h4>
                             </div>
-                            <p class="text-white/60 text-sm leading-relaxed italic border-l border-white/10 pl-6 py-1">
-                                {!! nl2br(e($vehicle->description)) !!}
-                            </p>
+                            <div class="text-white/80 text-sm leading-relaxed border-l border-white/10 pl-6 py-1">
+                                {!! $vehicle->description !!}
+                            </div>
                         </div>
 
                         <!-- Extras Grid -->
