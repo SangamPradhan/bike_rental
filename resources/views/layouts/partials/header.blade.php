@@ -6,11 +6,13 @@
             <div class="flex items-center space-x-6">
                 <a class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors"
                     href="mailto:pandeybikram140@gmail.com">
-                    <span class="material-symbols-outlined text-sm">mail</span> pandeybikram140@gmail.com
+                    <span class="material-symbols-outlined text-sm">mail</span>
+                    <span class="hidden md:inline">pandeybikram140@gmail.com</span>
                 </a>
                 <a class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors"
                     href="tel:9856080258">
-                    <span class="material-symbols-outlined text-sm">phone</span> +977 985-6080258
+                    <span class="material-symbols-outlined text-sm">phone</span>
+                    <span class="hidden md:inline">+977 985-6080258</span>
                 </a>
             </div>
             <div class="flex items-center space-x-4 text-white/40">
@@ -28,13 +30,60 @@
             </div>
         </div>
     </div>
+
+    <style>
+        /* Desktop Links: Show above 995px */
+        @media (min-width: 1028px) {
+            .nav-desktop-main {
+                display: flex !important;
+            }
+
+            .nav-mobile-hamburger {
+                display: none !important;
+            }
+        }
+
+        /* Mobile Hamburger: Show at 995px and below */
+        @media (max-width: 995px) {
+            .nav-desktop-main {
+                display: none !important;
+            }
+
+            .nav-mobile-hamburger {
+                display: flex !important;
+            }
+        }
+    </style>
+
     <!-- Main Nav -->
     <div class="bg-surface/40 backdrop-blur-lg border-b border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
-        <div class="flex justify-between items-center px-12 py-6 max-w-screen-2xl mx-auto">
-            <a href="{{ route('welcome') }}"
-                class="text-2xl font-black text-[#9be9f7] tracking-tightest font-headline">BikeRental.com</a>
-            <!-- Desktop Links -->
-            <div class="hidden lg:flex items-center xl:space-x-10 lg:space-x-6 space-x-4">
+        <div class="flex justify-between items-center px-4 lg:px-8 xl:px-12 py-6 max-w-screen-2xl mx-auto">
+            <a href="{{ route('welcome') }}" class="flex items-center gap-3 lg:gap-4 group transition-all">
+                <!-- Circular Logo with Glow -->
+                <div class="relative shrink-0">
+                    <div
+                        class="w-16 h-16 rounded-full border-2 border-secondary p-0.5 shadow-[0_0_15px_rgba(254,178,52,0.4)] group-hover:shadow-[0_0_20px_rgba(254,178,52,0.6)] transition-all duration-300">
+                        <div
+                            class="w-full h-full rounded-full overflow-hidden bg-surface-container-highest flex items-center justify-center">
+                            <img src="{{ asset('assets/img/meta/bike_rental.webp') }}" alt="Logo"
+                                class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <!-- Brand Text -->
+                <div class="flex flex-col leading-tight">
+                    <span
+                        class="text-secondary font-headline font-black text-base lg:text-lg tracking-tighter uppercase whitespace-nowrap">
+                        Bike & Scooter
+                    </span>
+                    <span
+                        class="text-secondary font-label font-bold text-[11px] lg:text-[12px] tracking-[0.15em] uppercase opacity-90 whitespace-nowrap">
+                        Rent in Pokhara
+                    </span>
+                </div>
+            </a>
+            <!-- Desktop Links (Show from 1150px) -->
+            <div class="nav-desktop-main items-center xl:space-x-10 lg:space-x-4 space-x-2">
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->is('/') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
                     href="{{ route('welcome') }}">Fleet</a>
                 <a class="font-headline tracking-tighter uppercase font-bold text-sm {{ request()->routeIs('about') ? 'text-[#feb234] border-b-2 border-[#feb234] pb-1' : 'text-white/80 hover:text-[#9be9f7] hover:scale-105 transition-all duration-300' }}"
@@ -51,9 +100,9 @@
             <!-- CTA and Hamburger -->
             <div class="flex items-center space-x-4">
                 <button
-                    class="hidden lg:block px-8 py-3 liquid-gradient text-on-primary font-headline uppercase text-xs font-black tracking-widest rounded-lg hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_15px_rgba(155,233,247,0.3)]">Book
+                    class="nav-desktop-main px-8 py-3 liquid-gradient text-on-primary font-headline uppercase text-xs font-black tracking-widest rounded-lg hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_15_rgba(155,233,247,0.3)]">Book
                     Now</button>
-                <button onclick="openSideMenu()" class="hamburger-btn lg:hidden">
+                <button onclick="openSideMenu()" class="hamburger-btn nav-mobile-hamburger">
                     <span class="material-symbols-outlined text-3xl">menu</span>
                 </button>
             </div>
@@ -84,7 +133,7 @@
                     <span class="material-symbols-outlined text-3xl">close</span>
                 </button>
             </div>
-            <h2 class="text-2xl font-black text-[#9be9f7] tracking-tightest font-headline mb-1">Bike & Scooter Rent in
+            <h2 class="text-2xl font-black text-secondary tracking-tightest font-headline mb-1">Bike & Scooter Rent in
                 Pokhara</h2>
             <p class="text-[10px] text-white/40 uppercase tracking-[0.2em] font-bold mb-6">Premium Fleet & Service</p>
 
@@ -98,7 +147,7 @@
         </div>
 
         <!-- Sidebar Navigation -->
-        <nav class="flex-1 px-4 py-2 overflow-y-auto no-scrollbar flex flex-col gap-2">
+        <nav class="flex-1 px-4 py-2 overflow-y-auto no-scrollbar flex flex-col gap-2 pb-24">
             <a class="sidebar-link {{ request()->routeIs('welcome') ? 'active' : '' }}" href="{{ route('welcome') }}"
                 style="--i:1">
                 <span class="material-symbols-outlined">home</span>
