@@ -41,13 +41,15 @@
                     <div class="mb-8">
                         <label class="font-label text-[10px] tracking-widest uppercase text-white/50 mb-3 block">Vehicle
                             Type</label>
-                        <div class="grid grid-cols-2 gap-2">
+                        <div class="grid grid-cols-3 gap-2">
+                            <button type="button" onclick="setFilter('type', 'all')"
+                                class="filter-btn-type {{ request('type', 'all') == 'all' ? 'bg-secondary text-on-secondary shadow-[0_0_15px_rgba(254,178,52,0.3)]' : 'bg-white/5 text-white/40 hover:bg-white/10' }} rounded-full py-2 px-2 text-[10px] font-bold transition-all duration-300">All</button>
                             <button type="button" onclick="setFilter('type', 'bike')"
-                                class="filter-btn-type {{ request('type', 'bike') == 'bike' ? 'bg-secondary text-on-secondary shadow-[0_0_15px_rgba(254,178,52,0.3)]' : 'bg-white/5 text-white/40 hover:bg-white/10' }} rounded-full py-2 px-4 text-xs font-bold transition-all duration-300">Bike</button>
+                                class="filter-btn-type {{ request('type') == 'bike' ? 'bg-secondary text-on-secondary shadow-[0_0_15px_rgba(254,178,52,0.3)]' : 'bg-white/5 text-white/40 hover:bg-white/10' }} rounded-full py-2 px-2 text-[10px] font-bold transition-all duration-300">Bike</button>
                             <button type="button" onclick="setFilter('type', 'scooter')"
-                                class="filter-btn-type {{ request('type') == 'scooter' ? 'bg-secondary text-on-secondary shadow-[0_0_15px_rgba(254,178,52,0.3)]' : 'bg-white/5 text-white/40 hover:bg-white/10' }} rounded-full py-2 px-4 text-xs font-bold transition-all duration-300">Scooter</button>
+                                class="filter-btn-type {{ request('type') == 'scooter' ? 'bg-secondary text-on-secondary shadow-[0_0_15px_rgba(254,178,52,0.3)]' : 'bg-white/5 text-white/40 hover:bg-white/10' }} rounded-full py-2 px-2 text-[10px] font-bold transition-all duration-300">Scooter</button>
                         </div>
-                        <input type="hidden" name="type" id="filter-type" value="{{ request('type', 'bike') }}">
+                        <input type="hidden" name="type" id="filter-type" value="{{ request('type', 'all') }}">
                     </div>
 
                     <!-- Brand Filter -->
@@ -56,18 +58,18 @@
                             Brands</label>
                         <div class="space-y-3">
                             <label class="flex items-center gap-3 cursor-pointer group">
-                                <input type="radio" name="brand" value="all" onchange="this.form.submit()" {{ request('brand', 'all') == 'all' ? 'checked' : '' }}
-                                    class="w-4 h-4 border-white/10 bg-white/5 text-secondary focus:ring-secondary">
+                                <input type="radio" name="brand" value="all" {{ request('brand', 'all') == 'all' ? 'checked' : '' }}
+                                    class="w-4 h-4 border-white/10 bg-white/5 text-secondary focus:ring-secondary brand-filter-radio">
                                 <span
                                     class="text-sm {{ request('brand', 'all') == 'all' ? 'text-white font-bold' : 'text-white/60' }} group-hover:text-primary transition-colors">All
                                     Brands</span>
                             </label>
                             @foreach($brands as $brand)
                                 <label
-                                    class="flex items-center gap-3 cursor-pointer group {{ $brand->type == request('type', 'bike') ? '' : 'hidden brand-item' }}"
+                                    class="flex items-center gap-3 cursor-pointer group brand-item-label {{ (request('type', 'all') == 'all' || $brand->type == request('type')) ? '' : 'hidden' }}"
                                     data-type="{{ $brand->type }}">
-                                    <input type="radio" name="brand" value="{{ $brand->id }}" onchange="this.form.submit()" {{ request('brand') == $brand->id ? 'checked' : '' }}
-                                        class="w-4 h-4 border-white/10 bg-white/5 text-secondary focus:ring-secondary">
+                                    <input type="radio" name="brand" value="{{ $brand->id }}" {{ request('brand') == $brand->id ? 'checked' : '' }}
+                                        class="w-4 h-4 border-white/10 bg-white/5 text-secondary focus:ring-secondary brand-filter-radio">
                                     <span
                                         class="text-sm {{ request('brand') == $brand->id ? 'text-white font-bold' : 'text-white/60' }} group-hover:text-primary transition-colors">{{ $brand->name }}</span>
                                 </label>
@@ -78,12 +80,13 @@
                     <!-- Price Range (Visual for now) -->
                     <div class="mb-8">
                         <div class="flex justify-between items-center mb-3">
-                            <label class="font-label text-[10px] tracking-widest uppercase text-white/50">Price
-                                Range</label>
-                            <span class="text-secondary font-bold text-xs" id="price-display">Nrs. 1500 - 15000</span>
+                            <label class="font-label text-[10px] tracking-widest uppercase text-white/50">Max Price</label>
+                            <span class="text-secondary font-bold text-xs" id="price-display">Nrs.
+                                {{ number_format($selectedPrice) }}</span>
                         </div>
                         <input class="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-secondary"
-                            type="range" min="1500" max="15000" step="100"
+                            type="range" name="price" id="price-slider" min="{{ $minPrice }}" max="{{ $maxPrice }}"
+                            step="100" value="{{ $selectedPrice }}"
                             oninput="document.getElementById('price-display').innerText = 'Nrs. ' + this.value">
                     </div>
 
@@ -96,88 +99,108 @@
 
         <!-- Right Content: Vehicle Grid -->
         <section class="flex-1 pt-12 md:pt-20">
-            <div class="flex justify-end items-center mb-8">
-                <div data-aos="fade-left"
-                    class="hidden lg:flex items-center gap-4 text-[10px] tracking-widest uppercase font-bold text-white/30">
-                    <span>{{ $vehicles->count() }} Machines Found</span>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-                @forelse($vehicles as $index => $vehicle)
-                    <div data-aos="cinematic-up" data-aos-delay="{{ $index * 100 }}"
-                        class="glass-panel rounded-2xl overflow-hidden border border-white/5 hover:border-secondary/30 group transition-all duration-500 relative">
-                        <div
-                            class="absolute top-4 left-4 z-20 bg-secondary text-on-secondary px-3 py-1 rounded-md text-[10px] font-black tracking-widest shadow-xl">
-                            Nrs. {{ number_format($vehicle->rate_per_day) }}/Day</div>
-
-                        @if($vehicle->is_promoted)
-                            <div
-                                class="absolute top-4 right-4 z-20 bg-primary/20 backdrop-blur-md text-primary px-2 py-1 rounded text-[8px] font-bold tracking-tighter border border-primary/20">
-                                FEATURED</div>
-                        @endif
-
-                        <div
-                            class="h-56 overflow-hidden relative bg-gradient-to-br from-white/5 to-transparent flex items-center justify-center">
-                            @if($vehicle->getImage())
-                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
-                                    src="{{ asset($vehicle->getImage()) }}" alt="{{ $vehicle->title }}">
-                            @else
-                                <span class="material-symbols-outlined text-[80px] text-white/5">motorcycle</span>
-                            @endif
-                        </div>
-
-                        <div class="p-6 border-t border-white/5 bg-white/[0.02]">
-                            <div class="flex justify-between items-start mb-3">
-                                <div>
-                                    <p class="font-label text-[9px] tracking-[0.3em] uppercase text-white/40 mb-1">
-                                        {{ $vehicle->brand->name }}
-                                    </p>
-                                    <h3 class="font-headline font-bold text-lg tracking-tighter text-white">
-                                        {{ $vehicle->title }}
-                                    </h3>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-3 mb-6">
-                                <div
-                                    class="flex flex-col items-center text-center p-3 rounded-xl bg-white/5 border border-white/5 shadow-inner">
-                                    <span
-                                        class="material-symbols-outlined text-primary text-lg mb-1">settings_input_component</span>
-                                    <span
-                                        class="font-label text-[8px] text-white/40 uppercase tracking-widest">{{ $vehicle->engine_cc }}.CC</span>
-                                </div>
-                                <div
-                                    class="flex flex-col items-center text-center p-3 rounded-xl bg-white/5 border border-white/5 shadow-inner">
-                                    <span class="material-symbols-outlined text-primary text-lg mb-1">speed</span>
-                                    <span
-                                        class="font-label text-[8px] text-white/40 uppercase tracking-widest">{{ $vehicle->kmpl }}.kmpl</span>
-                                </div>
-                                <div
-                                    class="flex flex-col items-center text-center p-3 rounded-xl bg-white/5 border border-white/5 shadow-inner">
-                                    <span class="material-symbols-outlined text-primary text-lg mb-1">local_gas_station</span>
-                                    <span
-                                        class="font-label text-[8px] text-white/40 uppercase tracking-widest">{{ $vehicle->fuel_tank_capacity }}.L</span>
-                                </div>
-                            </div>
-
-                            <a href="{{ route('select-vehicle', $vehicle->id) }}"
-                                class="block w-full text-center liquid-gradient text-on-primary py-3 rounded-xl font-headline font-black text-xs tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(155,233,247,0.3)] transition-all duration-300 transform active:scale-95 group">
-                                Select This Machine
-                            </a>
-                        </div>
-                    </div>
-                @empty
-                    <div class="col-span-full py-20 text-center glass-panel rounded-2xl border border-dashed border-white/10">
-                        <span class="material-symbols-outlined text-6xl text-white/10 mb-4">error_outline</span>
-                        <p class="text-white/40 font-headline tracking-widest uppercase text-sm">No machines available for this
-                            criteria</p>
-                        <a href="{{ route('rides') }}"
-                            class="mt-4 inline-block text-primary font-bold text-xs tracking-widest underline underline-offset-8">Clear
-                            All Filters</a>
-                    </div>
-                @endforelse
+            <div id="vehicle-results" class="transition-opacity duration-300">
+                @include('layouts.partials.vehicle-grid')
             </div>
         </section>
     </main>
+    @push('js')
+        <script>
+            window.setFilter = function(type, value) {
+                document.getElementById('filter-' + type).value = value;
+
+                // Update button styles
+                const buttons = document.querySelectorAll('.filter-btn-type');
+                buttons.forEach(btn => {
+                    btn.classList.remove('bg-secondary', 'text-on-secondary', 'shadow-[0_0_15px_rgba(254,178,52,0.3)]');
+                    btn.classList.add('bg-white/5', 'text-white/40', 'hover:bg-white/10');
+
+                    // If the button's text or data-value matches, highlight it
+                    if (btn.innerText.toLowerCase() === value) {
+                        btn.classList.add('bg-secondary', 'text-on-secondary', 'shadow-[0_0_15px_rgba(254,178,52,0.3)]');
+                        btn.classList.remove('bg-white/5', 'text-white/40', 'hover:bg-white/10');
+                    }
+                });
+
+                // Show/Hide brand items based on type
+                const brands = document.querySelectorAll('.brand-item-label');
+                brands.forEach(brand => {
+                    if (value === 'all' || brand.getAttribute('data-type') === value) {
+                        brand.classList.remove('hidden');
+                    } else {
+                        brand.classList.add('hidden');
+                    }
+                });
+
+                // Trigger AJAX update
+                updateFilters();
+            }
+
+            // Initialize price display updates
+            const priceSlider = document.getElementById('price-slider');
+            const priceDisplay = document.getElementById('price-display');
+            if (priceSlider && priceDisplay) {
+                priceSlider.addEventListener('input', function () {
+                    priceDisplay.innerText = 'Nrs. ' + this.value;
+                });
+                
+                // Update on change (when user stops sliding)
+                priceSlider.addEventListener('change', function() {
+                    updateFilters();
+                });
+            }
+
+            // AJAX Filter Function
+            async function updateFilters() {
+                const form = document.getElementById('filter-form');
+                const container = document.getElementById('vehicle-results');
+                const formData = new FormData(form);
+                const searchParams = new URLSearchParams(formData);
+                const url = `${form.action}?${searchParams.toString()}`;
+
+                // Add loading state
+                container.style.opacity = '0.5';
+                container.style.pointerEvents = 'none';
+
+                try {
+                    const response = await fetch(url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+
+                    if (!response.ok) throw new Error('Network response was not ok');
+
+                    const html = await response.text();
+                    container.innerHTML = html;
+                    
+                    // Update URL without reloading
+                    history.pushState(null, '', url);
+
+                    // Re-initialize AOS for new elements
+                    if (typeof AOS !== 'undefined') {
+                        AOS.refresh();
+                    }
+                } catch (error) {
+                    console.error('Filtering failed:', error);
+                } finally {
+                    container.style.opacity = '1';
+                    container.style.pointerEvents = 'auto';
+                }
+            }
+
+            // Handle radio button changes for brands
+            document.querySelectorAll('.brand-filter-radio').forEach(radio => {
+                radio.addEventListener('change', function(e) {
+                    updateFilters();
+                });
+            });
+
+            // Handle form submission
+            document.getElementById('filter-form').onsubmit = function(e) {
+                e.preventDefault();
+                updateFilters();
+            };
+        </script>
+    @endpush
 @endsection
