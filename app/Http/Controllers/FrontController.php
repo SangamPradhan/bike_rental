@@ -48,7 +48,7 @@ class FrontController extends Controller
 
     public function about()
     {
-        $data['staffs'] = Staff::whereIn('designation', ['Doctor', 'Head Nurse', 'Head Pharmacist'])->get();
+        $data['staffs'] = Staff::where('is_founder', false)->take(4)->get();
         $data['testimonials'] = Testimonial::orderBy('order', 'ASC')->get();
         return view('front.about', $data);
     }
@@ -93,15 +93,15 @@ class FrontController extends Controller
 
     public function team()
     {
-        $data['head_staffs'] = Staff::whereIn('designation', ['Doctor', 'Head Nurse', 'Head Pharmacist', 'Nurse'])->get();
-        $data['staffs'] = Staff::whereNotIn('designation', ['Doctor', 'Head Nurse', 'Head Pharmacist', 'Founder', 'Nurse'])->get();
+        $data['founders'] = Staff::where('is_founder', true)->get();
+        $data['operators'] = Staff::where('is_founder', false)->get();
         return view('front.team', $data);
     }
 
-    public function doctorDetails($slug)
+    public function teamMemberDetails($slug)
     {
-        $item = Staff::where('slug', $slug)->firstOrFail();
-        return view('front.doctor-details', compact('item'));
+        $item = Staff::with('favBike')->where('slug', $slug)->firstOrFail();
+        return view('front.staff-details', compact('item'));
     }
 
 
