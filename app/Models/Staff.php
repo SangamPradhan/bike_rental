@@ -22,6 +22,11 @@ class Staff extends BaseModel
     }
 
 
+    public function favBike()
+    {
+        return $this->belongsTo(Vehicle::class, 'fav_bike_id');
+    }
+
     function getImageUrlAttribute()
     {
         return $this->getImage();

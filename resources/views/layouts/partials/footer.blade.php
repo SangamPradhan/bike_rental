@@ -56,6 +56,8 @@
                 <li><a class="font-body text-white/60 hover:text-[#9be9f7] text-sm transition-colors"
                         href="{{ route('rides') }}">Rides</a></li>
                 <li><a class="font-body text-white/60 hover:text-[#9be9f7] text-sm transition-colors"
+                        href="{{ route('team') }}">Technical Registry</a></li>
+                <li><a class="font-body text-white/60 hover:text-[#9be9f7] text-sm transition-colors"
                         href="{{ route('articles') }}">Stories</a></li>
                 <li><a class="font-body text-white/60 hover:text-[#9be9f7] text-sm transition-colors"
                         href="{{ route('gallery') }}">Gallery</a></li>

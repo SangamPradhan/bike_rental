@@ -187,9 +187,15 @@
     <!-- Our Team Section -->
     <section id="team" class="py-24 bg-surface text-white">
         <div class="max-w-7xl mx-auto px-8">
-            <div class="text-center mb-16">
-                <span class="text-secondary font-label text-sm font-bold uppercase tracking-[0.3em]">The Experts</span>
-                <h3 class="text-5xl font-headline font-black mt-4 text-white">Our Dedicated Specialists</h3>
+            <div class="flex flex-col md:flex-row justify-between md:items-end mb-16 gap-8">
+                <div>
+                    <span class="text-secondary font-label text-sm font-bold uppercase tracking-[0.3em]">The Registry</span>
+                    <h3 class="text-5xl font-headline font-black mt-4 text-white">The Operators</h3>
+                </div>
+                <a href="{{ route('team') }}"
+                    class="w-fit px-8 py-4 border-2 border-primary/20 text-primary font-headline uppercase text-xs font-black tracking-widest rounded-lg hover:bg-primary hover:text-on-primary transition-all">
+                    View All Members <span class="material-symbols-outlined align-middle ml-2 text-sm">arrow_forward</span>
+                </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -205,13 +211,12 @@
                                 <h4 class="text-xl font-headline font-bold text-white">{{ $staff->name }}</h4>
                                 <span class="text-primary font-label text-xs uppercase tracking-widest">
                                     {{ $staff->designation }}
-                                    {{ $staff->designation == 'Doctor' ? '- ' . $staff->specialist : '' }}
                                 </span>
                             </div>
                         </div>
                         <div
                             class="p-6 text-center border-t border-white/5 bg-surface-container-high group-hover:bg-primary/10 transition-colors">
-                            <a href="{{ route('doctor-details', $staff->slug) }}"
+                            <a href="{{ route('team-details', $staff->slug) }}"
                                 class="text-secondary font-headline uppercase text-xs font-black tracking-widest hover:text-white transition-colors">Learn
                                 More</a>
                         </div>

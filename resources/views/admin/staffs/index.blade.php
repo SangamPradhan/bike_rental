@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content_header')
-    <h1>Staffs</h1>
+    <h1>Team</h1>
 @stop
 
 @push('styles')
