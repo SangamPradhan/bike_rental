@@ -57,7 +57,7 @@ Route::get('/articles', [FrontController::class, 'article'])->name('articles');
 Route::get('/article-details/{slug}', [FrontController::class, 'articleDetails'])->name('article-details');
 Route::get('/gallery', [FrontController::class, 'gallery'])->name('gallery');
 Route::get('/team', [FrontController::class, 'team'])->name('team');
-Route::get('/doctor-details/{slug}', [FrontController::class, 'doctorDetails'])->name('doctor-details');
+Route::get('/team-details/{slug}', [FrontController::class, 'teamMemberDetails'])->name('team-details');
 Route::get('/staff-details', [FrontController::class, 'staffDetails'])->name('staff-details');
 Route::get('/aesthetic', [FrontController::class, 'aesthetic'])->name('aesthetic');
 Route::get('/allery-test', [FrontController::class, 'allergyTest'])->name('allergy-test');
