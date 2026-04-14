@@ -7,179 +7,140 @@
                 <label for="name">Name *</label>
                 <input type="text" required class="form-control" name="name" id="name" value="{{ old('name', $item->name) }}" placeholder="John Smith">
             </div>
+            
             <div class="col-md-12 mt-4">
-                <!-- Introduction -->
-                <label for="introduction">Introduction *</label>
-                <textarea required class="form-control" name="introduction" id="introduction" rows="3">{{ old('introduction', $item->introduction) }}</textarea>
-            </div>
-            <div class="col-md-12 mt-4">
-                <!-- Email -->
-                <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" id="email" value="{{ old('email', $item->email) }}" placeholder="example@example.com">
-            </div>
-            <div class="col-md-12 mt-4">
-                <!-- Qualification -->
-                <label for="qualification">Qualification *</label>
-                <textarea required class="form-control" id="summernote" name="qualification" rows="2">{{ old('qualification', $item->qualification) }}</textarea>
+                <!-- Designation -->
+                <label for="designation">Designation *</label>
+                <input type="text" required class="form-control" name="designation" id="designation" value="{{ old('designation', $item->designation) }}" placeholder="e.g. Master Mechanic, Expedition Guide">
+                <small class="form-text text-muted">Common: Owner, Manager, Master Mechanic, Expedition Guide, Safety Officer</small>
             </div>
 
+            <div class="col-md-12 mt-4">
+                <div class="form-check">
+                    <input type="hidden" name="is_founder" value="0">
+                    <input type="checkbox" class="form-check-input" name="is_founder" id="is_founder" value="1" {{ old('is_founder', $item->is_founder) ? 'checked' : '' }}>
+                    <label class="form-check-label font-weight-bold" for="is_founder">Is Featured Founder?</label>
+                </div>
+            </div>
+
+            <div class="col-md-12 mt-4">
+                <!-- Introduction -->
+                <label for="introduction">Bio/Introduction *</label>
+                <textarea required class="form-control summernote" name="introduction" id="introduction" rows="5">{{ old('introduction', $item->introduction) }}</textarea>
+            </div>
+
+            <div class="col-md-12 mt-4">
+                <!-- Quote (For Founders) -->
+                <label for="quote">Personal Quote (Featured on Team Page)</label>
+                <textarea class="form-control" name="quote" id="quote" rows="3" placeholder="The summit isn't just a destination...">{{ old('quote', $item->quote) }}</textarea>
+            </div>
         </div>
     </div>
+
     <!-- Right Column -->
     <div class="col-md-6">
         <!-- Image -->
-        <label for="image">Image</label>
-        <input type="file" class="form-control" accept="image/*" name="image">
-        @if ($item->getImage())
-        <img src="{{ $item->getImage() }}" alt="" width="20%">
-        @endif
+        <label for="image" class="d-block">Profile Image</label>
+        <div class="mb-3">
+            @if ($item->getImage())
+            <img src="{{ $item->getImage() }}" alt="" class="img-thumbnail mb-2" style="max-height: 150px;">
+            @endif
+            <input type="file" class="form-control" accept="image/*" name="image">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mt-4">
+                <!-- Languages -->
+                <label for="languages">Languages</label>
+                <input type="text" class="form-control" name="languages" id="languages" value="{{ old('languages', $item->languages) }}" placeholder="English, Nepali, Tibetan">
+            </div>
+            <div class="col-md-6 mt-4">
+                <!-- Machine of Choice -->
+                <label for="fav_bike_id">Machine of Choice</label>
+                <select name="fav_bike_id" id="fav_bike_id" class="form-control">
+                    <option value="">-- Select Vehicle --</option>
+                    @foreach($vehicles as $vehicle)
+                    <option value="{{ $vehicle->id }}" {{ old('fav_bike_id', $item->fav_bike_id) == $vehicle->id ? 'selected' : '' }}>
+                        {{ $vehicle->title }}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mt-4">
+                <!-- Experience -->
+                <label for="experience">Experience (Years/Text)</label>
+                <input type="text" class="form-control" name="experience" id="experience" value="{{ old('experience', $item->experience) }}" placeholder="12+ Years">
+            </div>
+            <div class="col-md-6 mt-4">
+                <!-- Phone -->
+                <label for="phone">Contact Phone</label>
+                <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone', $item->phone) }}" placeholder="+977 ...">
+            </div>
+        </div>
+
         <div class="col-md-12 mt-4">
-            <!-- Phone -->
-            <label for="phone">Phone</label>
-            <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone', $item->phone) }}" placeholder="Phone Number">
-        </div>
-        <div id="staff-fields" class="col-md-12 mt-4">
-            <!-- Designation -->
-            <label for="designation">Designation *</label>
-            <select name="designation" class="form-control">
-                <option value="Owner" {{ old('designation', $item->designation) == 'Owner' ? 'selected' : '' }}>
-                    Owner
-                </option>
-                <option value="Spa Manager" {{ old('designation', $item->designation) == 'Spa Manager' ? 'selected' : '' }}>
-                    Spa Manager
-                </option>
-                <option value="Receptionist" {{ old('designation', $item->designation) == 'Receptionist' ? 'selected' : '' }}>Receptionist
-                </option>
-                <option value="Account and Administrative Assistant" {{ old('designation', $item->designation) == 'Account and Administrative Assistant' ? 'selected' : '' }}>
-                    Account and Administrative Assistant
-                </option>
-                <option value="Consultant" {{ old('designation', $item->designation) == 'Consultant' ? 'selected' : '' }}>
-                    Consultant
-                </option>
-                <option value="Beauty Therapist" {{ old('designation', $item->designation) == 'Beauty Therapist' ? 'selected' : '' }}>
-                    Beauty Therapist
-                </option>
-                <option value="Massage Therapist" {{ old('designation', $item->designation) == 'Massage Therapist' ? 'selected' : '' }}>
-                    Massage Therapist
-                </option>
-                <option value="Hair Stylist" {{ old('designation', $item->designation) == 'Hair Stylist' ? 'selected' : '' }}>
-                    Hair Stylist
-                </option>
-                <option value="Nail Technician" {{ old('designation', $item->designation) == 'Nail Technician' ? 'selected' : '' }}>
-                    Nail Technician
-                </option>
-                <option value="Esthetician" {{ old('designation', $item->designation) == 'Esthetician' ? 'selected' : '' }}>
-                    Esthetician
-                </option>
-                <option value="Skincare Specialist" {{ old('designation', $item->designation) == 'Skincare Specialist' ? 'selected' : '' }}>
-                    Skincare Specialist
-                </option>
-                <option value="Makeup Artist" {{ old('designation', $item->designation) == 'Makeup Artist' ? 'selected' : '' }}>
-                    Makeup Artist
-                </option>
-                <option value="Spa Attendant" {{ old('designation', $item->designation) == 'Spa Attendant' ? 'selected' : '' }}>
-                    Spa Attendant
-                </option>
-            </select>
+            <!-- Email -->
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" name="email" id="email" value="{{ old('email', $item->email) }}" placeholder="example@example.com">
         </div>
 
-        <div class="col-md-12 mt-4" id="specialist-field" @if (old('designation', $item->designation) == 'Doctor') style="display: block;" @else style="display: none;" @endif>
-            <!-- Specialist -->
-            <label for="specialist">Specialist</label>
-            <select name="specialist" id="specialist" class="form-control">
-                <option value="Chief Consultant Dermatologist">Chief Consultant Dermatologist</option>
-                <option value="Hair Consultant">Hair Consultant</option>
-                <option value="Cosmetic Surgeon">Cosmetic Surgeon</option>
-            </select>
+        <div class="row mt-4">
+            <div class="col-12"><label class="font-weight-bold">Social Profiles</label></div>
+            <div class="col-md-6 mb-2">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="fab fa-facebook"></i></span></div>
+                    <input type="text" class="form-control" name="social_facebook" value="{{ old('social_facebook', $item->social_facebook) }}" placeholder="Facebook URL">
+                </div>
+            </div>
+            <div class="col-md-6 mb-2">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="fab fa-instagram"></i></span></div>
+                    <input type="text" class="form-control" name="social_instagram" value="{{ old('social_instagram', $item->social_instagram) }}" placeholder="Instagram URL">
+                </div>
+            </div>
+            <div class="col-md-6 mb-2">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="fab fa-twitter"></i></span></div>
+                    <input type="text" class="form-control" name="social_twitter" value="{{ old('social_twitter', $item->social_twitter) }}" placeholder="Twitter URL">
+                </div>
+            </div>
+            <div class="col-md-6 mb-2">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="fab fa-linkedin"></i></span></div>
+                    <input type="text" class="form-control" name="social_linkedin" value="{{ old('social_linkedin', $item->social_linkedin) }}" placeholder="LinkedIn URL">
+                </div>
+            </div>
         </div>
-        <div class="col-md-12 mt-4" id="experience-field" @if (old('designation', $item->designation) == 'Doctor') style="display: block;" @else style="display: none;" @endif>
-            <!-- Experience -->
-            <label for="experience">Experience</label>
-            <textarea name="experience" id="summernote-experience" class="form-control">{{ old('experience', $item->experience) }}</textarea>
 
-        </div>
-        <div class="col-md-12 mt-4" id="awards-field" @if (old('designation', $item->designation) == 'Doctor') style="display: block;" @else style="display: none;" @endif>
-            <!-- Awards and Achievement -->
-            <label for="awards">Awards and Achievement</label>
-            <textarea name="awards" id="summernote-awards" class="form-control">{{ old('awards', $item->awards) }}</textarea>
-
-        </div>
         <div class="col-md-12 mt-4">
             <!-- Skills -->
-            <label for="skills">Skills *</label>
-            <textarea name="skills" id="summernote" class="form-control">{{ old('skills', $item->skills) }}</textarea>
-        </div>
-        <div class="col-md-12 mt-4">
-            <!-- Others -->
-            <label for="others">Others</label>
-            <textarea class="form-control" name="others" rows="1">{{ old('others', $item->others) }}</textarea>
+            <label for="skills">Skills & Expertise (Comma separated or List)</label>
+            <textarea name="skills" class="form-control" rows="2">{{ old('skills', $item->skills) }}</textarea>
         </div>
     </div>
 </div>
 
 @push('styles')
 <style>
-    /* Add custom styles here */
-    .mt-4 {
-        margin-top: 1.5rem;
-        /* Adjust spacing as needed */
-    }
-
+    .mt-4 { margin-top: 1.5rem; }
+    .form-check-input { width: 1.25rem; height: 1.25rem; margin-top: 0.15rem; }
+    .form-check-label { margin-left: 0.5rem; }
 </style>
 @endpush
 
 @push('scripts')
 <script>
     $(document).ready(function() {
-        $('#experience-field #summernote-experience').summernote();
-        $('#awards-field #summernote-awards').summernote();
-        $('#role').change(function() {
-            var selectedRole = $(this).val();
-            if (selectedRole == 'staff') {
-                $('#staff-fields').show();
-                $('#qualification-field').show();
-                $('#others-field').show();
-                $('select[name="designation"]').trigger(
-                    'change'); // Trigger change event for designation dropdown when staff is selected
-            } else {
-                $('#staff-fields').hide();
-                $('#qualification-field').hide();
-                $('#others-field').hide();
-                $('#specialist-field').hide().find('select').prop('disabled', true);
-            }
+        $('.summernote').summernote({
+            height: 150,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ]
         });
-
-        $('select[name="designation"]').change(function() {
-            var selectedDesignation = $(this).val();
-            if (selectedDesignation == 'Doctor') {
-                $('#specialist-field').show().find('select').prop('disabled', false);
-                $('#experience-field').show();
-                $('#awards-field').show();
-
-            } else {
-                $('#specialist-field').hide().find('select').prop('disabled', true);
-                $('#specialist').val(""); // Clear specialist value
-                $('#experience-field').hide();
-                $('#experience').val(""); // Clear experience value
-                $('#awards-field').hide();
-                $('#awards').val(""); // Clear awards value
-            }
-        });
-
-        // Show doctor details if designation is already set to "Doctor" during editing
-        if ($('select[name="designation"]').val() == 'Doctor') {
-
-            $('#specialist-field').show();
-            $('#experience-field').show();
-            $('#awards-field').show();
-
-        }
-
-        $('#staffForm').submit(function() {
-            $('#specialist-field:hidden select').prop('disabled', true);
-        });
-
     });
-
 </script>
 @endpush
