@@ -17,7 +17,7 @@ class StaffController extends BaseController
 
     public function __construct()
     {
-        $this->title = 'Staffs';
+        $this->title = 'Team Members';
         $this->resources = 'admin.staffs.';
         $this->route = 'staffs.';
 
@@ -68,6 +68,7 @@ class StaffController extends BaseController
         }
         //
         $info = $this->crudInfo();
+        $info['vehicles'] = \App\Models\Vehicle::all();
         return view($this->createResource(), $info);
     }
 
@@ -131,6 +132,7 @@ class StaffController extends BaseController
         }
         $info = $this->crudInfo();
         $info['item'] = Staff::where('slug', $slug)->firstOrFail();
+        $info['vehicles'] = \App\Models\Vehicle::all();
         return view($this->editResource(), $info);
     }
 
