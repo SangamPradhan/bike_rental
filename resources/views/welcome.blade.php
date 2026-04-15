@@ -1,5 +1,19 @@
 @extends('layouts.app')
 
+@push('css')
+    <style>
+        @keyframes bikeSpin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+@endpush
+
 @section('content')
     <!-- Hero Section -->
     <section class="relative min-h-screen w-full flex items-stretch justify-center overflow-visible bg-surface">
@@ -302,9 +316,19 @@
         <div class="max-w-screen-2xl mx-auto px-12 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div data-aos="cinematic-right" class="relative">
                 <div class="absolute -inset-10 bg-primary/10 blur-[100px] rounded-full"></div>
-                <img class="relative z-10 w-full drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] transform -rotate-6 hover:rotate-0 transition-transform duration-700"
-                    alt="High-resolution cutout of a black Royal Enfield Himalayan adventure motorcycle against a minimalist dark studio background"
-                    src="{{ asset('assets/img/meta/himalayan.png') }}" />
+                <!-- Composed Motorcycle Scene -->
+                <div id="bikeScene"
+                    class="relative z-10 w-full drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] transition-transform duration-700 hover:-rotate-6">
+                    <!-- Body defines container size -->
+                    <img src="{{ asset('assets/img/bike_parts/body.png') }}" alt="Royal Enfield Himalayan motorcycle body"
+                        class="w-full h-auto block" style="position: relative; z-index: 30;" />
+                    <!-- Rear Tyre (bottom-most wheel layer) -->
+                    <img src="{{ asset('assets/img/bike_parts/rear_tyre.png') }}" alt="Rear tyre" class="bike-wheel"
+                        style="position: absolute; top: 49%; left: 4%; width: 32%; z-index: 10; transform-origin: center center; animation: bikeSpin 1.8s linear infinite;" />
+                    <!-- Front Tyre -->
+                    <img src="{{ asset('assets/img/bike_parts/rear_tyre.png') }}" alt="Front tyre" class="bike-wheel"
+                        style="position: absolute; top: 49%; left: 73%; width: 32%; z-index: 0; transform-origin: center center; animation: bikeSpin 1.8s linear infinite;" />
+                </div>
             </div>
             <div data-aos="cinematic-left">
                 <span class="text-secondary font-label text-sm font-bold uppercase tracking-[0.3em]">Superiority</span>
@@ -477,19 +501,26 @@
                                 <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors">
                                     {{ $vehicle->title }}
                                 </h4>
-                                
+
                                 <div class="flex flex-wrap gap-4 mb-6">
                                     <div class="flex items-center gap-2 text-on-surface-variant/70">
-                                        <span class="material-symbols-outlined text-lg" style="color:#9be9f7;">settings_input_component</span>
-                                        <span class="text-[10px] font-bold uppercase tracking-wider text-white/80">{{ $vehicle->engine_cc ?? '---' }}</span>
+                                        <span class="material-symbols-outlined text-lg"
+                                            style="color:#9be9f7;">settings_input_component</span>
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-wider text-white/80">{{ $vehicle->engine_cc ?? '---' }}</span>
                                     </div>
                                     <div class="flex items-center gap-2 text-on-surface-variant/70">
                                         <span class="material-symbols-outlined text-lg" style="color:#9be9f7;">speed</span>
-                                        <span class="text-[10px] font-bold uppercase tracking-wider text-white/80">{{ $vehicle->kmpl ?? '---' }} KMPL</span>
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-wider text-white/80">{{ $vehicle->kmpl ?? '---' }}
+                                            KMPL</span>
                                     </div>
                                     <div class="flex items-center gap-2 text-on-surface-variant/70">
-                                        <span class="material-symbols-outlined text-lg" style="color:#9be9f7;">local_gas_station</span>
-                                        <span class="text-[10px] font-bold uppercase tracking-wider text-white/80">{{ $vehicle->fuel_tank_capacity ?? '---' }} L</span>
+                                        <span class="material-symbols-outlined text-lg"
+                                            style="color:#9be9f7;">local_gas_station</span>
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-wider text-white/80">{{ $vehicle->fuel_tank_capacity ?? '---' }}
+                                            L</span>
                                     </div>
                                 </div>
 
@@ -503,7 +534,8 @@
                         </a>
                     @endforeach
                 @else
-                    <div class="col-span-3 text-center text-white/50 text-sm">Our popular choices are being updated. Check back soon!</div>
+                    <div class="col-span-3 text-center text-white/50 text-sm">Our popular choices are being updated. Check back
+                        soon!</div>
                 @endif
             </div>
         </div>
@@ -581,18 +613,21 @@
                                 <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 relative z-0"
                                     alt="{{ $article->title }}"
                                     src="{{ $article->getImage() ?? 'https://lh3.googleusercontent.com/aida-public/AB6AXuBcl1vnQ6vT120ehZJIoZbTQlihJJrViGoI9VlELHeMyORu0n6VaFIgK4gNn1t9KBzckp1GGBNem4_r8ZQ08QUMd9lTnYLWM5huc-WsLEwSGObY6qKRpdBQtimghij1RTiqKk-4YcKZhaMhuThXQW_sZB4r3JS1td7-zNrmfFiw_glUEH6d7WoBmhXa3g1YFR8SxcGrGQDAaUUxhCnhUDYfs5EOx1g8L5Lc07FLoSWhUN5fE7HRxesHzFplCS9eiU_i79w8Nc4VGgs' }}" />
-                                <span class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded z-10">
+                                <span
+                                    class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded z-10">
                                     {{ $article->tag ?? 'Adventure' }}
                                 </span>
                             </div>
                             <div class="p-8 flex flex-col flex-1">
-                                <h4 class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                                <h4
+                                    class="text-2xl font-headline font-black mb-4 group-hover:text-primary transition-colors line-clamp-2">
                                     {{ Str::limit($article->title, 45) }}
                                 </h4>
                                 <p class="text-on-surface-variant font-body mb-6 text-sm leading-relaxed line-clamp-3">
                                     {{ Str::limit(strip_tags($article->description), 110) }}
                                 </p>
-                                <div class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-white/40 mt-auto pt-4 border-t border-white/5">
+                                <div
+                                    class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-white/40 mt-auto pt-4 border-t border-white/5">
                                     <span>{{ $article->created_at->format('M d, Y') }}</span>
                                     <span class="w-1 h-1 bg-white/40 rounded-full"></span>
                                     <span>Read More</span>
@@ -780,6 +815,7 @@
                     }
                 }
             }
+
 
         });
     </script>
