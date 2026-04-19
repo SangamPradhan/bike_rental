@@ -373,7 +373,7 @@
     <!-- FAQ Section -->
     <section class="py-32 bg-surface-container-low text-white">
         <div class="max-w-screen-2xl mx-auto px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
                 <div data-aos="cinematic-right">
                     <span class="text-secondary font-label text-sm font-bold uppercase tracking-[0.3em]">Knowledge
                         Base</span>
@@ -391,8 +391,8 @@
                                             class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
                                     </summary>
                                     <div
-                                        class="px-6 pb-6 text-on-surface-variant font-body text-sm leading-relaxed border-t border-white/5 pt-4">
-                                        {{ $faq->answer }}
+                                        class="px-6 pb-6 text-on-surface-variant font-body text-sm leading-relaxed border-t border-white/5 pt-4 faq-content">
+                                        {!! $faq->answer !!}
                                     </div>
                                 </details>
                             @endforeach
@@ -408,7 +408,7 @@
                                         class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
                                 </summary>
                                 <div
-                                    class="px-6 pb-6 text-on-surface-variant font-body text-sm leading-relaxed border-t border-white/5 pt-4">
+                                    class="px-6 pb-6 text-on-surface-variant font-body text-sm leading-relaxed border-t border-white/5 pt-4 faq-content">
                                     We recommend bringing your own helmet and riding jacket for best fit. However, we do provide
                                     premium gear rentals including armored jackets, gloves, and knee guards if required.
                                 </div>
@@ -436,7 +436,7 @@
                                         class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
                                 </summary>
                                 <div
-                                    class="px-6 pb-6 text-on-surface-variant font-body text-sm leading-relaxed border-t border-white/5 pt-4">
+                                    class="px-6 pb-6 text-on-surface-variant font-body text-sm leading-relaxed border-t border-white/5 pt-4 faq-content">
                                     You will need a valid motorcycle driving license (International Driving Permit for
                                     foreigners), a copy of your passport/ID, and a security deposit.
                                 </div>
@@ -450,7 +450,7 @@
                                         class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
                                 </summary>
                                 <div
-                                    class="px-6 pb-6 text-on-surface-variant font-body text-sm leading-relaxed border-t border-white/5 pt-4">
+                                    class="px-6 pb-6 text-on-surface-variant font-body text-sm leading-relaxed border-t border-white/5 pt-4 faq-content">
                                     Yes, we offer one-way drop-offs between Leh, Manali, and Srinagar for an additional
                                     logistics fee. Please contact us in advance to arrange this.
                                 </div>
@@ -458,11 +458,13 @@
                         @endif
                     </div>
                 </div>
-                <div data-aos="cinematic-left" class="relative order-first lg:order-last mb-12 lg:mb-0 lg:sticky top-32">
-                    <img alt="Support Vehicle in Mountains"
-                        class="rounded-2xl w-full h-[400px] lg:h-[600px] object-cover brightness-75 shadow-2xl"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJUFv0qlo-MrP7U1T_0vXTBxgPofs-e_qFwSRXwwrmrr0xCspUfVKyG-sOatDU2rnjOIUkuK-jaocln7l_grlxCS-dpICXbwLohrK9LCm8tnRBtlRjhuI1w03J8te5PaoAYeCGi0TSoQFBRsjcTJcfZ_RACZnrtnpXZUYLTihlUXND1FuRPC9eguqJgKWEukDFVUqnFHIvEpaY_CM11uBd1f0SW6Ows6nr8O7IChKHB7fS8PYLe7zp4iWn4I87KoHanbteyFdt8Uc" />
-                    <div class="absolute inset-0 bg-gradient-to-l from-transparent to-surface-container-low/50"></div>
+                <div class="relative order-first lg:order-last mb-12 lg:mb-0">
+                    <div class="lg:sticky lg:top-32" data-aos="cinematic-left">
+                        <img alt="Support Vehicle in Mountains"
+                            class="rounded-2xl w-full h-[400px] lg:h-[600px] object-cover brightness-75 shadow-2xl"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJUFv0qlo-MrP7U1T_0vXTBxgPofs-e_qFwSRXwwrmrr0xCspUfVKyG-sOatDU2rnjOIUkuK-jaocln7l_grlxCS-dpICXbwLohrK9LCm8tnRBtlRjhuI1w03J8te5PaoAYeCGi0TSoQFBRsjcTJcfZ_RACZnrtnpXZUYLTihlUXND1FuRPC9eguqJgKWEukDFVUqnFHIvEpaY_CM11uBd1f0SW6Ows6nr8O7IChKHB7fS8PYLe7zp4iWn4I87KoHanbteyFdt8Uc" />
+                        <div class="absolute inset-0 bg-gradient-to-l from-transparent to-surface-container-low/50 rounded-2xl"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -817,6 +819,22 @@
             }
 
 
+
+            // FAQ Accordion Logic
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const summary = item.querySelector('summary');
+                summary.addEventListener('click', function(e) {
+                    // If we're opening this one, close all others
+                    if (!item.hasAttribute('open')) {
+                        faqItems.forEach(otherItem => {
+                            if (otherItem !== item && otherItem.hasAttribute('open')) {
+                                otherItem.removeAttribute('open');
+                            }
+                        });
+                    }
+                });
+            });
         });
     </script>
 @endpush
