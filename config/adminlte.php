@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Bike & Scooter Renta in Pokhara',
+    'title' => 'Bike & Scooter Rent in Pokhara',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Bike & Scooter </b>Rental in Pokhara',
+    'logo' => '<b>Bike & Scooter </b>Rent in Pokhara',
     'logo_img' => 'assets/img/meta/bikerental_logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Bike & Scooter Rental in Pokhara',
+    'logo_img_alt' => 'Bike & Scooter Rent in Pokhara',
 
     /*
     |--------------------------------------------------------------------------
@@ -87,7 +87,7 @@ return [
         'enabled' => false,
         'img' => [
             'path' => 'assets/img/meta/bikerental_logo.png',
-            'alt' => 'Bike & Scooter Rental in Pokhara',
+            'alt' => 'Bike & Scooter Rent in Pokhara',
             'class' => '',
             'width' => 50,
             'height' => 50,
@@ -110,7 +110,7 @@ return [
         'enabled' => true,
         'img' => [
             'path' => 'assets/img/meta/bikerental_logo.png',
-            'alt' => 'Bike & Scooter Rental in Pokhara',
+            'alt' => 'Bike & Scooter Rent in Pokhara',
             'effect' => 'animation__shake',
             'width' => 100,
             'height' => 90,
@@ -375,7 +375,7 @@ return [
             'can' => 'news'
         ],
         [
-            'text' => 'Staffs',
+            'text' => 'Team',
             'url' => 'admin/staffs',
             'icon' => 'fas fa-users',
             'can' => 'staffs'
