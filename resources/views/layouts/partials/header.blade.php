@@ -99,8 +99,10 @@
             </div>
             <!-- CTA and Hamburger -->
             <div class="flex items-center space-x-4">
-                <button
-                    class="nav-desktop-main px-8 py-3 liquid-gradient text-on-primary font-headline uppercase text-xs font-black tracking-widest rounded-lg hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_15_rgba(155,233,247,0.3)]">Book
+                <button onclick="window.location.href = '{{ route('rides') }}'"
+                    class="nav-desktop-main px-8 py-3 liquid-gradient
+                    text-on-primary font-headline uppercase text-xs font-black tracking-widest rounded-lg
+                    hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_15_rgba(155,233,247,0.3)]">Book
                     Now</button>
                 <button onclick="openSideMenu()" class="hamburger-btn nav-mobile-hamburger">
                     <span class="material-symbols-outlined text-3xl">menu</span>
